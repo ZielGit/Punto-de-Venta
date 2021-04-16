@@ -29,7 +29,7 @@
                         <h4 class="card-title">Registro de productos</h4>
                     </div>
 
-                    <form action="{{route('products.store')}}" method="post">
+                    <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="name">Nombre</label>

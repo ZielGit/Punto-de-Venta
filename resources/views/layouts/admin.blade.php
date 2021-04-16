@@ -8,7 +8,7 @@
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{asset('melody/vendors/iconfonts/font-awesome/css/all.min.css')}}">
   <link rel="stylesheet" href="{{asset('melody/vendors/css/vendor.bundle.base.css')}}">
-  <link rel="stylesheet" href="{{asset('assetmelody/vendors/css/vendor.bundle.addons.css')}}">
+  <link rel="stylesheet" href="{{asset('melody/vendors/css/vendor.bundle.addons.css')}}">
   {{-- {!! Html::style('melody/vendors/iconfonts/font-awesome/css/all.min.css') !!}
   {!! Html::style('melody/vendors/css/vendor.bundle.base.css') !!}
   {!! Html::style('melody/vendors/css/vendor.bundle.addons.css') !!} --}}
@@ -21,7 +21,8 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="http://www.urbanui.com/" />
 </head>
-<body>
+<body class="sidebar-dark">
+  <!-- Agrege el tema sidebar-dark en el body-->
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">

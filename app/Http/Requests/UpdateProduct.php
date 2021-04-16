@@ -24,11 +24,12 @@ class UpdateProduct extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|unique:products,name,'. $this->route('product')->id.'|max:255', 
-            'image' => 'required|dimensions:min_width=100,min_height=200', 
+            'name' => 'required|string|unique:products,name,'.$this->route('product')->id.'|max:255', 
+            // 'image' => 'required|dimensions:min_width=100,min_height=200', 
             'sell_price' => 'required', 
-            'category_id' => 'integer|required|exists:App\Category,id', 
-            'provider_id' => 'integer|required|exists:App\Provider,id'
+            'category_id'=>'integer|required|exists:App\Models\Category,id', 
+            'provider_id'=>'integer|required|exists:App\Models\Provider,id',
+
         ];
     }
 
@@ -40,8 +41,10 @@ class UpdateProduct extends FormRequest
             'name.unique' => 'El producto ya está registrado.',
             'name.max' => 'Solo se permite 255 caracteres.',
 
-            'image.required' => 'Este campo es requerido.',
-            'image.dimensions' => 'Solo se permiten imágenes de 100x200 px.',
+            // 'image.required' => 'Este campo es requerido.',
+            // 'image.dimensions' => 'Solo se permiten imágenes de 100x200 px.',
+
+            'sell_price.required'=>'El campo es requerido.',
 
             'category_id.required' => 'Este campo es requerido.',
             'category_id.string' => 'El valor no es correcto.',

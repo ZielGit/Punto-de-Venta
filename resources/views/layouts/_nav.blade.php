@@ -22,8 +22,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{route('purchases.index')}}">
+              <i class="fas fa-cart-plus menu-icon"></i>
+              <span class="menu-title">Compras</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{route('categories.index')}}">
-              <i class="ffas fa-tags menu-icon"></i>
+              <i class="fas fa-tags menu-icon"></i>
               <span class="menu-title">Categorias</span>
             </a>
           </li>
@@ -31,6 +37,12 @@
             <a class="nav-link" href="{{route('products.index')}}">
                 <i class="fas fa-boxes menu-icon"></i>
                 <span class="menu-title">Productos</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('clients.index')}}">
+                <i class="fas fa-users menu-icon"></i>
+                <span class="menu-title">Clientes</span>
             </a>
           </li>
           <li class="nav-item">
@@ -73,53 +85,6 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#editors" aria-expanded="false" aria-controls="editors">
-              <i class="fas fa-pen-square menu-icon"></i>
-              <span class="menu-title">Editors</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="editors">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.html">Text editors</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.html">Code editors</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-              <i class="fas fa-chart-pie menu-icon"></i>
-              <span class="menu-title">Charts</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="charts">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/charts/morris.html">Morris</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/charts/flot-chart.html">Flot</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/charts/google-charts.html">Google charts</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/charts/sparkline.html">Sparkline js</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/charts/c3.html">C3 charts</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartist.html">Chartists</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/charts/justGage.html">JustGage</a></li>
-              </ul>
-              </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-              <i class="fas fa-table menu-icon"></i>
-              <span class="menu-title">Tables</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="tables">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Basic table</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/tables/data-table.html">Data table</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/tables/js-grid.html">Js-grid</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/tables/sortable-table.html">Sortable table</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="pages/ui-features/popups.html">
               <i class="fas fa-minus-square menu-icon"></i>
               <span class="menu-title">Popups</span>
@@ -143,36 +108,6 @@
                 <li class="nav-item"> <a class="nav-link" href="pages/icons/font-awesome.html">Font Awesome</a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/icons/simple-line-icon.html">Simple line icons</a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/icons/themify.html">Themify icons</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#maps" aria-expanded="false" aria-controls="maps">
-              <i class="fas fa-map-marker-alt menu-icon"></i>
-              <span class="menu-title">Maps</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="maps">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/maps/mapeal.html">Mapeal</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/maps/vector-map.html">Vector Map</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/maps/google-maps.html">Google Map</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="fas fa-window-restore menu-icon"></i>
-              <span class="menu-title">User Pages</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
               </ul>
             </div>
           </li>

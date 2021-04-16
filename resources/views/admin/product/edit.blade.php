@@ -35,21 +35,29 @@
                         <h4 class="card-title">Edición de Productos</h4>
                     </div>
 
-                    <form action="" method="get">
+                    <form action="{{route('products.update', $product)}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
                         <div class="form-group">
                             <label for="name">Nombre</label>
                             <input type="text" name="name" id="name" value="{{$product->name}}" class="form-control" aria-describedby="helpId" required>
+                            @error('name')
+                                <small>*{{$message}}</small>
+                            @enderror
                         </div>
       
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="code">Código de barras</label>
                             <input type="text" name="code" id="code" value="{{$product->code}}" class="form-control">
                             <small id="helpId" class="text-muted">Campo opcional</small>
-                        </div>
+                        </div> --}}
       
                         <div class="form-group">
                             <label for="sell_price">Precio de venta</label>
                             <input type="number" name="sell_price" id="sell_price" value="{{$product->sell_price}}" class="form-control" aria-describedby="helpId" required>
+                            @error('sell_price')
+                                <small>*{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="category_id">Categoría</label>
@@ -62,6 +70,9 @@
                                   >{{$category->name}}</option>
                               @endforeach
                             </select>
+                            @error('category_id')
+                                <small>*{{$message}}</small>
+                            @enderror
                         </div>
       
                         <div class="form-group">
@@ -75,12 +86,10 @@
                                   >{{$product->name}}</option>
                                 @endforeach
                             </select>
+                            @error('provider_id')
+                                <small>*{{$message}}</small>
+                            @enderror
                         </div>
-      
-                          {{--  <div class="custom-file mb-4">
-                              <input type="file" class="custom-file-input" name="image" id="image" lang="es">
-                              <label class="custom-file-label" for="image">Seleccionar Archivo</label>
-                          </div>  --}}
                          
                         <div class="card-body">
                             <h4 class="card-title d-flex">Imagen de producto
@@ -95,7 +104,6 @@
                         <a href="{{route('products.index')}}" class="btn btn-light">
                             Cancelar
                         </a>
-                        
                     </form>
                 </div>
 
@@ -105,5 +113,5 @@
 </div>
 @endsection
 @section('scripts')
-<script src="{{asset('melody/js/data-table.js')}}"></script>
+<script src="{{asset('melody/js/dropify.js')}}"></script>
 @endsection

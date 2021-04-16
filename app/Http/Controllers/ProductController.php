@@ -40,7 +40,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProduct $request)
     {
         if($request->hasFile('picture')){
             $file = $request->file('picture');
@@ -79,7 +79,7 @@ class ProductController extends Controller
     {
         $categories = Category::get();
         $providers = Provider::get();
-        return view('admin.product.show', compact('product','categories','providers'));
+        return view('admin.product.edit', compact('product','categories','providers'));
     }
 
     /**
@@ -91,8 +91,15 @@ class ProductController extends Controller
      */
     public function update(UpdateProduct $request, Product $product)
     {
-        $product->update($request->all());
-        return redirect()->route('product.index');
+        if($request->hasFile('picture')){
+            $file = $request->file('picture');
+            $image_name = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path("/image"),$image_name);
+        }
+        $product->update($request->all()+[
+            'image'=>$image_name,
+        ]);
+        return redirect()->route('products.index');
     }
 
     /**

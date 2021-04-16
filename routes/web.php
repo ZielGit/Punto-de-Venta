@@ -31,6 +31,6 @@ Route::resource('products', ProductController::class)->names('products');
 
 Route::resource('providers', ProviderController::class)->names('providers');
 
-Route::resource('purchase', PurchaseController::class)->names('purchase');
+Route::resource('purchases', PurchaseController::class)->names('purchases');
 
 Route::resource('sales', SaleController::class)->names('sales');

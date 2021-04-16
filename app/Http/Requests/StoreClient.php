@@ -28,8 +28,8 @@ class StoreClient extends FormRequest
             'dni' => 'required|string|unique:clients|min:8|max:8', 
             'ruc' => 'nullable|string|unique:clients|min:11|max:11', 
             'address' => 'nullable|string|max:255', 
-            'phone' => 'required|string|unique:clients|max:9', 
-            'email' => 'required|string|unique:clients|max:255|email:rfc,dns'
+            'phone' => 'string|nullable|unique:clients|max:9', 
+            'email' => 'string|nullable|unique:clients|max:255|email:rfc,dns'
         ];
     }
 

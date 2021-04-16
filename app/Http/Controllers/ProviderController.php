@@ -38,16 +38,7 @@ class ProviderController extends Controller
      */
     public function store(StoreProvider $request)
     {
-        //Revisar por que no quiere guardar con el otro 
-        $provider = new Provider();
-        $provider->name = $request->get('name');
-        $provider->email = $request->get('email');
-        $provider->ruc_number = $request->get('ruc_number');
-        $provider->address = $request->get('address');
-        $provider->phone = $request->get('phone');
-
-        $provider->save();
-        // Provider::create($request->all());
+        Provider::create($request->all());
         return redirect()->route('providers.index');
     }
 

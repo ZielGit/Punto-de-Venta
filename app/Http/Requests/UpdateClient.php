@@ -28,8 +28,8 @@ class UpdateClient extends FormRequest
             'dni' => 'required|string|unique:clients,dni,'. $this->route('client')->id.'|min:8|max:8', 
             'ruc' => 'nullable|string|unique:clients,ruc,'. $this->route('client')->id.'|min:11|max:11', 
             'address' => 'nullable|string|max:255', 
-            'phone' => 'required|string|unique:clients,phone,'. $this->route('client')->id.'|max:9', 
-            'email' => 'required|string|unique:clients,email,'. $this->route('client')->id.'|max:255|email:rfc,dns'
+            'phone' => 'string|nullable|unique:clients,phone,'. $this->route('client')->id.'|max:9', 
+            'email' => 'string|nullable|unique:clients,email,'. $this->route('client')->id.'|max:255|email:rfc,dns'
         ];
     }
 

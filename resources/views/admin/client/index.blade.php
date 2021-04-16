@@ -1,13 +1,13 @@
 @extends('layouts.admin')
-@section('title','Gestión de productos')
+@section('title','Gestión de clientes')
 @section('styles')
-{{-- <style type="text/css">
+<style type="text/css">
     .unstyled-button {
         border: none;
         padding: 0;
         background: none;
       }
-</style> --}}
+</style>
 @endsection
 @section('options')
 @endsection
@@ -17,12 +17,12 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Productos
+            Clientes
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Productos</li>
+                <li class="breadcrumb-item active" aria-current="page">Clientes</li>
             </ol>
         </nav>
     </div>
@@ -32,15 +32,14 @@
                 <div class="card-body">
                     
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Productos</h4>
+                        <h4 class="card-title">Clientes</h4>
                         {{--  <i class="fas fa-ellipsis-v"></i>  --}}
                         <div class="btn-group">
                             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                              <a href="{{route('products.create')}}" class="dropdown-item">Agregar</a>
-                              {{-- <a class="dropdown-item" href="{{route('print_barcode')}}">Exportar códigos de barras</a>  --}}
+                              <a href="{{route('clients.create')}}" class="dropdown-item">Agregar</a>
                               {{--  <button class="dropdown-item" type="button">Another action</button>
                               <button class="dropdown-item" type="button">Something else here</button>  --}}
                             </div>
@@ -53,40 +52,28 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Nombre</th>
-                                    <th>Stock</th>
-                                    <th>Estado</th>
-                                    <th>Categoría</th>
+                                    <th>DNI</th>
+                                    <th>Teléfono / Celular</th>
+                                    <th>Correo electrónico</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($products as $product)
+                                @foreach ($clients as $client)
                                 <tr>
-                                    <th scope="row">{{$product->id}}</th>
+                                    <th scope="row">{{$client->id}}</th>
                                     <td>
-                                        <a href="{{route('products.show',$product)}}">{{$product->name}}</a>
+                                        <a href="{{route('clients.show',$client)}}">{{$client->name}}</a>
                                     </td>
-                                    <td>{{$product->stock}}</td>
-                                    @if ($product->status == 'ACTIVE')
-                                    <td>
-                                        <a class="jsgrid-button btn btn-success" href="#" title="Editar">
-                                            Activo <i class="fas fa-check"></i>
-                                        </a>
-                                    </td>
-                                    @else
-                                    <td>
-                                        <a class="jsgrid-button btn btn-danger" href="#" title="Editar">
-                                            Desactivado <i class="fas fa-times"></i>
-                                        </a>
-                                    </td>
-                                    @endif
-
-                                    <td>{{$product->category->name}}</td>
+                                    <td>{{$client->dni}}</td>
+                                    <td>{{$client->phone}}</td>
+                                    <td>{{$client->email}}</td>
                                     <td style="width: 50px;">
-                                        <form action="{{route('products.destroy', $product)}}" method="post">
+                                        
+                                        <form action="{{route('clients.destroy', $client)}}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <a class="jsgrid-button jsgrid-edit-button" href="{{route('products.edit', $product)}}" title="Editar">
+                                            <a class="jsgrid-button jsgrid-edit-button" href="{{route('clients.edit', $client)}}" title="Editar">
                                                 <i class="far fa-edit"></i>
                                             </a>
                                             
@@ -94,6 +81,7 @@
                                                 <i class="far fa-trash-alt"></i>
                                             </button>
                                         </form>
+
                                     </td>
                                 </tr>
                                 @endforeach
@@ -101,12 +89,14 @@
                         </table>
                     </div>
                 </div>
-                
+                {{--  <div class="card-footer text-muted">
+                    {{$clients->render()}}
+                </div>  --}}
             </div>
         </div>
     </div>
 </div>
 @endsection
 @section('scripts')
-<script src="{{asset('melody/js/data-table.js')}}"></script>
+{{-- {!! Html::script('melody/js/data-table.js') !!} --}}
 @endsection

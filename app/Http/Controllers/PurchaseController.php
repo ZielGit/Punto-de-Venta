@@ -6,7 +6,9 @@ use App\Models\Purchase;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePurchase;
 use App\Http\Requests\UpdatePurchase;
+use App\Models\Product;
 use App\Models\Provider;
+use Carbon\Carbon;
 
 class PurchaseController extends Controller
 {
@@ -29,7 +31,8 @@ class PurchaseController extends Controller
     public function create()
     {
         $providers = Provider::get();
-        return view('admin.purchase.create', compact('providers'));
+        $products = Product::where('status', 'ACTIVE')->get();
+        return view('admin.purchase.create', compact('providers','products'));
     }
 
     /**
@@ -40,7 +43,10 @@ class PurchaseController extends Controller
      */
     public function store(StorePurchase $request)
     {
-        $purchase = Purchase::create($request->all());
+        $purchase = Purchase::create($request->all()+[
+            // 'user_id'=>Auth::user()->id,
+            'pruchase_date'=>Carbon::now('America/Lima'),
+        ]);
 
         foreach ($request->product_id as $key => $product) {
             $result[] = array ("product_id"=>$request->product_id[$key],

@@ -13,5 +13,8 @@ class Client extends Model
         'name', 'dni', 'ruc', 'address', 'phone', 'email'
     ];
     
-
+    //falta relacion
+    // public function sales(){
+    //     return $this->hasMany(Sale::class);
+    // }
 }

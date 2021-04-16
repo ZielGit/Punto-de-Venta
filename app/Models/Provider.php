@@ -10,7 +10,7 @@ class Provider extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'mail', 'ruc_number', 'address', 'phone'
+        'name', 'email', 'ruc_number', 'address', 'phone'
     ];
     
     public function products(){

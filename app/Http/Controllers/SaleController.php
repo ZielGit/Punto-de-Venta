@@ -7,9 +7,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreSale;
 use App\Http\Requests\UpdateSale;
 use App\Models\Client;
+use App\Models\Product;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class SaleController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +36,8 @@ class SaleController extends Controller
     public function create()
     {
         $clients = Client::get();
-        return view('admin.sale.create', compact('clients'));
+        $products = Product::get();
+        return view('admin.sale.create', compact('clients','products'));
     }
 
     /**
@@ -40,17 +48,19 @@ class SaleController extends Controller
      */
     public function store(StoreSale $request)
     {
-        $sale = Sale::create($request->all());
+        $sale = Sale::create($request->all()+[
+            'user_id'=>Auth::user()->id,
+            'sale_date'=>Carbon::now('America/Lima'),
+        ]);
 
         foreach ($request->product_id as $key => $product) {
             $result[] = array ("product_id"=>$request->product_id[$key],
             "quantity"=>$request->quantity[$key], "price"=>$request->price[$key],
-            "discuount"=>$request->discount[$key]);
+            "discount"=>$request->discount[$key]);
         }
 
         $sale->saleDetails()->createMany($result);
-
-        return redirect()->route('sale.index');
+        return redirect()->route('sales.index');
     }
 
     /**
@@ -61,7 +71,12 @@ class SaleController extends Controller
      */
     public function show(Sale $sale)
     {
-        return view('admin.sale.show', compact('sale'));
+        $subtotal = 0 ;
+        $saleDetails = $sale->saleDetails;
+        foreach ($saleDetails as $saleDetail) {
+            $subtotal += $saleDetail->quantity*$saleDetail->price-$saleDetail->quantity* $saleDetail->price*$saleDetail->discount/100;
+        }
+        return view('admin.sale.show', compact('sale', 'saleDetails', 'subtotal'));
     }
 
     /**
@@ -72,8 +87,8 @@ class SaleController extends Controller
      */
     public function edit(Sale $sale)
     {
-        $sales = Sale::get();
-        return view('admin.sale.show', compact('sales'));
+        // $sales = Sale::get();
+        // return view('admin.sale.show', compact('sales'));
     }
 
     /**

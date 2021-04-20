@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Gestión de compras')
+@section('title','Gestión de ventas')
 @section('styles')
 {{-- <style type="text/css">
     .unstyled-button {
@@ -11,8 +11,8 @@
 @endsection
 @section('create')
 <li class="nav-item d-none d-lg-flex">
-    <a class="nav-link" href="{{route('purchases.create')}}">
-      <span class="btn btn-primary">+ Registrar compra</span>
+    <a class="nav-link" href="{{route('sales.create')}}">
+      <span class="btn btn-primary">+ Registrar venta</span>
     </a>
   </li>
 @endsection
@@ -24,12 +24,12 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Compras
+            Ventas
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Compras</li>
+                <li class="breadcrumb-item active" aria-current="page">Ventas</li>
             </ol>
         </nav>
     </div>
@@ -39,14 +39,14 @@
                 <div class="card-body">
                     
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Compras</h4>
+                        <h4 class="card-title">Ventas</h4>
                         {{--  <i class="fas fa-ellipsis-v"></i>  --}}
                         <div class="btn-group">
                             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                              <a href="{{route('purchases.create')}}" class="dropdown-item">Registrar</a>
+                              <a href="{{route('sales.create')}}" class="dropdown-item">Registrar</a>
                               {{--  <button class="dropdown-item" type="button">Another action</button>
                               <button class="dropdown-item" type="button">Something else here</button>  --}}
                             </div>
@@ -65,34 +65,36 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($purchases as $purchase)
+                                @foreach ($sales as $sale)
                                 <tr>
                                     <th scope="row">
-                                        <a href="{{route('purchases.show', $purchase)}}">{{$purchase->id}}</a>
+                                        <a href="{{route('sales.show', $sale)}}">{{$sale->id}}</a>
                                     </th>
                                     <td>
-                                        {{\Carbon\Carbon::parse($purchase->purchase_date)->format('d M y h:i a')}}
+                                        {{-- {{\Carbon\Carbon::parse($sale->sale_date)->format('d M y h:i a')}} --}}
+                                        {{$sale->sale_date}}
                                     </td>
-                                    <td>{{$purchase->total}}</td>
-
-                                    @if ($purchase->status == 'VALID')
+                                    <td>{{$sale->total}}</td>
+                                    <td>{{$sale->status}}</td>
+                                    {{-- @if ($sale->status == 'VALID')
                                     <td>
-                                        {{-- <a class="jsgrid-button btn btn-success" href="{{route('change.status.purchases', $purchase)}}" title="Editar">
+                                        <a class="jsgrid-button btn btn-success" href="{{route('change.status.sales', $sale)}}" title="Editar">
                                             Activo <i class="fas fa-check"></i>
-                                        </a> --}}
+                                        </a>
                                     </td>
                                     @else
                                     <td>
-                                        {{-- <a class="jsgrid-button btn btn-danger" href="{{route('change.status.purchases', $purchase)}}" title="Editar">
+                                        <a class="jsgrid-button btn btn-danger" href="{{route('change.status.sales', $sale)}}" title="Editar">
                                             Cancelado <i class="fas fa-times"></i>
-                                        </a> --}}
+                                        </a>
                                     </td>
-                                    @endif
-                                    <td style="width: 50px;">
+                                    @endif --}}
 
-                                        {{-- <a href="{{route('purchases.pdf', $purchase)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a> --}}
-                                        {{--  <a href="#" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>  --}}
-                                        <a href="{{route('purchases.show', $purchase)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
+                                    <td style="width: 50px;">
+                                        {{-- <a href="{{route('sales.pdf', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
+                                        <a href="{{route('sales.print', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a> --}}
+                                        <a href="{{route('sales.show', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
+                                   
                                       
                                     </td>
                                 </tr>
@@ -102,7 +104,7 @@
                     </div>
                 </div>
                 {{--  <div class="card-footer text-muted">
-                    {{$purchases->render()}}
+                    {{$sales->render()}}
                 </div>  --}}
             </div>
         </div>

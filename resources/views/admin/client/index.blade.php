@@ -98,5 +98,5 @@
 </div>
 @endsection
 @section('scripts')
-{{-- {!! Html::script('melody/js/data-table.js') !!} --}}
+<script src="{{asset('melody/js/data-table.js')}}"></script>
 @endsection

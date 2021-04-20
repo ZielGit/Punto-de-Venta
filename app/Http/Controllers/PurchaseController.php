@@ -9,6 +9,7 @@ use App\Http\Requests\UpdatePurchase;
 use App\Models\Product;
 use App\Models\Provider;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
@@ -43,9 +44,10 @@ class PurchaseController extends Controller
      */
     public function store(StorePurchase $request)
     {
+        //en el master esta pruchase_date corregir eso
         $purchase = Purchase::create($request->all()+[
-            // 'user_id'=>Auth::user()->id,
-            'pruchase_date'=>Carbon::now('America/Lima'),
+            'user_id'=>Auth::user()->id,
+            'purchase_date'=>Carbon::now('America/Lima'),
         ]);
 
         foreach ($request->product_id as $key => $product) {
@@ -54,7 +56,7 @@ class PurchaseController extends Controller
         }
 
         $purchase->purchaseDetails()->createMany($result);
-        return redirect()->route('purchase.index');
+        return redirect()->route('purchases.index');
     }
 
     /**
@@ -65,7 +67,12 @@ class PurchaseController extends Controller
      */
     public function show(Purchase $purchase)
     {
-        return view('admin.purchase.show', compact('purchase'));
+        $subtotal = 0 ;
+        $purchaseDetails = $purchase->purchaseDetails;
+        foreach ($purchaseDetails as $purchaseDetail) {
+            $subtotal += $purchaseDetail->quantity * $purchaseDetail->price;
+        }
+        return view('admin.purchase.show', compact('purchase','purchaseDetails','subtotal'));
     }
 
     /**

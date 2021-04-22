@@ -11,6 +11,8 @@ use App\Models\Provider;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
+use Barryvdh\DomPDF\Facade as PDF;
+
 class PurchaseController extends Controller
 {
     /**
@@ -83,8 +85,8 @@ class PurchaseController extends Controller
      */
     public function edit(Purchase $purchase)
     {
-        $providers = Provider::get();
-        return view('admin.purchase.show', compact('purchase'));
+        // $providers = Provider::get();
+        // return view('admin.purchase.edit', compact('purchase'));
     }
 
     /**
@@ -110,5 +112,17 @@ class PurchaseController extends Controller
     {
         // $purchase->delete();
         // return redirect()->route('purchase.index');
+    }
+
+    public function pdf(Purchase $purchase)
+    {
+        $subtotal = 0 ;
+        $purchaseDetails = $purchase->purchaseDetails;
+        foreach ($purchaseDetails as $purchaseDetail) {
+            $subtotal += $purchaseDetail->quantity * $purchaseDetail->price;
+        }
+
+        $pdf = PDF::loadView('admin.purchase.pdf', compact('purchase','subtotal','purchaseDetails'));
+        return $pdf->download('Reporte_de_compra_'.$purchase->id.'.pdf');
     }
 }

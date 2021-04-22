@@ -35,6 +35,8 @@ Route::resource('purchases', PurchaseController::class)->names('purchases');
 
 Route::resource('sales', SaleController::class)->names('sales');
 
+Route::get('purchases/pdf/{purchase}', [PurchaseController::class, 'pdf'])->name('purchases.pdf');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

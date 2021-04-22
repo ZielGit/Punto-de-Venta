@@ -11,6 +11,8 @@ use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
+use Barryvdh\DomPDF\Facade as PDF;
+
 class SaleController extends Controller
 {
     // public function __construct()
@@ -112,5 +114,16 @@ class SaleController extends Controller
     public function destroy(Sale $sale)
     {
         //
+    }
+
+    public function pdf(Sale $sale)
+    {
+        $subtotal = 0 ;
+        $saleDetails = $sale->saleDetails;
+        foreach ($saleDetails as $saleDetail) {
+            $subtotal += $saleDetail->quantity*$saleDetail->price-$saleDetail->quantity* $saleDetail->price*$saleDetail->discount/100;
+        }
+        $pdf = PDF::loadView('admin.sale.pdf', compact('sale', 'subtotal', 'saleDetails'));
+        return $pdf->download('Reporte_de_venta_'.$sale->id.'.pdf');
     }
 }

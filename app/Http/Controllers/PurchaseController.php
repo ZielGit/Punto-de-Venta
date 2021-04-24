@@ -125,4 +125,20 @@ class PurchaseController extends Controller
         $pdf = PDF::loadView('admin.purchase.pdf', compact('purchase','subtotal','purchaseDetails'));
         return $pdf->download('Reporte_de_compra_'.$purchase->id.'.pdf');
     }
+
+    public function upload(Request $request, Purchase $purchase)
+    {
+        //Subir algun archivo
+    }
+
+    public function change_status(Purchase $purchase)
+    {
+        if ($purchase->status == 'VALID') {
+            $purchase->update(['status'=>'CANCELED']);
+            return redirect()->back();
+        } else {
+            $purchase->update(['status'=>'VALID']);
+            return redirect()->back();
+        }
+    }
 }

@@ -44,6 +44,14 @@ Route::get('sales/print/{sale}', [SaleController::class, 'print'])->name('sales.
 
 Route::resource('business', BusinessController::class)->names('business')->only(['index','update']);
 
+Route::get('purchases/upload/{purchase}', [PurchaseController::class, 'upload'])->name('upload.purchases');
+
+Route::get('change_status/products/{product}', [ProductController::class, 'change_status'])->name('change.status.products');
+
+Route::get('change_status/purchases/{purchase}', [PurchaseController::class, 'change_status'])->name('change.status.purchases');
+
+Route::get('change_status/sales/{sale}', [SaleController::class, 'change_status'])->name('change.status.sales');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

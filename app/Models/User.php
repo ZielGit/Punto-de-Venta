@@ -10,6 +10,12 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+/** 
+ * laravel-permission: generando relaciones
+ * Los modelos se encuentran en vendor/spatie/laravel-permission/src/Models
+ */ 
+use Spatie\Permission\Traits\HasRoles;
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -17,6 +23,9 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+
+    // laravel-permission: generando relaciones
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.

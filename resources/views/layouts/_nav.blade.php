@@ -57,5 +57,11 @@
               <span class="menu-title">Proveedores</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('users.index')}}">
+                <i class="fas fa-user-tag menu-icon"></i>
+                <span class="menu-title">Usuarios</span>
+            </a>
+        </li>
         </ul>
       </nav>

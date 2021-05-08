@@ -29,10 +29,10 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('sales.index')}}">
-                <i class="fas fa-shopping-cart menu-icon"></i>
-                <span class="menu-title">Ventas</span>
+              <i class="fas fa-shopping-cart menu-icon"></i>
+              <span class="menu-title">Ventas</span>
             </a>
-        </li>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('categories.index')}}">
               <i class="fas fa-tags menu-icon"></i>

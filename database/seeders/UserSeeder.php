@@ -25,5 +25,11 @@ class UserSeeder extends Seeder
             'email' => 'venta@gmail.com',
             'password' => bcrypt('SistemaVenta')
         ])->assignRole('Asistente de Venta');
+
+        User::create([
+            'name' => 'Inventario',
+            'email' => 'inventario@gmail.com',
+            'password' => bcrypt('SistemaVenta')
+        ])->assignRole('Asistente de Inventario');
     }
 }

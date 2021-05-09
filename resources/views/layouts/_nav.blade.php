@@ -33,12 +33,14 @@
               <span class="menu-title">Ventas</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('categories.index')}}">
-              <i class="fas fa-tags menu-icon"></i>
-              <span class="menu-title">Categorias</span>
-            </a>
-          </li>
+          @can('categories.index',)
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('categories.index')}}">
+                <i class="fas fa-tags menu-icon"></i>
+                <span class="menu-title">Categorias</span>
+              </a>
+            </li>
+          @endcan
           <li class="nav-item">
             <a class="nav-link" href="{{route('products.index')}}">
                 <i class="fas fa-boxes menu-icon"></i>

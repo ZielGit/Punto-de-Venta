@@ -15,6 +15,14 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class PurchaseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:purchases.index')->only('index');
+        $this->middleware('can:purchases.create')->only('create', 'store');
+        $this->middleware('can:purchases.show')->only('show');
+        //falta pdf y change_status
+    }
+
     /**
      * Display a listing of the resource.
      *

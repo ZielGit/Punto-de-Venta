@@ -21,10 +21,14 @@ Use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 
 class SaleController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('can:sales.index')->only('index');
+        $this->middleware('can:sales.create')->only('create', 'store');
+        $this->middleware('can:sales.show')->only('show');
+        //falta pdf y change_status
+    }
+    
     /**
      * Display a listing of the resource.
      *

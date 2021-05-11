@@ -9,6 +9,15 @@ use App\Http\Requests\UpdateProvider;
 
 class ProviderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:providers.index')->only('index');
+        $this->middleware('can:providers.create')->only('create', 'store');
+        $this->middleware('can:providers.edit')->only('edit', 'update');
+        $this->middleware('can:providers.show')->only('show');
+        $this->middleware('can:providers.destroy')->only('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      *

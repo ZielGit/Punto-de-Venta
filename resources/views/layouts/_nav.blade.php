@@ -76,5 +76,11 @@
                 <span class="menu-title">Usuarios</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('roles.index')}}">
+                <i class="fas fa-user-cog menu-icon"></i>
+                <span class="menu-title">Roles</span>
+            </a>
+          </li>
       </ul>
 </nav>

@@ -36,11 +36,6 @@
                             <input type="text"
                             class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="">
                         </div>
-                        <div class="form-group">
-                            <label for="description">Descripción</label>
-                            <input type="text"
-                                class="form-control" name="description" id="description" aria-describedby="helpId" placeholder="">
-                        </div>
 
                         @include('admin.role._form')
                         <button type="submit" class="btn btn-primary mr-2">Registrar</button>

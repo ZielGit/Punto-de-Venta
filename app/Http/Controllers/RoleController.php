@@ -39,7 +39,9 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $role = Role::create($request->all());
+        $role->permissions()->sync($request->get('permissions'));
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -59,9 +61,10 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        return view('roles.edit', compact('role'));
+        $permissions = Permission::all();
+        return view('admin.role.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -84,6 +87,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        return back();
     }
 }

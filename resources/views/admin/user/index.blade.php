@@ -86,9 +86,7 @@
                         </table>
                     </div>
                 </div>
-                {{--  <div class="card-footer text-muted">
-                    {{$users->render()}}
-                </div>  --}}
+                
             </div>
         </div>
     </div>

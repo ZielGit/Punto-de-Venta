@@ -76,7 +76,9 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        $role->update($request->all());
+        $role->permissions()->sync($request->permissions);
+        return redirect()->route('roles.index');
     }
 
     /**

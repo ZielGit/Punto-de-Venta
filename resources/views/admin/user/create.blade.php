@@ -53,9 +53,7 @@
                     </form>
                      {{-- {!! Form::close() !!} --}}
                 </div>
-                {{--  <div class="card-footer text-muted">
-                    {{$users->render()}}
-                </div>  --}}
+                
             </div>
         </div>
     </div>

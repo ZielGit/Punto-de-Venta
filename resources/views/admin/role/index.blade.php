@@ -1,13 +1,6 @@
 @extends('layouts.admin')
 @section('title','Gestión de roles del sistema')
 @section('styles')
-<style type="text/css">
-    .unstyled-button {
-        border: none;
-        padding: 0;
-        background: none;
-      }
-</style>
 
 @endsection
 @section('options')
@@ -41,8 +34,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                               <a href="{{route('roles.create')}}" class="dropdown-item">Agregar</a>
-                              {{--  <button class="dropdown-item" type="button">Another action</button>
-                              <button class="dropdown-item" type="button">Something else here</button>  --}}
+                              
                             </div>
                           </div>
                     </div>
@@ -74,7 +66,7 @@
                                                 <i class="far fa-edit"></i>
                                             </a>
                                             
-                                            <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit" title="Eliminar">
+                                            <button class="jsgrid-button jsgrid-delete-button" type="submit" title="Eliminar">
                                                 <i class="far fa-trash-alt"></i>
                                             </button>
                                         </form>
@@ -86,9 +78,7 @@
                         </table>
                     </div>
                 </div>
-                {{--  <div class="card-footer text-muted">
-                    {{$roles->render()}}
-                </div>  --}}
+                
             </div>
         </div>
     </div>

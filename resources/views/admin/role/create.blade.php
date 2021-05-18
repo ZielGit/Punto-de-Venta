@@ -45,9 +45,6 @@
                     </form>
                      {{-- {!! Form::close() !!} --}}
                 </div>
-                {{--  <div class="card-footer text-muted">
-                    {{$roles->render()}}
-                </div>  --}}
             </div>
         </div>
     </div>

@@ -28,8 +28,10 @@
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Editar rol</h4>
                     </div>
-                    {{-- {!! Form::model($role,['route'=>['roles.update',$role], 'method'=>'PUT']) !!} --}}
-                    <form action="{{route('roles.update', $role)}}" method="post">
+                    {!! Form::model($role,['route'=>['roles.update',$role], 'method'=>'PUT']) !!}
+                    {{-- <form action="{{route('roles.update', $role)}}" method="post">
+                        @csrf
+                        @method('PUT') --}}
                         <div class="form-group">
                             <label for="name">Nombre</label>
                             <input type="text"
@@ -37,18 +39,14 @@
                         </div>
 
                         @include('admin.role._form')
-                        
 
                         <button type="submit" class="btn btn-primary mr-2">Actualizar</button>
                         <a href="{{route('roles.index')}}" class="btn btn-light">
                             Cancelar
                         </a>
-                    </form>
-                     {{-- {!! Form::close() !!} --}}
+                    {{-- </form> --}}
+                     {!! Form::close() !!}
                 </div>
-                {{--  <div class="card-footer text-muted">
-                    {{$roles->render()}}
-                </div>  --}}
             </div>
         </div>
     </div>

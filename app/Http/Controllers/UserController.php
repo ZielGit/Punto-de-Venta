@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -38,7 +39,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create($request->all());
+        $user->update(['password'=> Hash::make($request->password)]);
+        $user->roles()->sync($request->get('roles'));
+        return redirect()->route('users.index');
     }
 
     /**
@@ -68,7 +72,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**

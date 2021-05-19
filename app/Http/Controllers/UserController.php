@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -70,9 +71,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        
+        $roles = Role::get();
+        return view('admin.user.edit', compact('user', 'roles'));
     }
 
     /**
@@ -82,9 +84,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        // Agregar para que no se edite el usuario principal
+        $user->update($request->all());
+        $user->roles()->sync($request->roles);
+        return redirect()->route('users.index');
     }
 
     /**
@@ -93,8 +98,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        // Agregar para que no se elimine el usuario principal
+        $user->delete();
+        return back();
     }
 }

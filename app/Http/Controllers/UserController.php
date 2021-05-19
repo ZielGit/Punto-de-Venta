@@ -54,6 +54,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        // Error en el foreach
         $total_purchases = 0;
         foreach ($user->sales as $key =>  $sale) {
             $total_purchases+=$sale->total;

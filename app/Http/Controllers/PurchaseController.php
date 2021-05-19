@@ -54,7 +54,6 @@ class PurchaseController extends Controller
      */
     public function store(StorePurchase $request)
     {
-        //en el master esta pruchase_date corregir eso
         $purchase = Purchase::create($request->all()+[
             'user_id'=>Auth::user()->id,
             'purchase_date'=>Carbon::now('America/Lima'),

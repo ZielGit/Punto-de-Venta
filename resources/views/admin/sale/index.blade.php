@@ -71,12 +71,11 @@
                                         <a href="{{route('sales.show', $sale)}}">{{$sale->id}}</a>
                                     </th>
                                     <td>
-                                        {{-- {{\Carbon\Carbon::parse($sale->sale_date)->format('d M y h:i a')}} --}}
-                                        {{$sale->sale_date}}
+                                        {{\Carbon\Carbon::parse($sale->sale_date)->format('d M y h:i a')}}
                                     </td>
                                     <td>{{$sale->total}}</td>
-                                    <td>{{$sale->status}}</td>
-                                    {{-- @if ($sale->status == 'VALID')
+                                    
+                                    @if ($sale->status == 'VALID')
                                     <td>
                                         <a class="jsgrid-button btn btn-success" href="{{route('change.status.sales', $sale)}}" title="Editar">
                                             Activo <i class="fas fa-check"></i>
@@ -88,7 +87,7 @@
                                             Cancelado <i class="fas fa-times"></i>
                                         </a>
                                     </td>
-                                    @endif --}}
+                                    @endif
 
                                     <td style="width: 50px;">
                                         <a href="{{route('sales.pdf', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>

@@ -132,6 +132,5 @@ class ProductController extends Controller
             $product->update(['status'=>'ACTIVE']);
             return redirect()->back();
         }
-        
     }
 }

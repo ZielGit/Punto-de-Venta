@@ -3,6 +3,7 @@
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\PurchaseController;
@@ -54,6 +55,8 @@ Route::get('change_status/sales/{sale}', [SaleController::class, 'change_status'
 
 Route::resource('users', UserController::class)->names('users');
 Route::resource('roles', RoleController::class)->names('roles');
+
+Route::get('home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

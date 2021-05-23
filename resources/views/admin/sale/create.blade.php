@@ -103,22 +103,6 @@
 
 {!! Html::script('select/dist/js/bootstrap-select.min.js') !!}
 {!! Html::script('js/sweetalert2.all.min.js') !!} --}}
-{{-- var product_id = $('#product_id');
-	
-    product_id.change(function(){
-        $.ajax({
-            url: "{{route('get_products_by_id')}}",
-            method: 'GET',
-            data:{
-                product_id: product_id.val(),
-            },
-            success: function(data){
-                $("#price").val(data.sell_price);
-                $("#stock").val(data.stock);
-                $("#code").val(data.code);
-        }
-    });
-}); --}}
 
 <script>
     
@@ -138,6 +122,23 @@ function mostrarValores() {
     $("#price").val(datosProducto[2]);
     $("#stock").val(datosProducto[1]);
 }
+
+var product_id = $('#product_id');
+	
+    product_id.change(function(){
+        $.ajax({
+            url: "{{route('get_products_by_id')}}",
+            method: 'GET',
+            data:{
+                product_id: product_id.val(),
+            },
+            success: function(data){
+                $("#price").val(data.sell_price);
+                $("#stock").val(data.stock);
+                $("#code").val(data.code);
+        }
+    });
+});
 
 $(obtener_registro());
 function obtener_registro(code){

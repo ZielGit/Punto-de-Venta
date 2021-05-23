@@ -57,6 +57,7 @@ Route::resource('users', UserController::class)->names('users');
 Route::resource('roles', RoleController::class)->names('roles');
 
 Route::get('get_products_by_barcode', [ProductController::class, 'get_products_by_barcode'])->name('get_products_by_barcode');
+Route::get('get_products_by_id', [ProductController::class,'get_products_by_id'])->name('get_products_by_id');
 
 Route::get('home', [HomeController::class, 'index'])->name('home');
 

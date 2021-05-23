@@ -133,4 +133,11 @@ class ProductController extends Controller
             return redirect()->back();
         }
     }
+
+    public function get_products_by_barcode(Request $request){
+        if ($request->ajax()) {
+            $products = Product::where('code', $request->code)->firstOrFail();
+            return response()->json($products);
+        }
+    }
 }

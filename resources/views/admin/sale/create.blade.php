@@ -2,13 +2,6 @@
 @section('title','Registro de venta')
 @section('styles')
 {{-- {!! Html::style('select/dist/css/bootstrap-select.min.css') !!} --}}
-{{-- <style type="text/css">
-    .unstyled-button {
-        border: none;
-        padding: 0;
-        background: none;
-    }
-</style> --}}
 @endsection
 @section('create')
 {{-- <li class="nav-item d-none d-lg-flex">
@@ -48,7 +41,6 @@
                         </div>
                         
                         @include('admin.sale._form')
-                        
                         
                     </div>
                     <div class="card-footer text-muted">
@@ -126,33 +118,7 @@
                 $("#code").val(data.code);
         }
     });
-});
-$(obtener_registro());
-function obtener_registro(code){
-    $.ajax({
-        url: "{{route('get_products_by_barcode')}}",
-        type: 'GET',
-        data:{
-            code: code
-        },
-        dataType: 'json',
-        success:function(data){
-            console.log(data);
-            $("#price").val(data.sell_price);
-            $("#stock").val(data.stock);
-            $("#product_id").val(data.id);
-        }
-    });
-} --}}
-
-{{-- $(document).on('keyup', '#code', function(){
-    var valorResultado = $(this).val();
-    if(valorResultado!=""){
-        obtener_registro(valorResultado);
-    }else{
-        obtener_registro();
-    }
-}) --}}
+}); --}}
 
 <script>
     
@@ -173,6 +139,32 @@ function mostrarValores() {
     $("#stock").val(datosProducto[1]);
 }
 
+$(obtener_registro());
+function obtener_registro(code){
+    $.ajax({
+        url: "{{route('get_products_by_barcode')}}",
+        type: 'GET',
+        data:{
+            code: code
+        },
+        dataType: 'json',
+        success:function(data){
+            console.log(data);
+            $("#price").val(data.sell_price);
+            $("#stock").val(data.stock);
+            $("#product_id").val(data.id);
+        }
+    });
+}
+
+$(document).on('keyup', '#code', function(){
+    var valorResultado = $(this).val();
+    if(valorResultado!=""){
+        obtener_registro(valorResultado);
+    }else{
+        obtener_registro();
+    }
+})
 
 function agregar() {
     datosProducto = document.getElementById('product_id').value.split('_');
@@ -206,10 +198,12 @@ function agregar() {
         })
     }
 }
+
 function limpiar() {
     $("#quantity").val("");
     $("#discount").val("0");
 }
+
 function totales() {
     $("#total").html("PEN " + total.toFixed(2));
     total_impuesto = total * impuesto / 100;
@@ -218,6 +212,7 @@ function totales() {
     $("#total_pagar_html").html("PEN " + total_pagar.toFixed(2));
     $("#total_pagar").val(total_pagar.toFixed(2));
 }
+
 function evaluar() {
     if (total > 0) {
         $("#guardar").show();
@@ -225,6 +220,7 @@ function evaluar() {
         $("#guardar").hide();
     }
 }
+
 function eliminar(index) {
     total = total - subtotal[index];
     total_impuesto = total * impuesto / 100;

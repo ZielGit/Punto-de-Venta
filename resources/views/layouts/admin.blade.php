@@ -35,18 +35,21 @@
           @yield('create')
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="{{asset('melody/images/faces/face5.jpg')}}" alt="profile"/>
+              <img src="{{ auth()->user()->profile_photo_url }}" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
+              <a class="dropdown-item" href="{{route('profile.show')}}">
                 <i class="fas fa-cog text-primary"></i>
                 Configuración
               </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item">
-                <i class="fas fa-power-off text-primary"></i>
-                Cerrar Sesión
-              </a>
+              <form action="{{route('logout')}}" method="post">
+                @csrf
+                <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();this.closest('form').submit();">
+                  <i class="fas fa-power-off text-primary"></i>
+                  Cerrar Sesión
+                </a>
+              </form>
               {{-- form --}}
             </div>
           </li>

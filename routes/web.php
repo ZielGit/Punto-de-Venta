@@ -60,3 +60,7 @@ Route::get('get_products_by_barcode', [ProductController::class, 'get_products_b
 Route::get('get_products_by_id', [ProductController::class,'get_products_by_id'])->name('get_products_by_id');
 
 Route::get('home', [HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

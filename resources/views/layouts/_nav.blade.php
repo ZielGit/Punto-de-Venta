@@ -3,7 +3,11 @@
           <li class="nav-item nav-profile">
             <div class="nav-link">
               <div class="profile-image">
-                <img src="{{ auth()->user()->profile_photo_url }}" alt="image"/>
+                @if (Auth::user()->profile_photo_path)
+                  <img src="/storage/{{Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->name }}" />
+                @else
+                  <img src="{{Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /> 
+                @endif
               </div>
               <div class="profile-name">
                 <p class="name">

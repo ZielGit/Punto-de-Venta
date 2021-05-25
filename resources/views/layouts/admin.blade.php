@@ -35,7 +35,11 @@
           @yield('create')
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="{{ auth()->user()->profile_photo_url }}" alt="profile"/>
+              @if (Auth::user()->profile_photo_path)
+                <img src="/storage/{{Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->name }}" />
+              @else
+                <img src="{{Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /> 
+              @endif
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item" href="{{route('profile.show')}}">

@@ -1,16 +1,6 @@
 @extends('layouts.admin')
 @section('title','información del cliente')
 @section('styles')
-
-@endsection
-@section('create')
-
-@endsection
-@section('options')
-
-@endsection
-@section('preference')
-
 @endsection
 @section('content')
 <div class="content-wrapper">

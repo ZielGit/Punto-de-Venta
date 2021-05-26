@@ -1,24 +1,7 @@
 @extends('layouts.admin')
 @section('title','Gestión de ventas')
 @section('styles')
-{{-- <style type="text/css">
-    .unstyled-button {
-        border: none;
-        padding: 0;
-        background: none;
-      }
-</style> --}}
-@endsection
-@section('create')
-<li class="nav-item d-none d-lg-flex">
-    <a class="nav-link" href="{{route('sales.create')}}">
-      <span class="btn btn-primary">+ Registrar venta</span>
-    </a>
-  </li>
-@endsection
-@section('options')
-@endsection
-@section('preference')
+
 @endsection
 @section('content')
 <div class="content-wrapper">

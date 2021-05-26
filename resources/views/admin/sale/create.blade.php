@@ -3,17 +3,6 @@
 @section('styles')
 {{-- {!! Html::style('select/dist/css/bootstrap-select.min.css') !!} --}}
 @endsection
-@section('create')
-{{-- <li class="nav-item d-none d-lg-flex">
-    <a class="nav-link" type="button" data-toggle="modal" data-target="#exampleModal-2">
-      <span class="btn btn-warning">+ Registrar cliente</span>
-    </a>
-</li> --}}
-@endsection
-@section('options')
-@endsection
-@section('preference')
-@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">

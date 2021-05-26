@@ -1,17 +1,7 @@
 @extends('layouts.admin')
 @section('title','Reporte por rango de fecha')
 @section('styles')
-<style type="text/css">
-    .unstyled-button {
-        border: none;
-        padding: 0;
-        background: none;
-      }
-</style>
-@endsection
-@section('options')
-@endsection
-@section('preference')
+
 @endsection
 @section('content')
 <div class="content-wrapper">

@@ -2,10 +2,6 @@
 @section('title','Registrar cliente')
 @section('styles')
 @endsection
-@section('options')
-@endsection
-@section('preference')
-@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">

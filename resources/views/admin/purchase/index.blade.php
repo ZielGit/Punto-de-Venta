@@ -1,24 +1,7 @@
 @extends('layouts.admin')
 @section('title','Gestión de compras')
 @section('styles')
-{{-- <style type="text/css">
-    .unstyled-button {
-        border: none;
-        padding: 0;
-        background: none;
-      }
-</style> --}}
-@endsection
-@section('create')
-<li class="nav-item d-none d-lg-flex">
-    <a class="nav-link" href="{{route('purchases.create')}}">
-      <span class="btn btn-primary">+ Registrar compra</span>
-    </a>
-  </li>
-@endsection
-@section('options')
-@endsection
-@section('preference')
+
 @endsection
 @section('content')
 <div class="content-wrapper">

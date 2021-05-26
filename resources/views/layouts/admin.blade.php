@@ -32,7 +32,6 @@
                     <span class="fas fa-bars"></span>
                 </button>
                 <ul class="navbar-nav navbar-nav-right">
-                    @yield('create')
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                         @if (Auth::user()->profile_photo_path)
@@ -57,7 +56,6 @@
                             {{-- form --}}
                         </div>
                     </li>
-                    @yield('options')
                 </ul>
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                 <span class="fas fa-bars"></span>
@@ -66,8 +64,6 @@
         </nav>
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
-        
-            @yield('preference')
             <!-- partial -->
             <!-- partial:partials/_sidebar.html -->
             @include('layouts._nav')

@@ -1,18 +1,7 @@
 @extends('layouts.admin')
 @section('title','Gestión de usuarios del sistema')
 @section('styles')
-<style type="text/css">
-    .unstyled-button {
-        border: none;
-        padding: 0;
-        background: none;
-      }
-</style>
 
-@endsection
-@section('options')
-@endsection
-@section('preference')
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -74,7 +63,7 @@
                                                 <i class="far fa-edit"></i>
                                             </a>
                                             
-                                            <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit" title="Eliminar">
+                                            <button class="jsgrid-button jsgrid-delete-button" type="submit" title="Eliminar">
                                                 <i class="far fa-trash-alt"></i>
                                             </button>
                                         </form>

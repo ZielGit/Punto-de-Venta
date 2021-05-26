@@ -1,11 +1,7 @@
 @extends('layouts.admin')
 @section('title','Registro de compra')
 @section('styles')
-{{-- {!! Html::style('select/dist/css/bootstrap-select.min.css') !!} --}}
-@endsection
-@section('options')
-@endsection
-@section('preference')
+
 @endsection
 @section('content')
 <div class="content-wrapper">

@@ -16,24 +16,19 @@
             </ol>
         </nav>
     </div>
+
+    <div class="row">
+        <div class="col mb-1">
+            <a href="{{route('roles.create')}}" class="nav-link">
+                <span class="btn btn-primary">+ Nuevo Rol</span>
+            </a>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Roles del sistema</h4>
-                        {{--  <i class="fas fa-ellipsis-v"></i>  --}}
-                        <div class="btn-group">
-                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a href="{{route('roles.create')}}" class="dropdown-item">Agregar</a>
-                              
-                            </div>
-                          </div>
-                    </div>
 
                     <div class="table-responsive">
                         <table id="order-listing" class="table">
@@ -41,7 +36,6 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Nombre</th>
-                                    
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -73,8 +67,8 @@
                             </tbody>
                         </table>
                     </div>
+
                 </div>
-                
             </div>
         </div>
     </div>

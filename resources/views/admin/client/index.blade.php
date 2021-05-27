@@ -22,25 +22,19 @@
             </ol>
         </nav>
     </div>
+
+    <div class="row">
+        <div class="col mb-1">
+            <a href="{{route('clients.create')}}" class="nav-link">
+                <span class="btn btn-primary">+ Nuevo Cliente</span>
+            </a>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Clientes</h4>
-                        {{--  <i class="fas fa-ellipsis-v"></i>  --}}
-                        <div class="btn-group">
-                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a href="{{route('clients.create')}}" class="dropdown-item">Agregar</a>
-                              {{--  <button class="dropdown-item" type="button">Another action</button>
-                              <button class="dropdown-item" type="button">Something else here</button>  --}}
-                            </div>
-                          </div>
-                    </div>
 
                     <div class="table-responsive">
                         <table id="order-listing" class="table">
@@ -85,9 +79,7 @@
                         </table>
                     </div>
                 </div>
-                {{--  <div class="card-footer text-muted">
-                    {{$clients->render()}}
-                </div>  --}}
+                
             </div>
         </div>
     </div>

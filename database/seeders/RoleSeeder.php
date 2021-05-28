@@ -75,7 +75,6 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'change.status.purchases', 'description' => 'Cambiar estado de compra'])->syncRoles([$adm, $inventario]);
         Permission::create(['name' => 'change.status.sales', 'description' => 'Cambiar estado de venta'])->syncRoles([$adm, $venta]);
 
-        Permission::create(['name' => 'reports.day', 'description' => 'Ver reportes por dia'])->syncRoles([$adm, $venta]);
-        Permission::create(['name' => 'reports.date', 'description' => 'Ver reportes por fecha'])->syncRoles([$adm, $venta]);
+        Permission::create(['name' => 'reports', 'description' => 'Ver reportes por dia y fecha'])->syncRoles([$adm, $venta]);
     }
 }

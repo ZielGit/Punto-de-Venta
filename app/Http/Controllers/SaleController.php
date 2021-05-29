@@ -26,7 +26,8 @@ class SaleController extends Controller
         $this->middleware('can:sales.index')->only('index');
         $this->middleware('can:sales.create')->only('create', 'store');
         $this->middleware('can:sales.show')->only('show');
-        //falta pdf y change_status
+        $this->middleware('can:sales.pdf')->only('pdf');
+        $this->middleware('can:change.status.sales')->only('change_status');
     }
     
     /**
@@ -89,41 +90,6 @@ class SaleController extends Controller
             $subtotal += $saleDetail->quantity*$saleDetail->price-$saleDetail->quantity* $saleDetail->price*$saleDetail->discount/100;
         }
         return view('admin.sale.show', compact('sale', 'saleDetails', 'subtotal'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Sale  $sale
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Sale $sale)
-    {
-        // $sales = Sale::get();
-        // return view('admin.sale.show', compact('sales'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sale  $sale
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateSale $request, Sale $sale)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Sale  $sale
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Sale $sale)
-    {
-        //
     }
 
     public function pdf(Sale $sale)

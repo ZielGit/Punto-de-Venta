@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:home.index')->only('index');
+    }
+    
     /**
      * Display a listing of the resource.
      *

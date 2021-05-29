@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:reports')->only('reports_day', 'reports_date');
+    }
+
     public function reports_day()
     {
         $sales = Sale::whereDate('sale_date', Carbon::today())->get();

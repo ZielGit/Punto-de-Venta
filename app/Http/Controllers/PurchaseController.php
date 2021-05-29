@@ -20,7 +20,8 @@ class PurchaseController extends Controller
         $this->middleware('can:purchases.index')->only('index');
         $this->middleware('can:purchases.create')->only('create', 'store');
         $this->middleware('can:purchases.show')->only('show');
-        //falta pdf y change_status
+        $this->middleware('can:purchases.pdf')->only('pdf');
+        $this->middleware('can:change.status.purchases')->only('change_status');
     }
 
     /**
@@ -82,43 +83,6 @@ class PurchaseController extends Controller
             $subtotal += $purchaseDetail->quantity * $purchaseDetail->price;
         }
         return view('admin.purchase.show', compact('purchase','purchaseDetails','subtotal'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Purchase  $purchase
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Purchase $purchase)
-    {
-        // $providers = Provider::get();
-        // return view('admin.purchase.edit', compact('purchase'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Purchase  $purchase
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Purchase $purchase)
-    {
-        // $purchase->update($request->all());
-        // return redirect()->route('purchase.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Purchase  $purchase
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Purchase $purchase)
-    {
-        // $purchase->delete();
-        // return redirect()->route('purchase.index');
     }
 
     public function pdf(Purchase $purchase)

@@ -18,6 +18,7 @@ class ProductController extends Controller
         $this->middleware('can:products.edit')->only('edit', 'update');
         $this->middleware('can:products.show')->only('show');
         $this->middleware('can:products.destroy')->only('destroy');
+        $this->middleware('can:change.status.products')->only('change_status');
     }
 
     /**

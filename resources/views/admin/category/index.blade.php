@@ -17,8 +17,8 @@
     </div>
 
     <div class="row">
-        <div class="col mb-1">
-            <a href="{{route('categories.create')}}" class="nav-link">
+        <div class="col mb-2">
+            <a href="{{route('categories.create')}}">
                 <span class="btn btn-primary">+ Nueva Categoría</span>
             </a>
         </div>
@@ -28,7 +28,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-
+                    
                     <div class="table-responsive">
                         <table id="order-listing" class="table">
                             <thead>
@@ -47,15 +47,15 @@
                                         <a href="{{route('categories.show',$category)}}">{{$category->name}}</a>
                                     </td>
                                     <td>{{$category->description}}</td>
-                                    <td style="width: 50px;">
+                                    <td>
                                         
                                         <form action="{{ route('categories.destroy', $category) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <a class="jsgrid-button jsgrid-edit-button" href="{{route('categories.edit', $category)}}" title="Editar">
-                                                <i class="far fa-edit"></i>
+                                            <a href="{{route('categories.edit', $category)}}" title="Editar">
+                                                <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
                                             </a>
-                                            <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit" title="Eliminar">
+                                            <button class="btn btn-outline-danger" type="submit" title="Eliminar">
                                                 <i class="far fa-trash-alt"></i>
                                             </button>
                                         </form>
@@ -66,7 +66,7 @@
                             </tbody>
                         </table>
                     </div>
-                    
+                
                 </div>
             </div>
         </div>

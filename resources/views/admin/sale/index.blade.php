@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('title','Gestión de ventas')
 @section('styles')
-
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -18,8 +17,8 @@
     </div>
 
     <div class="row">
-        <div class="col mb-1">
-            <a href="{{route('sales.create')}}" class="nav-link">
+        <div class="col mb-2">
+            <a href="{{route('sales.create')}}">
                 <span class="btn btn-primary">+ Nueva Venta</span>
             </a>
         </div>
@@ -38,7 +37,7 @@
                                     <th>Fecha</th>
                                     <th>Total</th>
                                     <th>Estado</th>
-                                    <th style="width:50px;">Acciones</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,7 +65,7 @@
                                     </td>
                                     @endif
 
-                                    <td style="width: 50px;">
+                                    <td>
                                         <a href="{{route('sales.pdf', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
                                         <a href="{{route('sales.print', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>
                                         <a href="{{route('sales.show', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>

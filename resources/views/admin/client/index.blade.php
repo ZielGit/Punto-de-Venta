@@ -1,13 +1,6 @@
 @extends('layouts.admin')
 @section('title','Gestión de clientes')
 @section('styles')
-<style type="text/css">
-    .unstyled-button {
-        border: none;
-        padding: 0;
-        background: none;
-      }
-</style>
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -24,8 +17,8 @@
     </div>
 
     <div class="row">
-        <div class="col mb-1">
-            <a href="{{route('clients.create')}}" class="nav-link">
+        <div class="col mb-2">
+            <a href="{{route('clients.create')}}">
                 <span class="btn btn-primary">+ Nuevo Cliente</span>
             </a>
         </div>
@@ -58,20 +51,18 @@
                                     <td>{{$client->dni}}</td>
                                     <td>{{$client->phone}}</td>
                                     <td>{{$client->email}}</td>
-                                    <td style="width: 50px;">
-                                        
+                                    <td>     
                                         <form action="{{route('clients.destroy', $client)}}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <a class="jsgrid-button jsgrid-edit-button" href="{{route('clients.edit', $client)}}" title="Editar">
-                                                <i class="far fa-edit"></i>
+                                            <a href="{{route('clients.edit', $client)}}" title="Editar">
+                                                <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
                                             </a>
                                             
-                                            <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit" title="Eliminar">
+                                            <button class="btn btn-outline-danger" type="submit" title="Eliminar">
                                                 <i class="far fa-trash-alt"></i>
                                             </button>
                                         </form>
-
                                     </td>
                                 </tr>
                                 @endforeach

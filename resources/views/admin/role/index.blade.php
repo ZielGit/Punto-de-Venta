@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('title','Gestión de roles del sistema')
 @section('styles')
-
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -18,8 +17,8 @@
     </div>
 
     <div class="row">
-        <div class="col mb-1">
-            <a href="{{route('roles.create')}}" class="nav-link">
+        <div class="col mb-2">
+            <a href="{{route('roles.create')}}">
                 <span class="btn btn-primary">+ Nuevo Rol</span>
             </a>
         </div>
@@ -47,20 +46,18 @@
                                         <a href="{{route('roles.show',$role)}}">{{$role->name}}</a>
                                     </td>
                                     
-                                    <td style="width: 50px;">
-                                        {{-- {!! Form::open(['route'=>['roles.destroy',$role], 'method'=>'DELETE']) !!} --}}
+                                    <td>
                                         <form action="{{route('roles.destroy', $role)}}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <a class="jsgrid-button jsgrid-edit-button" href="{{route('roles.edit', $role)}}" title="Editar">
-                                                <i class="far fa-edit"></i>
+                                            <a href="{{route('roles.edit', $role)}}" title="Editar">
+                                                <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
                                             </a>
                                             
-                                            <button class="jsgrid-button jsgrid-delete-button" type="submit" title="Eliminar">
+                                            <button class="btn btn-outline-danger" type="submit" title="Eliminar">
                                                 <i class="far fa-trash-alt"></i>
                                             </button>
                                         </form>
-                                        {{-- {!! Form::close() !!} --}}
                                     </td>
                                 </tr>
                                 @endforeach

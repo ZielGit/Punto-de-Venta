@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('title','Gestión de productos')
 @section('styles')
-
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -18,8 +17,8 @@
     </div>
 
     <div class="row">
-        <div class="col mb-1">
-            <a href="{{route('products.create')}}" class="nav-link">
+        <div class="col mb-2">
+            <a href="{{route('products.create')}}">
                 <span class="btn btn-primary">+ Nuevo Producto</span>
             </a>
         </div>
@@ -50,6 +49,7 @@
                                         <a href="{{route('products.show',$product)}}">{{$product->name}}</a>
                                     </td>
                                     <td>{{$product->stock}}</td>
+
                                     @if ($product->status == 'ACTIVE')
                                     <td>
                                         <a class="jsgrid-button btn btn-success" href="{{route('change.status.products', $product)}}" title="Editar">
@@ -65,15 +65,15 @@
                                     @endif
 
                                     <td>{{$product->category->name}}</td>
-                                    <td style="width: 50px;">
+                                    <td>
                                         <form action="{{route('products.destroy', $product)}}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <a class="jsgrid-button jsgrid-edit-button" href="{{route('products.edit', $product)}}" title="Editar">
-                                                <i class="far fa-edit"></i>
+                                            <a href="{{route('products.edit', $product)}}" title="Editar">
+                                                <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
                                             </a>
                                             
-                                            <button class="jsgrid-button jsgrid-delete-button" type="submit" title="Eliminar">
+                                            <button class="btn btn-outline-danger" type="submit" title="Eliminar">
                                                 <i class="far fa-trash-alt"></i>
                                             </button>
                                         </form>

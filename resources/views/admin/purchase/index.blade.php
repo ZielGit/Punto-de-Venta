@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('title','Gestión de compras')
 @section('styles')
-
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -18,8 +17,8 @@
     </div>
 
     <div class="row">
-        <div class="col mb-1">
-            <a href="{{route('purchases.create')}}" class="nav-link">
+        <div class="col mb-2">
+            <a href="{{route('purchases.create')}}">
                 <span class="btn btn-primary">+ Nueva Compra</span>
             </a>
         </div>
@@ -66,7 +65,7 @@
                                     </td>
                                     @endif
                                     
-                                    <td style="width: 50px;">
+                                    <td>
                                         <a href="{{route('purchases.pdf', $purchase)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
                                         <a href="{{route('purchases.show', $purchase)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
                                     </td>

@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('title','Gestión de Proveedores')
 @section('styles')
-
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -18,8 +17,8 @@
     </div>
 
     <div class="row">
-        <div class="col mb-1">
-            <a href="{{route('providers.create')}}" class="nav-link">
+        <div class="col mb-2">
+            <a href="{{route('providers.create')}}">
                 <span class="btn btn-primary">+ Nuevo Proveedor</span>
             </a>
         </div>
@@ -50,19 +49,18 @@
                                     </td>
                                     <td>{{$provider->email}}</td>
                                     <td>{{$provider->phone}}</td>
-                                    <td style="width: 50px;">
-                                        
-                                    <form action="{{ route('providers.destroy', $provider) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <a class="jsgrid-button jsgrid-edit-button" href="{{route('providers.edit', $provider)}}" title="Editar">
-                                            <i class="far fa-edit"></i>
-                                        </a>
-                                        
-                                        <button class="jsgrid-button jsgrid-delete-button" type="submit" title="Eliminar">
-                                            <i class="far fa-trash-alt"></i>
-                                        </button>
-                                    </form>
+                                    <td>
+                                        <form action="{{ route('providers.destroy', $provider) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <a href="{{route('providers.edit', $provider)}}" title="Editar">
+                                                <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
+                                            </a>
+                                            
+                                            <button class="btn btn-outline-danger" type="submit" title="Eliminar">
+                                                <i class="far fa-trash-alt"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

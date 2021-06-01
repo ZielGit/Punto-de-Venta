@@ -122,7 +122,7 @@
                                                         @foreach ($client->sales as $sale)
                                                         <tr>
                                                             <th scope="row">
-                                                                {{-- <a href="{{route('sales.show', $sale)}}">{{$sale->id}}</a> --}}
+                                                                <a href="{{route('sales.show', $sale)}}">{{$sale->id}}</a>
                                                             </th>
                                                             <td>{{$sale->purchase_date}}</td>
                                                             <td>{{$sale->total}}</td>

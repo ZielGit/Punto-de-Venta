@@ -39,15 +39,13 @@
                                     <th>Fecha</th>
                                     <th>Total</th>
                                     <th>Estado</th>
-                                    <th style="width:50px;">Acciones</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($purchases as $purchase)
                                 <tr>
-                                    <th scope="row">
-                                        <a href="{{route('purchases.show', $purchase)}}">{{$purchase->id}}</a>
-                                    </th>
+                                    <th scope="row">{{$purchase->id}}</th>
                                     <td>
                                         {{\Carbon\Carbon::parse($purchase->purchase_date)->format('d M y h:i a')}}
                                     </td>
@@ -68,8 +66,17 @@
                                     @endif
                                     
                                     <td>
-                                        <a href="{{route('purchases.pdf', $purchase)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
-                                        <a href="{{route('purchases.show', $purchase)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
+                                        @can('purchases.pdf')
+                                            <a href="{{route('purchases.pdf', $purchase)}}" title="Pdf">
+                                                <span class="btn btn-outline-primary"><i class="far fa-file-pdf"></i></span>
+                                            </a>
+                                        @endcan
+                                        
+                                        @can('purchases.show')
+                                            <a href="{{route('purchases.show', $purchase)}}" title="Detalles">
+                                                <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
+                                            </a>
+                                        @endcan
                                     </td>
                                 </tr>
                                 @endforeach

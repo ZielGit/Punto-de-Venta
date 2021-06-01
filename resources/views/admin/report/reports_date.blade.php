@@ -20,19 +20,6 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
-                    <div class="d-flex justify-content-between">
-                        {{--  <h4 class="card-title">Reporte por rango de fecha </h4>  --}}
-                        {{--  <i class="fas fa-ellipsis-v"></i>  --}}
-                        {{--  <div class="btn-group">
-                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a href="{{route('sales.create')}}" class="dropdown-item">Registrar</a>
-                            </div>
-                        </div>  --}}
-                    </div>
 
                     {!! Form::open(['route'=>'report.results', 'method'=>'POST']) !!}
                     <div class="row ">
@@ -76,34 +63,42 @@
                                     <th>Fecha</th>
                                     <th>Total</th>
                                     <th>Estado</th>
-                                    <th style="width:50px;">Acciones</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($sales as $sale)
                                 <tr>
-                                    <th scope="row">
-                                        <a href="{{route('sales.show', $sale)}}">{{$sale->id}}</a>
-                                    </th>
+                                    <th scope="row">{{$sale->id}}</th>
                                     <td>
                                         {{\Carbon\Carbon::parse($sale->sale_date)->format('d M y h:i a')}}
                                     </td>
                                     <td>{{$sale->total}}</td>
                                     <td>{{$sale->status}}</td>
-                                    <td style="width: 50px;">
-
-                                        <a href="{{route('sales.pdf', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
-                                        <a href="{{route('sales.print', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>
-                                        <a href="{{route('sales.show', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
-                                      
+                                    <td>
+                                        @can('sales.pdf')
+                                            <a href="{{route('sales.pdf', $sale)}}" title="Pdf">
+                                                <span class="btn btn-outline-primary"><i class="far fa-file-pdf"></i></span>
+                                            </a>
+                                        @endcan
+                                        @can('sales.print')
+                                            <a href="{{route('sales.print', $sale)}}" title="Imprimir">
+                                                <span class="btn btn-outline-warning"><i class="fas fa-print"></i></span>
+                                            </a>
+                                        @endcan
+                                        @can('sales.show')
+                                            <a href="{{route('sales.show', $sale)}}" title="Detalles">
+                                                <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
+                                            </a>
+                                        @endcan
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
+
                 </div>
-            
             </div>
         </div>
     </div>

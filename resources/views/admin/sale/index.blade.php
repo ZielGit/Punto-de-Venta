@@ -45,9 +45,7 @@
                             <tbody>
                                 @foreach ($sales as $sale)
                                 <tr>
-                                    <th scope="row">
-                                        <a href="{{route('sales.show', $sale)}}">{{$sale->id}}</a>
-                                    </th>
+                                    <th scope="row">{{$sale->id}}</th>
                                     <td>
                                         {{\Carbon\Carbon::parse($sale->sale_date)->format('d M y h:i a')}}
                                     </td>
@@ -68,9 +66,23 @@
                                     @endif
 
                                     <td>
-                                        <a href="{{route('sales.pdf', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
-                                        <a href="{{route('sales.print', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>
-                                        <a href="{{route('sales.show', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
+                                        @can('sales.pdf')
+                                            <a href="{{route('sales.pdf', $sale)}}" title="Pdf">
+                                                <span class="btn btn-outline-primary"><i class="far fa-file-pdf"></i></span>
+                                            </a>
+                                        @endcan
+                                        
+                                        @can('sales.print')
+                                            <a href="{{route('sales.print', $sale)}}" title="Imprimir">
+                                                <span class="btn btn-outline-warning"><i class="fas fa-print"></i></span>
+                                            </a>
+                                        @endcan
+                                        
+                                        @can('sales.show')
+                                            <a href="{{route('sales.show', $sale)}}" title="Detalles">
+                                                <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
+                                            </a>
+                                        @endcan
                                     </td>
                                 </tr>
                                 @endforeach

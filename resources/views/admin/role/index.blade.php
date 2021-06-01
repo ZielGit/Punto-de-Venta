@@ -16,13 +16,15 @@
         </nav>
     </div>
 
-    <div class="row">
-        <div class="col mb-2">
-            <a href="{{route('roles.create')}}">
-                <span class="btn btn-primary">+ Nuevo Rol</span>
-            </a>
+    @can('roles.create')
+        <div class="row">
+            <div class="col mb-2">
+                <a href="{{route('roles.create')}}">
+                    <span class="btn btn-primary">+ Nuevo Rol</span>
+                </a>
+            </div>
         </div>
-    </div>
+    @endcan
 
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
@@ -50,13 +52,18 @@
                                         <form action="{{route('roles.destroy', $role)}}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <a href="{{route('roles.edit', $role)}}" title="Editar">
-                                                <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
-                                            </a>
+
+                                            @can('roles.edit')
+                                                <a href="{{route('roles.edit', $role)}}" title="Editar">
+                                                    <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
+                                                </a>
+                                            @endcan
                                             
-                                            <button class="btn btn-outline-danger" type="submit" title="Eliminar">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
+                                            @can('roles.destroy')
+                                                <button class="btn btn-outline-danger" type="submit" title="Eliminar">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
+                                            @endcan
                                         </form>
                                     </td>
                                 </tr>

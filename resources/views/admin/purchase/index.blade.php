@@ -16,13 +16,15 @@
         </nav>
     </div>
 
-    <div class="row">
-        <div class="col mb-2">
-            <a href="{{route('purchases.create')}}">
-                <span class="btn btn-primary">+ Nueva Compra</span>
-            </a>
+    @can('purchases.create')
+        <div class="row">
+            <div class="col mb-2">
+                <a href="{{route('purchases.create')}}">
+                    <span class="btn btn-primary">+ Nueva Compra</span>
+                </a>
+            </div>
         </div>
-    </div>
+    @endcan
 
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">

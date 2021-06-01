@@ -47,9 +47,7 @@
                                 @foreach ($products as $product)
                                 <tr>
                                     <th scope="row">{{$product->id}}</th>
-                                    <td>
-                                        <a href="{{route('products.show',$product)}}">{{$product->name}}</a>
-                                    </td>
+                                    <td>{{$product->name}}</td>
                                     <td>{{$product->stock}}</td>
 
                                     @if ($product->status == 'ACTIVE')
@@ -71,6 +69,12 @@
                                         <form action="{{route('products.destroy', $product)}}" method="post">
                                             @csrf
                                             @method('delete')
+
+                                            @can('products.show')
+                                                <a href="{{route('products.show', $product)}}" title="Detalles">
+                                                    <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
+                                                </a>
+                                            @endcan
 
                                             @can('products.edit')
                                                 <a href="{{route('products.edit', $product)}}" title="Editar">

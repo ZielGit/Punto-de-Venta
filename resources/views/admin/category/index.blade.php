@@ -45,14 +45,18 @@
                                 @foreach ($categories as $category)
                                 <tr>
                                     <th scope="row">{{$category->id}}</th>
-                                    <td>
-                                        <a href="{{route('categories.show',$category)}}">{{$category->name}}</a>
-                                    </td>
+                                    <td>{{$category->name}}</td>
                                     <td>{{$category->description}}</td>
                                     <td>
                                         <form action="{{ route('categories.destroy', $category) }}" method="post">
                                             @csrf
                                             @method('delete')
+                                            
+                                            @can('categories.show')
+                                                <a href="{{route('categories.show', $category)}}" title="Detalles">
+                                                    <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
+                                                </a>
+                                            @endcan
 
                                             @can('categories.edit')
                                                 <a href="{{route('categories.edit', $category)}}" title="Editar">

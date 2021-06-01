@@ -47,9 +47,7 @@
                                 @foreach ($clients as $client)
                                 <tr>
                                     <th scope="row">{{$client->id}}</th>
-                                    <td>
-                                        <a href="{{route('clients.show',$client)}}">{{$client->name}}</a>
-                                    </td>
+                                    <td>{{$client->name}}</td>
                                     <td>{{$client->dni}}</td>
                                     <td>{{$client->phone}}</td>
                                     <td>{{$client->email}}</td>
@@ -57,6 +55,12 @@
                                         <form action="{{route('clients.destroy', $client)}}" method="post">
                                             @csrf
                                             @method('delete')
+
+                                            @can('clients.show')
+                                                <a href="{{route('clients.show', $client)}}" title="Detalles">
+                                                    <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
+                                                </a>
+                                            @endcan
 
                                             @can('clients.edit')
                                                 <a href="{{route('clients.edit', $client)}}" title="Editar">

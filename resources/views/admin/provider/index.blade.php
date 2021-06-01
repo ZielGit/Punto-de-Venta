@@ -46,15 +46,19 @@
                                 @foreach ($providers as $provider)
                                 <tr>
                                     <th scope="row">{{$provider->id}}</th>
-                                    <td>
-                                        <a href="{{route('providers.show',$provider)}}">{{$provider->name}}</a>
-                                    </td>
+                                    <td>{{$provider->name}}</td>
                                     <td>{{$provider->email}}</td>
                                     <td>{{$provider->phone}}</td>
                                     <td>
                                         <form action="{{ route('providers.destroy', $provider) }}" method="post">
                                             @csrf
                                             @method('delete')
+
+                                            @can('providers.show')
+                                                <a href="{{route('providers.show', $provider)}}" title="Detalles">
+                                                    <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
+                                                </a>
+                                            @endcan
 
                                             @can('providers.edit')
                                                 <a href="{{route('providers.edit', $provider)}}" title="Editar">

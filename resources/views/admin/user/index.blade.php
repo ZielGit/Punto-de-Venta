@@ -45,14 +45,18 @@
                                 @foreach ($users as $user)
                                 <tr>
                                     <th scope="row">{{$user->id}}</th>
-                                    <td>
-                                        <a href="{{route('users.show',$user)}}">{{$user->name}}</a>
-                                    </td>
+                                    <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>
                                         <form action="{{route('users.destroy', $user)}}" method="post">
                                             @csrf
                                             @method('delete')
+
+                                            @can('users.show')
+                                                <a href="{{route('users.show', $user)}}" title="Detalles">
+                                                    <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
+                                                </a>
+                                            @endcan
 
                                             @can('users.edit')
                                                 <a href="{{route('users.edit', $user)}}" title="Editar">

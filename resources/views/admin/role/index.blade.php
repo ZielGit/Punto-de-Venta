@@ -44,14 +44,17 @@
                                 @foreach ($roles as $role)
                                 <tr>
                                     <th scope="row">{{$role->id}}</th>
-                                    <td>
-                                        <a href="{{route('roles.show',$role)}}">{{$role->name}}</a>
-                                    </td>
-                                    
+                                    <td>{{$role->name}}</td>
                                     <td>
                                         <form action="{{route('roles.destroy', $role)}}" method="post">
                                             @csrf
                                             @method('delete')
+
+                                            @can('roles.show')
+                                                <a href="{{route('roles.show', $role)}}" title="Detalles">
+                                                    <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
+                                                </a>
+                                            @endcan
 
                                             @can('roles.edit')
                                                 <a href="{{route('roles.edit', $role)}}" title="Editar">

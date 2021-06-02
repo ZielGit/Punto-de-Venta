@@ -1,8 +1,6 @@
 @extends('layouts.admin')
 @section('title','Información sobre el usuario')
 @section('styles')
-
-@endsection
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -12,7 +10,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                {{-- <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li> --}}
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
                 <li class="breadcrumb-item"><a href="{{route('users.index')}}">Usuarios</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{$user->name}}</li>
             </ol>
@@ -78,16 +76,14 @@
                                                 </p>
                                                 <hr>
                                             </div>
-
                                             
                                         </div>
-
                                     </div>
 
                                 </div>
 
                                 <div class="tab-pane fade" id="list-profile" user="tabpanel" aria-labelledby="list-profile-list">
-                                    
+
                                     <div class="d-flex justify-content-between">
                                         <div>
                                             <h4>Historial de compras</h4>
@@ -134,7 +130,6 @@
                                                                 <a href="{{route('purchases.pdf', $purchase)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
                                                                 {{--  <a href="#" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>  --}}
                                                                 <a href="{{route('purchases.show', $purchase)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
-                                                           
                                                               
                                                             </td>
                                                         </tr>

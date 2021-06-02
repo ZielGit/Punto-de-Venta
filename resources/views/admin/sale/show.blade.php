@@ -1,8 +1,6 @@
 @extends('layouts.admin')
 @section('title','Detalles de venta')
 @section('styles')
-
-@endsection
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -12,8 +10,8 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
-                <li class="breadcrumb-item"><a href="#">Ventas</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
+                <li class="breadcrumb-item"><a href="{{route('sales.index')}}">Ventas</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Detalles de venta</li>
             </ol>
         </nav>
@@ -51,7 +49,6 @@
                                     </tr>
                                 </thead>
                                 <tfoot>
-
                                     <tr>
                                         <th colspan="4">
                                             <p align="right">SUBTOTAL:</p>
@@ -77,7 +74,6 @@
                                             <p align="right">s/{{number_format($sale->total,2)}}</p>
                                         </th>
                                     </tr>
-
                                 </tfoot>
                                 <tbody>
                                     @foreach($saleDetails as $saleDetail)

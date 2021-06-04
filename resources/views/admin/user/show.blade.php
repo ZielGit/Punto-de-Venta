@@ -32,10 +32,12 @@
                                     <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" user="tab" aria-controls="home">
                                         Sobre el usuario
                                     </a>
-                                    <a type="button" class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" user="tab" aria-controls="profile">Historial de compras</a>
-
-                                    <a type="button" class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" user="tab" aria-controls="messages">Historial de ventas</a>
-
+                                    <a type="button" class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" user="tab" aria-controls="profile">
+                                        Historial de compras
+                                    </a>
+                                    <a type="button" class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" user="tab" aria-controls="messages">
+                                        Historial de ventas
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -106,9 +108,7 @@
                                                     <tbody>
                                                         @foreach ($user->purchases as $purchase)
                                                         <tr>
-                                                            <th scope="row">
-                                                                <a href="{{route('purchases.show', $purchase)}}">{{$purchase->id}}</a>
-                                                            </th>
+                                                            <th scope="row">{{$purchase->id}}</th>
                                                             <td>{{$purchase->purchase_date}}</td>
                                                             <td>{{$purchase->total}}</td>
                         
@@ -125,12 +125,17 @@
                                                                 </a>
                                                             </td>
                                                             @endif
-                                                            <td style="width: 50px;">
-                        
-                                                                <a href="{{route('purchases.pdf', $purchase)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
-                                                                {{--  <a href="#" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>  --}}
-                                                                <a href="{{route('purchases.show', $purchase)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
-                                                              
+                                                            <td>
+                                                                @can('purchases.pdf')
+                                                                    <a href="{{route('purchases.pdf', $purchase)}}" title="Pdf">
+                                                                        <span class="btn btn-outline-primary"><i class="far fa-file-pdf"></i></span>
+                                                                    </a>
+                                                                @endcan
+                                                                @can('purchases.show')
+                                                                    <a href="{{route('purchases.show', $purchase)}}" title="Detalles">
+                                                                        <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
+                                                                    </a>
+                                                                @endcan
                                                             </td>
                                                         </tr>
                                                         @endforeach
@@ -166,15 +171,13 @@
                                                             <th>Fecha</th>
                                                             <th>Total</th>
                                                             <th>Estado</th>
-                                                            <th style="width:50px;">Acciones</th>
+                                                            <th>Acciones</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($user->sales as $sale)
                                                         <tr>
-                                                            <th scope="row">
-                                                                <a href="{{route('sales.show', $sale)}}">{{$sale->id}}</a>
-                                                            </th>
+                                                            <th scope="row">{{$sale->id}}</th>
                                                             <td>{{$sale->sale_date}}</td>
                                                             <td>{{$sale->total}}</td>
                         
@@ -192,13 +195,22 @@
                                                             </td>
                                                             @endif
                         
-                                                            <td style="width: 50px;">
-                        
-                                                                <a href="{{route('sales.pdf', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
-                                                                <a href="{{route('sales.print', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>
-                                                                <a href="{{route('sales.show', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
-                                                           
-                                                              
+                                                            <td>
+                                                                @can('sales.pdf')
+                                                                    <a href="{{route('sales.pdf', $sale)}}" title="Pdf">
+                                                                        <span class="btn btn-outline-primary"><i class="far fa-file-pdf"></i></span>
+                                                                    </a>
+                                                                @endcan
+                                                                @can('sales.print')
+                                                                    <a href="{{route('sales.print', $sale)}}" title="Imprimir">
+                                                                        <span class="btn btn-outline-warning"><i class="fas fa-print"></i></span>
+                                                                    </a>
+                                                                @endcan
+                                                                @can('sales.show')
+                                                                    <a href="{{route('sales.show', $sale)}}" title="Detalles">
+                                                                        <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
+                                                                    </a>
+                                                                @endcan
                                                             </td>
                                                         </tr>
                                                         @endforeach

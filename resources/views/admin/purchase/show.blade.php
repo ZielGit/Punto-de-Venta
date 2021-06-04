@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('title','Detalles de compra')
 @section('styles')
-
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -11,8 +10,8 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
-                <li class="breadcrumb-item"><a href="#">Compras</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
+                <li class="breadcrumb-item"><a href="{{route('purchases.index')}}">Compras</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Detalles de compra</li>
             </ol>
         </nav>
@@ -97,10 +96,8 @@
             </div>
         </div>
     </div>
-
 </div>
 @endsection
 @section('scripts')
-{{-- {!! Html::script('melody/js/profile-demo.js') !!} --}}
-{{-- {!! Html::script('melody/js/data-table.js') !!} --}}
+{!! Html::script('melody/js/profile-demo.js') !!}
 @endsection

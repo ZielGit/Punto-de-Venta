@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('title','información del proveedor')
 @section('styles')
-
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -11,7 +10,8 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Panel administrador</a></li> <li class="breadcrumb-item"><a href="#">Proveedores</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li> 
+                <li class="breadcrumb-item"><a href="{{route('providers.index')}}">Proveedores</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{$provider->name}}</li>
             </ol>
         </nav>
@@ -32,10 +32,12 @@
                                     <button type="button" class="list-group-item list-group-item-action active">
                                         Sobre proveedor
                                     </button>
-                                    <button type="button"
-                                        class="list-group-item list-group-item-action">Productos</button>
-                                    <button type="button" class="list-group-item list-group-item-action">Registrar
-                                        producto</button>
+                                    <button type="button" class="list-group-item list-group-item-action">
+                                        Productos
+                                    </button>
+                                    <button type="button" class="list-group-item list-group-item-action">
+                                        Registrar producto
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +93,6 @@
             </div>
         </div>
     </div>
-
 </div>
 @endsection
 @section('scripts')

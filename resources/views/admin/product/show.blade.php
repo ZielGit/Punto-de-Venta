@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('title','información de producto')
 @section('styles')
-
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -11,7 +10,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                {{-- <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li> --}}
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
                 <li class="breadcrumb-item"><a href="{{route('products.index')}}">Productos</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{$product->name}}</li>
             </ol>
@@ -28,12 +27,11 @@
                                 <img src="{{asset('image/'.$product->image)}}" alt="profile" class="img-lg  mb-3" />
                                 {{--  <p>Nombre de proveedor. </p>  --}}
 
-
                                 <h3>{{$product->name}}</h3>
                                 <div class="d-flex justify-content-between">
                                 </div>
                             </div>
-                            {{--  <div class="border-bottom py-4">
+                             <div class="border-bottom py-4">
                                 <div class="list-group">
                                     <button type="button" class="list-group-item list-group-item-action active">
                                         Sobre producto
@@ -43,7 +41,7 @@
                                     <button type="button" class="list-group-item list-group-item-action">Registrar
                                         producto</button>
                                 </div>
-                            </div>  --}}
+                            </div> 
 
                             <div class="py-4">
                                 <p class="clearfix">
@@ -54,6 +52,7 @@
                                         {{$product->status}}
                                     </span>
                                 </p>
+                                {{-- categoria sin route, pensar en los permisos, editar despues --}}
                                 <p class="clearfix">
                                     <span class="float-left">
                                         Proveedor
@@ -75,29 +74,13 @@
                                         </a>
                                     </span>
                                 </p>
-                                {{--  <p class="clearfix">
-                                    <span class="float-left">
-                                        Facebook
-                                    </span>
-                                    <span class="float-right text-muted">
-                                        <a href="#">David Grey</a>
-                                    </span>
-                                </p>  --}}
-                                {{--  <p class="clearfix">
-                                    <span class="float-left">
-                                        Twitter
-                                    </span>
-                                    <span class="float-right text-muted">
-                                        <a href="#">@davidgrey</a>
-                                    </span>
-                                </p>  --}}
+                                
                             </div>
 
-                            {{--  <button class="btn btn-primary btn-block">{{$product->status}}</button>  --}}
                             @if ($product->status == 'ACTIVE')
-                            {{-- <a href="{{route('change.status.products', $product)}}" class="btn btn-success btn-block">Activo</a> --}}
+                            <a href="{{route('change.status.products', $product)}}" class="btn btn-success btn-block">Activo</a>
                             @else
-                            {{-- <a href="{{route('change.status.products', $product)}}" class="btn btn-danger btn-block">Desactivado</a> --}}
+                            <a href="{{route('change.status.products', $product)}}" class="btn btn-danger btn-block">Desactivado</a>
                             @endif
                         </div>
                         <div class="col-lg-8 pl-lg-5">
@@ -133,16 +116,7 @@
                                         <p class="text-muted">
                                             {!!DNS1D::getBarcodeHTML($product->code, 'EAN13'); !!}
                                         </p>
-                                        <hr>
-                                         {{-- <strong><i class="fas fa-map-marked-alt mr-1"></i> Categoría</strong>
-                                        <p class="text-muted">
-                                            {{$product->category->name}}
-                                        </p> --}}
-                                        <hr> 
-                                         {{-- <strong><i class="fas fa-map-marked-alt mr-1"></i> Proveedor</strong>
-                                        <p class="text-muted">
-                                            {{$product->provider->name}}
-                                        </p> --}}
+                                        
                                         <hr> 
                                     </div>
                                 </div>
@@ -156,7 +130,6 @@
             </div>
         </div>
     </div>
-
 </div>
 @endsection
 @section('scripts')

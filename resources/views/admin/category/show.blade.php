@@ -46,9 +46,7 @@
                                 @foreach ($category->products as $product)
                                 <tr>
                                     <th scope="row">{{$product->id}}</th>
-                                    <td>
-                                        <a href="{{route('products.show',$product)}}">{{$product->name}}</a>
-                                    </td>
+                                    <td>{{$product->name}}</td>
                                     <td>{{$product->stock}}</td>
 
                                     @if ($product->status == 'ACTIVE')

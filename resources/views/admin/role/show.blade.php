@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('title','Información sobre el rol')
 @section('styles')
-
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -11,7 +10,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                {{-- <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li> --}}
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
                 <li class="breadcrumb-item"><a href="{{route('roles.index')}}">Roles</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{$role->name}}</li>
             </ol>
@@ -33,9 +32,9 @@
                                     <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
                                         Permisos
                                     </a>
-                                    <a type="button" class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Usuarios</a>
-                                    {{--  <button type="button" class="list-group-item list-group-item-action">Registrar
-                                        producto</button>  --}}
+                                    <a type="button" class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">
+                                        Usuarios
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -101,20 +100,26 @@
                                                         @foreach ($role->users as $user)
                                                         <tr>
                                                             <th scope="row">{{$user->id}}</th>
-                                                            <td>
-                                                                <a href="{{route('users.show',$user)}}">{{$user->name}}</a>
-                                                            </td>
+                                                            <td>{{$user->name}}</td>
                                                             <td>{{$user->email}}</td>
-                                                            <td style="width: 50px;">
+                                                            <td>
                                                                 {!! Form::open(['route'=>['users.destroy',$user], 'method'=>'DELETE']) !!}
                         
-                                                                <a class="jsgrid-button jsgrid-edit-button" href="{{route('users.edit', $user)}}" title="Editar">
-                                                                    <i class="far fa-edit"></i>
-                                                                </a>
-                                                                
-                                                                <button class="jsgrid-button jsgrid-delete-button" type="submit" title="Eliminar">
-                                                                    <i class="far fa-trash-alt"></i>
-                                                                </button>
+                                                                @can('users.show')
+                                                                    <a href="{{route('users.show', $user)}}" title="Detalles">
+                                                                        <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
+                                                                    </a>
+                                                                @endcan
+                                                                @can('users.edit')
+                                                                    <a href="{{route('users.edit', $user)}}" title="Editar">
+                                                                        <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
+                                                                    </a>
+                                                                @endcan
+                                                                @can('users.destroy')
+                                                                    <button class="btn btn-outline-danger" type="submit" title="Eliminar">
+                                                                        <i class="far fa-trash-alt"></i>
+                                                                    </button>
+                                                                @endcan
                         
                                                                 {!! Form::close() !!}
                                                             </td>

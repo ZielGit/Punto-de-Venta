@@ -19,9 +19,11 @@
 
     <div class="row">
         <div class="col mb-2">
-            <a href="{{route('products.create')}}">
-                <span class="btn btn-primary">Agregar</span>
-            </a>
+            @can('products.create')
+                <a href="{{route('products.create')}}">
+                    <span class="btn btn-primary">Agregar</span>
+                </a>
+            @endcan
         </div>
     </div>
 
@@ -69,9 +71,11 @@
                                         <form action="{{route('products.destroy', $product)}}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <a href="{{route('products.edit', $product)}}" title="Editar">
-                                                <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
-                                            </a>
+                                            @can('products.edit')
+                                                <a href="{{route('products.edit', $product)}}" title="Editar">
+                                                    <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
+                                                </a>
+                                            @endcan
                                             
                                             <button class="btn btn-outline-danger" type="submit" title="Eliminar">
                                                 <i class="far fa-trash-alt"></i>

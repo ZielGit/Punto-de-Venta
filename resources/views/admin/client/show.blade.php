@@ -113,7 +113,7 @@
                                                             <th>Fecha</th>
                                                             <th>Total</th>
                                                             <th>Estado</th>
-                                                            <th style="width:50px;">Acciones</th>
+                                                            <th>Acciones</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -136,10 +136,22 @@
                                                                 </a>
                                                             </td>
                                                             @endif
-                                                            <td style="width: 50px;">
-                                                                <a href="{{route('sales.pdf', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
-                                                                 <a href="#" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a> 
-                                                                <a href="{{route('sales.show', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
+                                                            <td>
+                                                                @can('sales.pdf')
+                                                                    <a href="{{route('sales.pdf', $sale)}}" title="Pdf">
+                                                                        <span class="btn btn-outline-primary"><i class="far fa-file-pdf"></i></span>
+                                                                    </a>
+                                                                @endcan
+                                                                @can('sales.print')
+                                                                    <a href="{{route('sales.print', $sale)}}" title="Imprimir">
+                                                                        <span class="btn btn-outline-warning"><i class="fas fa-print"></i></span>
+                                                                    </a>
+                                                                @endcan
+                                                                @can('sales.show')
+                                                                    <a href="{{route('sales.show', $sale)}}" title="Detalles">
+                                                                        <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
+                                                                    </a>
+                                                                @endcan
                                                             </td>
                                                         </tr>
                                                         @endforeach

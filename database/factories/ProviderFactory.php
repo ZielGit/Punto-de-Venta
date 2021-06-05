@@ -26,7 +26,7 @@ class ProviderFactory extends Factory
             'email' => $this->faker->email,
             'ruc_number' => $this->faker->unique()->randomNumber(9),
             'address' => $this->faker->streetAddress,
-            'phone' => $this->faker->mobileNumber // Genera un numero mobile
+            'phone' => $this->faker->phoneNumber
         ];
     }
 }

@@ -4,7 +4,7 @@
             <label for="provider_id">Proveedor</label>
             <select class="form-control" name="provider_id" id="provider_id">
                 @foreach ($providers as $provider)
-                <option value="{{$provider->id}}">{{$provider->name}}</option>
+                    <option value="{{$provider->id}}">{{$provider->name}}</option>
                 @endforeach
             </select>
         </div>
@@ -12,19 +12,17 @@
     <div class="form-group col-md-4">
         <label for="tax">Impuesto</label>
         <div class="input-group">
-
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon3">%</span>
             </div>
-            <input type="number" class="form-control" name="tax" id="tax" aria-describedby="basic-addon3"
-                placeholder="18">
+            <input type="number" class="form-control" name="tax" id="tax" aria-describedby="basic-addon3"  value="18">
         </div>
     </div>
 </div>
 
 <div class="form-group">
     <label for="code">Código de barras</label>
-    <input type="text" name="code" id="code" class="form-control" placeholder="" aria-describedby="helpId">
+    <input type="text" name="code" id="code" class="form-control" aria-describedby="helpId">
 </div>
 
 <div class="form-row">

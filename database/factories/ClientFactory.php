@@ -23,10 +23,10 @@ class ClientFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'dni' => $this->faker->unique()->randomNumber(8),
+            'dni' => $this->faker->unique()->dni,
             'ruc' => $this->faker->unique()->randomNumber(9),
             'address' => $this->faker->streetAddress,
-            'phone' => $this->faker->phoneNumber,
+            'phone' => $this->faker->mobileNumber, // Genera un numero mobile
             'email' => $this->faker->unique()->safeEmail
         ];
     }

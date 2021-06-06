@@ -10,7 +10,8 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
+                <li class="breadcrumb-item"><a href="{{route('categories.index')}}">Categorías</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Editar Categorías</li>
             </ol>
         </nav>
@@ -30,31 +31,27 @@
                             <label for="name">Nombre</label>
                             <input type="text" name="name" id="name" value="{{$category->name}}" class="form-control" placeholder="Nombre">
                             @error('name')
-                                <small>*{{$message}}</small>
+                                <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="description">Descripción</label>
                             <textarea class="form-control" name="description" id="description" rows="3">{{$category->description}}</textarea>
                             @error('description')
-                                <small>*{{$message}}</small>
+                                <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        
                         <button type="submit" class="btn btn-primary mr-2">Actualizar</button>
                         <a href="{{route('categories.index')}}" class="btn btn-light">
                             Cancelar
                         </a>
                     </form>
+
                 </div>
-                {{--  <div class="card-footer text-muted">
-                    {{$categories->render()}}
-                </div>  --}}
             </div>
         </div>
     </div>
 </div>
 @endsection
 @section('scripts')
-
 @endsection

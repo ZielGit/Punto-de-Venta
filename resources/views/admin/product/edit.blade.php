@@ -1,18 +1,18 @@
 @extends('layouts.admin')
 @section('title','Editar producto')
 @section('styles')
-
 @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Edición de Productos
+            Edición de Producto
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Edición de Productos</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
+                <li class="breadcrumb-item"><a href="{{route('products.index')}}">Productos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edición de Producto</li>
             </ol>
         </nav>
     </div>
@@ -22,7 +22,7 @@
                 <div class="card-body">
                     
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Edición de Productos</h4>
+                        <h4 class="card-title">Edición de Producto</h4>
                     </div>
 
                     <form action="{{route('products.update', $product)}}" method="post" enctype="multipart/form-data">
@@ -32,21 +32,21 @@
                             <label for="name">Nombre</label>
                             <input type="text" name="name" id="name" value="{{$product->name}}" class="form-control" aria-describedby="helpId" required>
                             @error('name')
-                                <small>*{{$message}}</small>
+                                <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
       
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <label for="code">Código de barras</label>
                             <input type="text" name="code" id="code" value="{{$product->code}}" class="form-control">
                             <small id="helpId" class="text-muted">Campo opcional</small>
-                        </div> --}}
+                        </div>
       
                         <div class="form-group">
                             <label for="sell_price">Precio de venta</label>
                             <input type="number" name="sell_price" id="sell_price" value="{{$product->sell_price}}" class="form-control" aria-describedby="helpId" required>
                             @error('sell_price')
-                                <small>*{{$message}}</small>
+                                <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
@@ -61,7 +61,7 @@
                               @endforeach
                             </select>
                             @error('category_id')
-                                <small>*{{$message}}</small>
+                                <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
       
@@ -77,7 +77,7 @@
                                 @endforeach
                             </select>
                             @error('provider_id')
-                                <small>*{{$message}}</small>
+                                <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                          

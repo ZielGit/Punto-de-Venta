@@ -10,7 +10,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
                 <li class="breadcrumb-item"><a href="{{route('roles.index')}}">Roles</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Editar rol</li>
             </ol>
@@ -30,8 +30,7 @@
                         @method('PUT') --}}
                         <div class="form-group">
                             <label for="name">Nombre</label>
-                            <input type="text"
-                            class="form-control" name="name" id="name" value="{{$role->name}}" aria-describedby="helpId" placeholder="">
+                            <input type="text" class="form-control" name="name" id="name" value="{{$role->name}}" aria-describedby="helpId">
                         </div>
 
                         @include('admin.role._form')

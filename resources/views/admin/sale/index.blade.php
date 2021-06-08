@@ -10,7 +10,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Ventas</li>
             </ol>
         </nav>
@@ -32,7 +32,7 @@
                 <div class="card-body">
 
                     <div class="table-responsive">
-                        <table id="order-listing" class="table">
+                        <table id="dataTable" class="table">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -98,4 +98,20 @@
 @endsection
 @section('scripts')
 <script src="{{asset('melody/js/data-table.js')}}"></script>
+<script>
+    $('#dataTable').DataTable( {
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "Nada encontrado - disculpa",
+            "info": "Mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(filtrado de _MAX_ registros totales)",
+            "search": "Buscar:",
+            "paginate": {
+                "next": "Siguiente",
+                "previous": "Anterior"
+            },
+        }
+    } );
+</script>
 @endsection

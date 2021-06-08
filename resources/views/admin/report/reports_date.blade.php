@@ -55,7 +55,7 @@
                     {!! Form::close() !!}
                     
                     <div class="table-responsive">
-                        <table id="order-listing" class="table">
+                        <table id="dataTable" class="table">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -117,5 +117,21 @@
           mes='0'+mes //agrega cero si el menor de 10
         document.getElementById('fecha_fin').value=ano+"-"+mes+"-"+dia;
       }
+</script>
+<script>
+    $('#dataTable').DataTable( {
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "Nada encontrado - disculpa",
+            "info": "Mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(filtrado de _MAX_ registros totales)",
+            "search": "Buscar:",
+            "paginate": {
+                "next": "Siguiente",
+                "previous": "Anterior"
+            },
+        }
+    } );
 </script>
 @endsection

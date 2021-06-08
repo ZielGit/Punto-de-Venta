@@ -10,7 +10,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
                 <li class="breadcrumb-item"><a href="{{route('categories.index')}}">Categorías</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Registro de categorías</li>
             </ol>
@@ -32,15 +32,12 @@
                             Cancelar
                         </a>
                     </form>
+
                 </div>
-                {{--  <div class="card-footer text-muted">
-                    {{$categories->render()}}
-                </div>  --}}
             </div>
         </div>
     </div>
 </div>
 @endsection
 @section('scripts')
-<script src="melody/js/data-table.js"></script>
 @endsection

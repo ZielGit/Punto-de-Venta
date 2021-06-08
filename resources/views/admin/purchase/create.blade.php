@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('title','Registro de compra')
 @section('styles')
-
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -11,7 +10,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
                 <li class="breadcrumb-item"><a href="{{route('purchases.index')}}">Compras</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Registro de compra</li>
             </ol>

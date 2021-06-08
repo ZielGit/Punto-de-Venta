@@ -10,7 +10,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
                 <li class="breadcrumb-item"><a href="{{route('users.index')}}">Usuarios</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Registro de usuario</li>
             </ol>
@@ -56,5 +56,4 @@
 </div>
 @endsection
 @section('scripts')
-<script src="{{asset('melody/js/data-table.js')}}"></script>
 @endsection

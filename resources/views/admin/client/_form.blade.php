@@ -2,7 +2,7 @@
     <div class="form-group col-md-6">
         <div class="form-group">
             <label for="name">Nombre</label>
-            <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" required>
+            <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId">
             @error('name')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -23,7 +23,7 @@
     <div class="form-group col-md-4">
         <div class="form-group">
             <label for="dni">DNI</label>
-            <input type="number" class="form-control" name="dni" id="dni" aria-describedby="helpId" required>
+            <input type="number" class="form-control" name="dni" id="dni" aria-describedby="helpId">
             @error('dni')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror

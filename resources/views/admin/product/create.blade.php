@@ -28,7 +28,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="name">Nombre</label>
-                            <input type="text" name="name" id="name" class="form-control" aria-describedby="helpId" required>
+                            <input type="text" name="name" id="name" class="form-control" aria-describedby="helpId">
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -43,7 +43,7 @@
                         </div>
                         <div class="form-group">
                             <label for="sell_price">Precio de venta</label>
-                            <input type="number" name="sell_price" id="sell_price" class="form-control" aria-describedby="helpId" required>
+                            <input type="number" name="sell_price" id="sell_price" class="form-control" aria-describedby="helpId">
                             @error('sell_price')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

@@ -29,21 +29,12 @@ class UpdateProduct extends FormRequest
             'sell_price' => 'required', 
             'category_id'=>'integer|required|exists:App\Models\Category,id', 
             'provider_id'=>'integer|required|exists:App\Models\Provider,id',
-
         ];
     }
 
     public function messages()
     {
         return[
-            'name.required' => 'Este campo es requerido.',
-            'name.string' => 'El valor no es correcto.',
-            'name.unique' => 'El producto ya está registrado.',
-            'name.max' => 'Solo se permite 255 caracteres.',
-
-            // 'image.required' => 'Este campo es requerido.',
-            // 'image.dimensions' => 'Solo se permiten imágenes de 100x200 px.',
-
             'sell_price.required'=>'El campo es requerido.',
 
             'category_id.required' => 'Este campo es requerido.',

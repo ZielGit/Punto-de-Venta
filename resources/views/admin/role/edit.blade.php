@@ -25,12 +25,12 @@
                         <h4 class="card-title">Editar rol</h4>
                     </div>
                     {!! Form::model($role,['route'=>['roles.update',$role], 'method'=>'PUT']) !!}
-                    {{-- <form action="{{route('roles.update', $role)}}" method="post">
-                        @csrf
-                        @method('PUT') --}}
                         <div class="form-group">
                             <label for="name">Nombre</label>
                             <input type="text" class="form-control" name="name" id="name" value="{{$role->name}}" aria-describedby="helpId">
+                            @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         @include('admin.role._form')
@@ -39,8 +39,7 @@
                         <a href="{{route('roles.index')}}" class="btn btn-light">
                             Cancelar
                         </a>
-                    {{-- </form> --}}
-                     {!! Form::close() !!}
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
@@ -48,5 +47,4 @@
 </div>
 @endsection
 @section('scripts')
-<script src="{{asset('melody/js/data-table.js')}}"></script>
 @endsection

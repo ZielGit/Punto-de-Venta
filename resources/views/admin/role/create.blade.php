@@ -29,8 +29,10 @@
                         @csrf
                         <div class="form-group">
                             <label for="name">Nombre</label>
-                            <input type="text"
-                            class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="">
+                            <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="">
+                            @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         @include('admin.role._form')

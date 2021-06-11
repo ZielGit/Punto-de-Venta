@@ -48,6 +48,10 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string'
+        ]);
+
         $role = Role::create($request->all());
         $role->permissions()->sync($request->get('permissions'));
         return redirect()->route('roles.index');
@@ -85,6 +89,10 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
+        $request->validate([
+            'name' => 'required|string'
+        ]);
+
         $role->update($request->all());
         $role->permissions()->sync($request->permissions);
         return redirect()->route('roles.index');

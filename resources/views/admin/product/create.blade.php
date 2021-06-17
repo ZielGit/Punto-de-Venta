@@ -28,22 +28,22 @@
                         @csrf
                         <div class="form-group">
                             <label for="name">Nombre</label>
-                            <input type="text" name="name" id="name" class="form-control" aria-describedby="helpId">
+                            <input type="text" name="name" id="name" class="form-control" value="{{old('name')}}">
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="code">Código de barras</label>
-                            <input type="text" name="code" id="code" class="form-control">
-                            <small id="helpId" class="text-muted">Campo opcional</small>
+                            <input type="text" name="code" id="code" class="form-control" aria-describedby="helpId" value="{{old('code')}}">
+                            <small id="helpId" class="form-text text-muted">Campo opcional</small>
                             @error('code')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="sell_price">Precio de venta</label>
-                            <input type="number" name="sell_price" id="sell_price" class="form-control" aria-describedby="helpId">
+                            <input type="number" name="sell_price" id="sell_price" class="form-control" value="{{old('sell_price')}}">
                             @error('sell_price')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -73,7 +73,6 @@
                             </h4>
                             <input type="file"  name="picture" id="picture" class="dropify" />
                         </div>
-
                         <button type="submit" class="btn btn-primary mr-2">Registrar</button>
                         <a href="{{route('products.index')}}" class="btn btn-light">
                             Cancelar

@@ -15,16 +15,14 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon3">%</span>
             </div>
-            <input type="number" class="form-control" name="tax" id="tax" aria-describedby="basic-addon3"  value="18">
+            <input type="number" class="form-control" name="tax" id="tax" aria-describedby="basic-addon3" value="18">
         </div>
     </div>
 </div>
-
 <div class="form-group">
     <label for="code">Código de barras</label>
-    <input type="text" name="code" id="code" class="form-control" aria-describedby="helpId">
+    <input type="text" name="code" id="code" class="form-control" value="{{old('code')}}">
 </div>
-
 <div class="form-row">
     <div class="form-group col-md-6">
         <div class="form-group">
@@ -41,13 +39,13 @@
     <div class="form-group col-md-4">
         <div class="form-group">
             <label for="quantity">Cantidad</label>
-            <input type="number" class="form-control" name="quantity" id="quantity" aria-describedby="helpId">
+            <input type="number" class="form-control" name="quantity" id="quantity" value="{{old('quantity')}}">
         </div>
     </div>
     <div class="form-group col-md-2">
         <div class="form-group">
             <label for="price">Precio de compra</label>
-            <input type="number" class="form-control" name="price" id="price" aria-describedby="helpId">
+            <input type="number" class="form-control" name="price" id="price" value="{{old('price')}}">
         </div>
     </div>
 </div>
@@ -89,8 +87,7 @@
                         <p align="right">TOTAL PAGAR:</p>
                     </th>
                     <th>
-                        <p align="right"><span align="right" id="total_pagar_html">PEN 0.00</span> <input type="hidden"
-                                name="total" id="total_pagar"></p>
+                        <p align="right"><span align="right" id="total_pagar_html">PEN 0.00</span> <input type="hidden" name="total" id="total_pagar"></p>
                     </th>
                 </tr>
             </tfoot>

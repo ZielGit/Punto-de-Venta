@@ -27,7 +27,7 @@
                     {!! Form::model($role,['route'=>['roles.update',$role], 'method'=>'PUT']) !!}
                         <div class="form-group">
                             <label for="name">Nombre</label>
-                            <input type="text" class="form-control" name="name" id="name" value="{{$role->name}}" aria-describedby="helpId">
+                            <input type="text" class="form-control" name="name" id="name" value="{{old('name',$role->name)}}">
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

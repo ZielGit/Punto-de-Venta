@@ -6,12 +6,10 @@
         @endforeach
     </select>
 </div>
-
 <div class="form-group">
   <label for="code">Código de barras</label>
-  <input type="text" name="code" id="code" class="form-control" placeholder="" aria-describedby="helpId">
+  <input type="text" name="code" id="code" class="form-control" value="{{old('code')}}">
 </div>
-
 <div class="form-row">
     <div class="form-group col-md-4">
         <div class="form-group">
@@ -33,22 +31,21 @@
     <div class="form-group col-md-4">
         <div class="form-group">
             <label for="">Stock actual</label>
-            <input type="text" name="" id="stock" value="" class="form-control" disabled>
+            <input type="text" name="" id="stock" class="form-control" value="" disabled>
           </div>
     </div>
     <div class="form-group col-md-4">
         <div class="form-group">
             <label for="price">Precio de venta</label>
-            <input type="number" class="form-control" name="price" id="price" aria-describedby="helpId" disabled>
+            <input type="number" class="form-control" name="price" id="price" disabled>
         </div>
     </div>
 </div>
-
 <div class="form-row">
     <div class="form-group col-md-6">
         <div class="form-group">
             <label for="quantity">Cantidad</label>
-            <input type="number" class="form-control" name="quantity" id="quantity" aria-describedby="helpId">
+            <input type="number" class="form-control" name="quantity" id="quantity" value="{{old('quantity')}}">
         </div>
     </div>
     <div class="form-group col-md-3">
@@ -111,8 +108,7 @@
                         <p align="right">TOTAL PAGAR:</p>
                     </th>
                     <th>
-                        <p align="right"><span align="right" id="total_pagar_html">PEN 0.00</span> <input type="hidden"
-                                name="total" id="total_pagar"></p>
+                        <p align="right"><span align="right" id="total_pagar_html">PEN 0.00</span> <input type="hidden" name="total" id="total_pagar"></p>
                     </th>
                 </tr>
             </tfoot>

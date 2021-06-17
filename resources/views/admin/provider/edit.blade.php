@@ -24,50 +24,44 @@
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Editar Proveedor</h4>
                     </div>
-                    
                     <form action="{{route('providers.update', $provider)}}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
                             <label for="name">Nombre</label>
-                            <input type="text" class="form-control" name="name" id="name" value="{{$provider->name}}" aria-describedby="helpId">
+                            <input type="text" class="form-control" name="name" id="name" value="{{old('name',$provider->name)}}">
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-      
                         <div class="form-group">
                             <label for="email">Correo electrónico</label>
-                            <input type="email" class="form-control" name="email" id="email" value="{{$provider->email}}" placeholder="ejemplo@gmail.com">
+                            <input type="email" class="form-control" name="email" id="email" value="{{old('email',$provider->email)}}" placeholder="ejemplo@gmail.com">
                             @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-      
                         <div class="form-group">
                             <label for="ruc_number">Numero de RUC</label>
-                            <input type="number" class="form-control" name="ruc_number" id="ruc_number" value="{{$provider->ruc_number}}" aria-describedby="helpId">
+                            <input type="number" class="form-control" name="ruc_number" id="ruc_number" value="{{old('ruc_number',$provider->ruc_number)}}">
                             @error('ruc_number')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-      
                         <div class="form-group">
                             <label for="address">Dirección</label>
-                            <input type="text" class="form-control" name="address" id="address" value="{{$provider->address}}" aria-describedby="helpId">
+                            <input type="text" class="form-control" name="address" id="address" value="{{old('address',$provider->address)}}">
                             @error('address')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-      
                         <div class="form-group">
                             <label for="phone">Numero de contacto</label>
-                            <input type="number" class="form-control" name="phone" id="phone" value="{{$provider->phone}}" aria-describedby="helpId">
+                            <input type="number" class="form-control" name="phone" id="phone" value="{{old('phone',$provider->phone)}}">
                             @error('phone')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        
                         <button type="submit" class="btn btn-primary mr-2">Actualizar</button>
                         <a href="{{route('providers.index')}}" class="btn btn-light">
                             Cancelar

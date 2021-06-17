@@ -28,14 +28,14 @@
                     
                         <div class="form-group">
                             <label for="name">Nombre</label>
-                            <input type="text" name="name" id="name" value="{{$user->name}}" class="form-control" placeholder="" aria-describedby="helpId">
+                            <input type="text" name="name" id="name" value="{{old('name',$user->name)}}" class="form-control">
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="email">Correo electrónico</label>
-                            <input type="email" name="email" id="email" value="{{$user->email}}" class="form-control" placeholder="" aria-describedby="helpId">
+                            <input type="email" name="email" id="email" value="{{old('email',$user->email)}}" class="form-control">
                             @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

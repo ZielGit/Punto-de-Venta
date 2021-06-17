@@ -8,7 +8,7 @@
 
 <div class="form-group">
     <label for="description">Descripción</label>
-    <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+    <textarea class="form-control" name="description" id="description" rows="3">{{old('description')}}</textarea>
     @error('description')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror

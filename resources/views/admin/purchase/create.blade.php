@@ -44,13 +44,27 @@
 </div>
 @endsection
 @section('scripts')
-{{-- {!! Html::script('melody/js/alerts.js') !!} --}}
-{{-- {!! Html::script('melody/js/avgrund.js') !!} --}}
+{!! Html::script('melody/js/alerts.js') !!}
+{!! Html::script('melody/js/avgrund.js') !!}
 
 {{-- {!! Html::script('select/dist/js/bootstrap-select.min.js') !!} --}}
 {{-- {!! Html::script('js/sweetalert2.all.min.js') !!} --}}
 
-{{-- var product_id = $('#product_id');
+
+<script>
+    $(document).ready(function () {
+        $("#agregar").click(function () {
+            agregar();
+        });
+    });
+
+    var cont = 0;
+    total = 0;
+    subtotal = [];
+    
+    $("#guardar").hide();
+
+    var product_id = $('#product_id');
     product_id.change(function(){
         $.ajax({
             url: "{{route('get_products_by_id')}}",
@@ -63,7 +77,9 @@
             }
         });
     });
+
     $(obtener_registro());
+
     function obtener_registro(code){
         $.ajax({
             url: "{{route('get_products_by_barcode')}}",
@@ -78,6 +94,7 @@
             }
         });
     }
+
     $(document).on('keyup', '#code', function(){
         var valorResultado = $(this).val();
         if(valorResultado!=""){
@@ -85,25 +102,9 @@
         }else{
             obtener_registro();
         }
-    }) --}}
-
-<script>
-    $(document).ready(function () {
-        $("#agregar").click(function () {
-            agregar();
-        });
-    });
-    
-    var cont = 0;
-    total = 0;
-    subtotal = [];
-    
-    $("#guardar").hide();
-
-    
+    })
     
     function agregar() {
-    
         product_id = $("#product_id").val();
         producto = $("#product_id option:selected").text();
         quantity = $("#quantity").val();

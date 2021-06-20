@@ -45,53 +45,11 @@
     </div>
 </div>
 
-
-{{-- <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel-2">Registro rápido de cliente</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-             {!! Form::open(['route'=>'clients.store', 'method'=>'POST','files' => true]) !!} 
-
-            <form action="{{route('clients.store')}}" method="post">
-                @csrf
-                <div class="modal-body">
-
-                    <div class="form-group">
-                        <label for="name">Nombre</label>
-                        <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="dni">DNI</label>
-                        <input type="number" class="form-control" name="dni" id="dni" aria-describedby="helpId" required>
-                    </div>
-
-                    <input type="hidden" name="sale" value="1">
-
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Registrar</button>
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                </div>
-            </form>
-
-        </div>
-    </div>
-</div> --}}
-
-
 @endsection
 @section('scripts')
-{{-- {!! Html::script('melody/js/alerts.js') !!}
-{!! Html::script('melody/js/avgrund.js') !!}
 
-{!! Html::script('select/dist/js/bootstrap-select.min.js') !!}
-{!! Html::script('js/sweetalert2.all.min.js') !!} --}}
+{{-- {!! Html::script('select/dist/js/bootstrap-select.min.js') !!} --}}
+{{-- {!! Html::script('js/sweetalert2.all.min.js') !!} --}}
 
 <script>
     

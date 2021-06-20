@@ -44,12 +44,11 @@
 </div>
 @endsection
 @section('scripts')
-{!! Html::script('melody/js/alerts.js') !!}
-{!! Html::script('melody/js/avgrund.js') !!}
+{{-- {!! Html::script('melody/js/alerts.js') !!} --}}
+{{-- {!! Html::script('melody/js/avgrund.js') !!} --}}
 
 {{-- {!! Html::script('select/dist/js/bootstrap-select.min.js') !!} --}}
-{{-- {!! Html::script('js/sweetalert2.all.min.js') !!} --}}
-
+<script src="{{asset('js/sweetalert2.all.min.js')}}"></script>
 
 <script>
     $(document).ready(function () {

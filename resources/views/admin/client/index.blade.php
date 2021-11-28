@@ -52,7 +52,7 @@
                                     <td>{{$client->phone}}</td>
                                     <td>{{$client->email}}</td>
                                     <td>     
-                                        <form action="{{route('clients.destroy', $client)}}" method="post">
+                                        <form action="{{route('clients.destroy', $client)}}" class="frmEliminar" method="post">
                                             @csrf
                                             @method('delete')
                                             @can('clients.show')
@@ -86,6 +86,7 @@
 @endsection
 @section('scripts')
 <script src="{{asset('melody/js/data-table.js')}}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $('#dataTable').DataTable( {
         "language": {
@@ -101,5 +102,34 @@
             },
         }
     } );
+</script>
+
+@if (session('eliminar') == 'ok')
+    <script>
+        Swal.fire(
+            'Eliminado',
+            'El cliente ha sido eliminado',
+            'success'
+        )
+    </script>
+@endif
+<script>
+    $('.frmEliminar').submit(function(e){
+        e.preventDefault();
+
+        Swal.fire({
+            title:'¿Estas Seguro?',
+            text:'¡No podrás revertir esto!',
+            icon:'warning',
+            showCancelButton:true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '¡Si, bórralo!'
+        }).then((result) =>{
+            if(result.value){
+                this.submit();
+            }
+        })
+    })
 </script>
 @endsection

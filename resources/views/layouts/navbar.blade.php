@@ -8,6 +8,13 @@
             <span class="fas fa-bars"></span>
         </button>
         <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item">
+                <select class="form-control col changeLang">
+                    <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>English</option>
+                    <option value="fr" {{ session()->get('locale') == 'fr' ? 'selected' : '' }}>Spanish</option>
+                    <option value="sp" {{ session()->get('locale') == 'sp' ? 'selected' : '' }}>Portuguese</option>
+                </select>
+            </li>
             <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                     @if (Auth::user()->profile_photo_path)

@@ -63,6 +63,14 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <script src="{{asset('melody/js/dashboard.js')}}"></script>
+    <!-- Cambio de idioma-->
+    <script type="text/javascript">
+        var url = "{{ route('changeLang') }}";
+
+        $(".changeLang").change(function(){
+            window.location.href = url + "?lang="+ $(this).val();
+        });
+    </script>
     <!-- End custom js for this page-->
     @yield('scripts')
 

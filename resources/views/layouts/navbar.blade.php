@@ -26,14 +26,14 @@
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                     <a class="dropdown-item" href="{{route('profile.show')}}">
                         <i class="fas fa-cog text-primary"></i>
-                        Configuración
+                        {{__('Setting')}}
                     </a>
                     <div class="dropdown-divider"></div>
                     <form action="{{route('logout')}}" method="post">
                         @csrf
                         <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();this.closest('form').submit();">
                             <i class="fas fa-power-off text-primary"></i>
-                            Cerrar Sesión
+                            {{__('Logout')}}
                         </a>
                     </form>
                     {{-- form --}}

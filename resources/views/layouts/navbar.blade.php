@@ -11,8 +11,8 @@
             <li class="nav-item">
                 <select class="form-control col changeLang">
                     <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>English</option>
-                    <option value="fr" {{ session()->get('locale') == 'fr' ? 'selected' : '' }}>Spanish</option>
-                    <option value="sp" {{ session()->get('locale') == 'sp' ? 'selected' : '' }}>Portuguese</option>
+                    <option value="es" {{ session()->get('locale') == 'es' ? 'selected' : '' }}>Spanish</option>
+                    <option value="pt" {{ session()->get('locale') == 'pt' ? 'selected' : '' }}>Portuguese</option>
                 </select>
             </li>
             <li class="nav-item nav-profile dropdown">

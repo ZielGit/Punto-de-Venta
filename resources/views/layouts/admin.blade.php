@@ -22,51 +22,12 @@
     <!-- Agrege el tema sidebar-dark en el body-->
     <div class="container-scroller">
         <!-- partial:partials/_navbar.html -->
-        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
-            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="#"><img src="{{secure_asset('melody/images/logo.svg')}}" alt="logo"/></a>
-                <a class="navbar-brand brand-logo-mini" href="#"><img src="{{secure_asset('melody/images/logo-mini.svg')}}" alt="logo"/></a>
-            </div>
-            <div class="navbar-menu-wrapper d-flex align-items-stretch">
-                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-                    <span class="fas fa-bars"></span>
-                </button>
-                <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item nav-profile dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                        @if (Auth::user()->profile_photo_path)
-                            <img src="/storage/{{Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->name }}" />
-                        @else
-                            <img src="{{Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /> 
-                        @endif
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" href="{{route('profile.show')}}">
-                                <i class="fas fa-cog text-primary"></i>
-                                Configuración
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <form action="{{route('logout')}}" method="post">
-                                @csrf
-                                <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();this.closest('form').submit();">
-                                <i class="fas fa-power-off text-primary"></i>
-                                Cerrar Sesión
-                                </a>
-                            </form>
-                            {{-- form --}}
-                        </div>
-                    </li>
-                </ul>
-                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-                <span class="fas fa-bars"></span>
-                </button>
-            </div>
-        </nav>
+        @include('layouts.navbar')
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial -->
             <!-- partial:partials/_sidebar.html -->
-            @include('layouts._nav')
+            @include('layouts.sidebar')
             
             <!-- partial -->
             <div class="main-panel">
@@ -75,8 +36,8 @@
                 <!-- partial:partials/_footer.html -->
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018. All rights reserved.</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="far fa-heart text-danger"></i></span>
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018. {{__('All rights reserved.')}}</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">{{__('Hand-crafted & made with ')}}<i class="far fa-heart text-danger"></i></span>
                     </div>
                 </footer>
                 <!-- partial -->
@@ -101,7 +62,15 @@
     <script src="{{secure_asset('melody/js/todolist.js')}}"></script>
     <!-- endinject -->
     <!-- Custom js for this page-->
-    <script src="{{secure_asset('melody/js/dashboard.js')}}"></script>
+    <script src="{{asset('melody/js/dashboard.js')}}"></script>
+    <!-- Cambio de idioma-->
+    <script type="text/javascript">
+        var url = "{{ route('changeLang') }}";
+
+        $(".changeLang").change(function(){
+            window.location.href = url + "?lang="+ $(this).val();
+        });
+    </script>
     <!-- End custom js for this page-->
     @yield('scripts')
 

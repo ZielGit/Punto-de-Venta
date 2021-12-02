@@ -4,6 +4,7 @@ use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\PurchaseController;
@@ -27,6 +28,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect()->route('home');
 });
+
+Route::get('lang/change', [LanguageController::class, 'change'])->name('changeLang');
 
 Route::get('sales/reports_day', [ReportController::class, 'reports_day'])->name('reports.day');
 

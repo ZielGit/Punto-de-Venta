@@ -10,7 +10,7 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Panel administrador
+            {{ __('Dashboard') }}
         </h3>
     </div>
 
@@ -23,12 +23,12 @@
                     <div class="float-right">
                         <i class="fas fa-cart-arrow-down fa-4x"></i>
                     </div>
-                    <div class="text-value h4"><strong>PEN {{$total->totalcompra}} (MES ACTUAL)</strong>
+                    <div class="text-value h4"><strong>PEN {{$total->totalcompra}} ({{ __('Current month') }})</strong>
                     </div>
-                    <div class="h3">Compras</div>
+                    <div class="h3">{{ __('Purchases') }}</div>
                 </div>
                 <div class="chart-wrapper mt-3 mx-3" style="height:35px;">
-                    <a href="{{route('purchases.index')}}" class="small-box-footer h4">Compras <i
+                    <a href="{{route('purchases.index')}}" class="small-box-footer h4">{{ __('Purchases') }} <i
                             class="fa fa-arrow-circle-right"></i></a>
                 </div>
 
@@ -42,12 +42,12 @@
                     <div class="float-right">
                         <i class="fas fa-shopping-cart fa-4x"></i>
                     </div>
-                    <div class="text-value h4"><strong>PEN {{$total->totalventa}} (MES ACTUAL) </strong>
+                    <div class="text-value h4"><strong>PEN {{$total->totalventa}} ({{ __('Current month') }}) </strong>
                     </div>
-                    <div class="h3">Ventas</div>
+                    <div class="h3">{{ __('Sales') }}</div>
                 </div>
                 <div class="chart-wrapper mt-3 mx-3" style="height:35px;">
-                    <a href="{{route('sales.index')}}" class="small-box-footer h4">Ventas <i
+                    <a href="{{route('sales.index')}}" class="small-box-footer h4">{{ __('Sales') }} <i
                             class="fa fa-arrow-circle-right"></i></a>
                 </div>
 
@@ -61,7 +61,7 @@
             <div class="card-body">
                 <h4 class="card-title">
                     <i class="fas fa-gift"></i>
-                    Ventas diarias
+                    {{ __('Daily Sales') }}
                 </h4>
                 <canvas id="ventas_diarias" height="100"></canvas>
                 <div id="orders-chart-legend" class="orders-chart-legend"></div>
@@ -75,7 +75,7 @@
                 <div class="card-body">
                     <h4 class="card-title">
                         <i class="fas fa-gift"></i>
-                        Compras - Meses
+                        {{ __('Purchases - Months') }}
                     </h4>
                     <canvas id="compras"></canvas>
                     <div id="orders-chart-legend" class="orders-chart-legend"></div>
@@ -87,7 +87,7 @@
                 <div class="card-body">
                     <h4 class="card-title">
                         <i class="fas fa-chart-line"></i>
-                        Ventas - Meses
+                        {{ __('Sales - Months') }}
                     </h4>
                     <canvas id="ventas"></canvas>
                 </div>
@@ -101,18 +101,18 @@
                 <div class="card-body">
                     <h4 class="card-title">
                         <i class="fas fa-envelope"></i>
-                        Productos más vendidos
+                        {{ __('Most selled products') }}
                     </h4>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
-                                    <th>Nombre</th>
-                                    <th>Código</th>
-                                    <th>Stock</th>
-                                    <th>Cantidad vendida</th>
-                                    <th>Ver detalles</th>
+                                    <th scope="col">{{ __('ID') }}</th>
+                                    <th>{{ __('Name') }}</th>
+                                    <th>{{ __('Code') }}</th>
+                                    <th>{{ __('Stock') }}</th>
+                                    <th>{{ __('Quantity sold') }}</th>
+                                    <th>{{ __('See details') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -121,13 +121,13 @@
                                     <td>{{$productosvendido->id}}</td>
                                     <td>{{$productosvendido->name}}</td>
                                     <td>{{$productosvendido->code}}</td>
-                                    <td><strong>{{$productosvendido->stock}}</strong> Unidades</td>
-                                    <td><strong>{{$productosvendido->quantity}}</strong> Unidades</td>
+                                    <td><strong>{{$productosvendido->stock}}</strong> {{ __('Units') }}</td>
+                                    <td><strong>{{$productosvendido->quantity}}</strong> {{ __('Units') }}</td>
                                     <td>
                                         <a class="btn btn-primary"
                                             href="{{route('products.show', $productosvendido->id)}}">
                                             <i class="far fa-eye"></i>
-                                            Ver detalles
+                                            {{ __('See details') }}
                                         </a>
                                     </td>
                                 </tr>

@@ -10,9 +10,9 @@
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item">
                 <select class="form-control col changeLang">
-                    <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>English</option>
-                    <option value="es" {{ session()->get('locale') == 'es' ? 'selected' : '' }}>Spanish</option>
-                    <option value="pt" {{ session()->get('locale') == 'pt' ? 'selected' : '' }}>Portuguese</option>
+                    <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>{{ __('English') }}</option>
+                    <option value="es" {{ session()->get('locale') == 'es' ? 'selected' : '' }}>{{ __('Spanish') }}</option>
+                    <option value="pt" {{ session()->get('locale') == 'pt' ? 'selected' : '' }}>{{ __('Portuguese') }}</option>
                 </select>
             </li>
             <li class="nav-item nav-profile dropdown">

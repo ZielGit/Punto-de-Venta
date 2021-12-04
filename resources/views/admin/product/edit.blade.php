@@ -6,13 +6,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Edición de Producto
+            {{ __('Product Edition') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
-                <li class="breadcrumb-item"><a href="{{route('products.index')}}">Productos</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Edición de Producto</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('products.index')}}">{{ __('Products') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Product Edition') }}</li>
             </ol>
         </nav>
     </div>
@@ -22,32 +22,32 @@
                 <div class="card-body">
                     
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Edición de Producto</h4>
+                        <h4 class="card-title">{{ __('Product Edition') }}</h4>
                     </div>
                     <form action="{{route('products.update', $product)}}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label for="name">Nombre</label>
+                            <label for="name">{{ __('Name') }}</label>
                             <input type="text" name="name" id="name" class="form-control" value="{{old('name',$product->name)}}">
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="code">Código de barras</label>
+                            <label for="code">{{ __('Barcode') }}</label>
                             <input type="text" name="code" id="code" class="form-control" aria-describedby="helpId" value="{{old('code',$product->code)}}">
-                            <small id="helpId" class="form-text text-muted">Campo opcional</small>
+                            <small id="helpId" class="form-text text-muted">{{ __('Optional field') }}</small>
                         </div>
                         <div class="form-group">
-                            <label for="sell_price">Precio de venta</label>
+                            <label for="sell_price">{{ __('Sale price') }}</label>
                             <input type="number" name="sell_price" id="sell_price" class="form-control" value="{{old('sell_price',$product->sell_price)}}">
                             @error('sell_price')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="category_id">Categoría</label>
+                            <label for="category_id">{{ __('Category') }}</label>
                             <select class="form-control" name="category_id" id="category_id">
                               @foreach ($categories as $category)
                               <option value="{{$category->id}}" 
@@ -62,7 +62,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="provider_id">Proveedor</label>
+                            <label for="provider_id">{{ __('Provider') }}</label>
                             <select class="form-control" name="provider_id" id="provider_id">
                                 @foreach ($providers as $product)
                                 <option value="{{$product->id}}"
@@ -77,16 +77,16 @@
                             @enderror
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title d-flex">Imagen de producto
+                            <h4 class="card-title d-flex">{{ __('Product picture') }}
                             <small class="ml-auto align-self-end">
-                                <a href="dropify.html" class="font-weight-light" target="_blank">Seleccionar Archivo</a>
+                                <a href="dropify.html" class="font-weight-light" target="_blank">{{ __('Select File') }}</a>
                             </small>
                             </h4>
                             <input type="file"  name="picture" id="picture" class="dropify" />
                         </div>
-                        <button type="submit" class="btn btn-primary mr-2">Editar</button>
+                        <button type="submit" class="btn btn-primary mr-2">{{ __('Edit') }}</button>
                         <a href="{{route('products.index')}}" class="btn btn-light">
-                            Cancelar
+                            {{ __('Cancel') }}
                         </a>
                     </form>
                 </div>

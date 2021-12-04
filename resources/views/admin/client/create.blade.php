@@ -6,13 +6,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Registro de clientes
+            {{ __('Clients Registration') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
-                <li class="breadcrumb-item"><a href="{{route('clients.index')}}">Clientes</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Registro de clientes</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('clients.index')}}">{{ __('Clients') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Clients Registration') }}</li>
             </ol>
         </nav>
     </div>
@@ -22,14 +22,14 @@
                 <div class="card-body">
                     
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Registro de clientes</h4>
+                        <h4 class="card-title">{{ __('Clients Registration') }}</h4>
                     </div>
                     <form action="{{route('clients.store')}}" method="post">
                         @csrf
                         @include('admin.client._form')
-                        <button type="submit" class="btn btn-primary mr-2">Registrar</button>
+                        <button type="submit" class="btn btn-primary mr-2">{{ __('Register') }}</button>
                         <a href="{{route('clients.index')}}" class="btn btn-light">
-                            Cancelar
+                            {{ __('Cancel') }}
                         </a>
                     </form>
                     

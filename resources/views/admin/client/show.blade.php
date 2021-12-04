@@ -10,8 +10,8 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
-                <li class="breadcrumb-item"><a href="{{route('clients.index')}}">Clientes</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('clients.index')}}">{{ __('Clients') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{$client->name}}</li>
             </ol>
         </nav>
@@ -31,11 +31,11 @@
                                 <div class="list-group">
                                     <a class="list-group-item list-group-item-action active" id="list-home-list"
                                         data-toggle="list" href="#list-home" role="tab" aria-controls="home">
-                                        Sobre cliente
+                                        {{ __('About customer') }}
                                     </a>
                                     <a class="list-group-item list-group-item-action" id="list-profile-list"
                                         data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">
-                                        Historial de compras
+                                        {{ __('Purchases history') }}
                                     </a>
                                 </div>
                             </div>
@@ -48,24 +48,24 @@
 
                                     <div class="d-flex justify-content-between">
                                         <div>
-                                            <h4>Información de cliente</h4>
+                                            <h4>{{ __('Customer information') }}</h4>
                                         </div>
                                     </div>
                                     <div class="profile-feed">
                                         <div class="d-flex align-items-start profile-feed-item">
                                             
                                             <div class="form-group col-md-6">
-                                                <strong><i class="fab fa-product-hunt mr-1"></i> Nombre</strong>
+                                                <strong><i class="fab fa-product-hunt mr-1"></i> {{ __('Name') }}</strong>
                                                 <p class="text-muted">
                                                     {{$client->name}}
                                                 </p>
                                                 <hr>
-                                                <strong><i class="fas fa-address-card mr-1"></i> Numero de DNI</strong>
+                                                <strong><i class="fas fa-address-card mr-1"></i> {{ __('DNI number') }}</strong>
                                                 <p class="text-muted">
                                                     {{$client->dni}}
                                                 </p>
                                                 <hr>
-                                                <strong><i class="fas fa-address-card mr-1"></i> Numero de RUC</strong>
+                                                <strong><i class="fas fa-address-card mr-1"></i> {{ __('RUC number') }}</strong>
                                                 <p class="text-muted">
                                                     {{$client->ruc}}
                                                 </p>
@@ -75,17 +75,17 @@
                                             <div class="form-group col-md-6">
                                                 <strong>
                                                     <i class="fas fa-mobile mr-1"></i>
-                                                    Dirección</strong>
+                                                    {{ __('Direction') }}</strong>
                                                 <p class="text-muted">
                                                     {{$client->address}}
                                                 </p>
                                                 <hr>
-                                                <strong><i class="fas fa-envelope mr-1"></i> Teléfono / Celular</strong>
+                                                <strong><i class="fas fa-envelope mr-1"></i> {{ __('Telephone / Mobile') }}</strong>
                                                 <p class="text-muted">
                                                     {{$client->phone}}
                                                 </p>
                                                 <hr>
-                                                <strong><i class="fas fa-map-marked-alt mr-1"></i> Correo electrónico</strong>
+                                                <strong><i class="fas fa-map-marked-alt mr-1"></i> {{ __('Email') }}</strong>
                                                 <p class="text-muted">
                                                     {{$client->email}}
                                                 </p>
@@ -99,7 +99,7 @@
 
                                     <div class="d-flex justify-content-between">
                                         <div>
-                                            <h4>Historial de compras</h4>
+                                            <h4>{{ __('Purchases history') }}</h4>
                                         </div>
                                     </div>
                                     <div class="profile-feed">
@@ -109,11 +109,11 @@
                                                 <table id="order-listing" class="table">
                                                     <thead>
                                                         <tr>
-                                                            <th>Id</th>
-                                                            <th>Fecha</th>
-                                                            <th>Total</th>
-                                                            <th>Estado</th>
-                                                            <th>Acciones</th>
+                                                            <th>{{ __('ID') }}</th>
+                                                            <th>{{ __('Date') }}</th>
+                                                            <th>{{ __('Total') }}</th>
+                                                            <th>{{ __('Status') }}</th>
+                                                            <th>{{ __('Actions') }}</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -125,30 +125,30 @@
                         
                                                             @if ($sale->status == 'VALID')
                                                             <td>
-                                                                <a class="jsgrid-button btn btn-success" href="{{route('change.status.sales', $sale)}}" title="Editar">
-                                                                    Activo <i class="fas fa-check"></i>
+                                                                <a class="jsgrid-button btn btn-success" href="{{route('change.status.sales', $sale)}}" title="{{ __('Edit') }}">
+                                                                    {{ __('Active') }} <i class="fas fa-check"></i>
                                                                 </a>
                                                             </td>
                                                             @else
                                                             <td>
-                                                                <a class="jsgrid-button btn btn-danger" href="{{route('change.status.sales', $sale)}}" title="Editar">
-                                                                    Cancelado <i class="fas fa-times"></i>
+                                                                <a class="jsgrid-button btn btn-danger" href="{{route('change.status.sales', $sale)}}" title="{{ __('Edit') }}">
+                                                                    {{ __('Cancelled') }} <i class="fas fa-times"></i>
                                                                 </a>
                                                             </td>
                                                             @endif
                                                             <td>
                                                                 @can('sales.pdf')
-                                                                    <a href="{{route('sales.pdf', $sale)}}" title="Pdf">
+                                                                    <a href="{{route('sales.pdf', $sale)}}" title="{{ __('Pdf') }}">
                                                                         <span class="btn btn-outline-primary"><i class="far fa-file-pdf"></i></span>
                                                                     </a>
                                                                 @endcan
                                                                 @can('sales.print')
-                                                                    <a href="{{route('sales.print', $sale)}}" title="Imprimir">
+                                                                    <a href="{{route('sales.print', $sale)}}" title="{{ __('To print') }}">
                                                                         <span class="btn btn-outline-warning"><i class="fas fa-print"></i></span>
                                                                     </a>
                                                                 @endcan
                                                                 @can('sales.show')
-                                                                    <a href="{{route('sales.show', $sale)}}" title="Detalles">
+                                                                    <a href="{{route('sales.show', $sale)}}" title="{{ __('Details')}}">
                                                                         <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
                                                                     </a>
                                                                 @endcan
@@ -158,7 +158,7 @@
                                                     </tbody>
                                                     <tfoot>
                                                         <tr>
-                                                          <td colspan="2"><strong>Total de monto comprado: </strong></td>
+                                                          <td colspan="2"><strong>{{ __('Total amount purchased: ')}}</strong></td>
                                                           <td colspan="3" align="left"><strong>s/{{$total_purchases}}</strong></td>
                                                         </tr>
                                                     </tfoot>
@@ -175,7 +175,7 @@
                     </div>
                 </div>
                 <div class="card-footer text-muted">
-                    <a href="{{route('clients.index')}}" class="btn btn-primary float-right">Regresar</a>
+                    <a href="{{route('clients.index')}}" class="btn btn-primary float-right">{{ __('Return') }}</a>
                 </div>
             </div>
         </div>

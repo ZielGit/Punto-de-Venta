@@ -6,12 +6,12 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Productos que pertenecen a {{$category->name}}
+            {{ __('Products belonging to ') }} {{$category->name}}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
-                <li class="breadcrumb-item"><a href="{{route('categories.index')}}">Categorías</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('categories.index')}}">{{ __('Categories')}}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{$category->name}}</li>
             </ol>
         </nav>
@@ -21,7 +21,7 @@
         <div class="col mb-2">
             @can('products.create')
                 <a href="{{route('products.create')}}">
-                    <span class="btn btn-primary">Agregar</span>
+                    <span class="btn btn-primary">{{ __('Add')}}</span>
                 </a>
             @endcan
         </div>
@@ -36,12 +36,12 @@
                         <table id="order-listing" class="table">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Nombre</th>
-                                    <th>Stock</th>
-                                    <th>Estado</th>
-                                    <th>Categoría</th>
-                                    <th>Acciones</th>
+                                    <th>{{ __('ID') }}</th>
+                                    <th>{{ __('Name') }}</th>
+                                    <th>{{ __('Stock') }}</th>
+                                    <th>{{ __('Status') }}</th>
+                                    <th>{{ __('Category') }}</th>
+                                    <th>{{ __('Actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,14 +53,14 @@
 
                                     @if ($product->status == 'ACTIVE')
                                     <td>
-                                        <a class="jsgrid-button btn btn-success" href="{{route('change.status.products', $product)}}" title="Editar">
-                                            Activo <i class="fas fa-check"></i>
+                                        <a class="jsgrid-button btn btn-success" href="{{route('change.status.products', $product)}}" title="{{ __('Edit') }}">
+                                            {{ __('Active')}} <i class="fas fa-check"></i>
                                         </a>
                                     </td>
                                     @else
                                     <td>
-                                        <a class="jsgrid-button btn btn-danger" href="{{route('change.status.products', $product)}}" title="Editar">
-                                            Desactivado <i class="fas fa-times"></i>
+                                        <a class="jsgrid-button btn btn-danger" href="{{route('change.status.products', $product)}}" title="{{ __('Edit') }}">
+                                            {{ __('Disabled')}} <i class="fas fa-times"></i>
                                         </a>
                                     </td>
                                     @endif
@@ -72,12 +72,12 @@
                                             @csrf
                                             @method('delete')
                                             @can('products.edit')
-                                                <a href="{{route('products.edit', $product)}}" title="Editar">
+                                                <a href="{{route('products.edit', $product)}}" title="{{ __('Edit') }}">
                                                     <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
                                                 </a>
                                             @endcan
                                             
-                                            <button class="btn btn-outline-danger" type="submit" title="Eliminar">
+                                            <button class="btn btn-outline-danger" type="submit" title="{{ __('Delete') }}">
                                                 <i class="far fa-trash-alt"></i>
                                             </button>
                                         </form>
@@ -90,7 +90,7 @@
 
                 </div>
                 <div class="card-footer text-muted">
-                    <a href="{{route('categories.index')}}" class="btn btn-primary float-right">Regresar</a>
+                    <a href="{{route('categories.index')}}" class="btn btn-primary float-right">{{ __('Return')}}</a>
                 </div>
             </div>
         </div>

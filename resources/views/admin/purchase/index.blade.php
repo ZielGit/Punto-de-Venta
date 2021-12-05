@@ -6,12 +6,12 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Compras
+            {{ __('Purchases') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Compras</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Purchases') }}</li>
             </ol>
         </nav>
     </div>
@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col mb-2">
                 <a href="{{route('purchases.create')}}">
-                    <span class="btn btn-primary">+ Nueva Compra</span>
+                    <span class="btn btn-primary">+ {{ __('New Purchase') }}</span>
                 </a>
             </div>
         </div>
@@ -35,11 +35,11 @@
                         <table id="dataTable" class="table">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Fecha</th>
-                                    <th>Total</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
+                                    <th>{{ __('ID') }}</th>
+                                    <th>{{ __('Date') }}</th>
+                                    <th>{{ __('Total') }}</th>
+                                    <th>{{ __('Status') }}</th>
+                                    <th>{{ __('Actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,26 +53,26 @@
 
                                     @if ($purchase->status == 'VALID')
                                     <td>
-                                        <a class="jsgrid-button btn btn-success" href="{{route('change.status.purchases', $purchase)}}" title="Editar">
-                                            Activo <i class="fas fa-check"></i>
+                                        <a class="jsgrid-button btn btn-success" href="{{route('change.status.purchases', $purchase)}}" title="{{ __('Edit') }}">
+                                            {{ __('Active') }} <i class="fas fa-check"></i>
                                         </a>
                                     </td>
                                     @else
                                     <td>
-                                        <a class="jsgrid-button btn btn-danger" href="{{route('change.status.purchases', $purchase)}}" title="Editar">
-                                            Cancelado <i class="fas fa-times"></i>
+                                        <a class="jsgrid-button btn btn-danger" href="{{route('change.status.purchases', $purchase)}}" title="{{ __('Edit') }}">
+                                            {{ __('Cancelled') }} <i class="fas fa-times"></i>
                                         </a>
                                     </td>
                                     @endif
                                     
                                     <td>
                                         @can('purchases.pdf')
-                                            <a href="{{route('purchases.pdf', $purchase)}}" title="Pdf">
+                                            <a href="{{route('purchases.pdf', $purchase)}}" title="{{ __('Pdf') }}">
                                                 <span class="btn btn-outline-primary"><i class="far fa-file-pdf"></i></span>
                                             </a>
                                         @endcan
                                         @can('purchases.show')
-                                            <a href="{{route('purchases.show', $purchase)}}" title="Detalles">
+                                            <a href="{{route('purchases.show', $purchase)}}" title="{{ __('Details') }}">
                                                 <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
                                             </a>
                                         @endcan

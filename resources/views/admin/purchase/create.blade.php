@@ -6,13 +6,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Registro de compra
+            {{ __('Register Purchase') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
-                <li class="breadcrumb-item"><a href="{{route('purchases.index')}}">Compras</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Registro de compra</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('purchases.index')}}">{{ __('Purchases') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Register Purchase') }}</li>
             </ol>
         </nav>
     </div>
@@ -24,16 +24,16 @@
                     @csrf
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h4 class="card-title">Registro de compra</h4>
+                            <h4 class="card-title">{{ __('Register Purchase') }}</h4>
                         </div>
                         
                         @include('admin.purchase._form')
                         
                     </div>
                     <div class="card-footer text-muted">
-                        <button type="submit" id="guardar" class="btn btn-primary float-right">Registrar</button>
+                        <button type="submit" id="guardar" class="btn btn-primary float-right">{{ __('Register') }}</button>
                         <a href="{{route('purchases.index')}}" class="btn btn-light">
-                            Cancelar
+                            {{ __('Cancel') }}
                         </a>
                     </div>
                 </form>

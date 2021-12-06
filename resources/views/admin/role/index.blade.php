@@ -6,12 +6,12 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Roles del sistema
+            {{ __('System roles') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Roles del sistema</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Roles') }}</li>
             </ol>
         </nav>
     </div>
@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col mb-2">
                 <a href="{{route('roles.create')}}">
-                    <span class="btn btn-primary">+ Nuevo Rol</span>
+                    <span class="btn btn-primary">+ {{ __('New Role') }}</span>
                 </a>
             </div>
         </div>
@@ -35,9 +35,9 @@
                         <table id="dataTable" class="table">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Nombre</th>
-                                    <th>Acciones</th>
+                                    <th>{{ __('ID') }}</th>
+                                    <th>{{ __('Name') }}</th>
+                                    <th>{{ __('Actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,17 +50,17 @@
                                             @csrf
                                             @method('delete')
                                             @can('roles.show')
-                                                <a href="{{route('roles.show', $role)}}" title="Detalles">
+                                                <a href="{{route('roles.show', $role)}}" title="{{ __('Details') }}">
                                                     <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
                                                 </a>
                                             @endcan
                                             @can('roles.edit')
-                                                <a href="{{route('roles.edit', $role)}}" title="Editar">
+                                                <a href="{{route('roles.edit', $role)}}" title="{{ __('Edit') }}">
                                                     <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
                                                 </a>
                                             @endcan
                                             @can('roles.destroy')
-                                                <button class="btn btn-outline-danger" type="submit" title="Eliminar">
+                                                <button class="btn btn-outline-danger" type="submit" title="{{ __('Delete') }}">
                                                     <i class="far fa-trash-alt"></i>
                                                 </button>
                                             @endcan

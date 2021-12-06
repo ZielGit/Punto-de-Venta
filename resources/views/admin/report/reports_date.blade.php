@@ -6,12 +6,12 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Reporte por rango de fecha
+            {{ __('Report by date range') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Reporte por rango de fecha</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Report by date range') }}</li>
             </ol>
         </nav>
     </div>
@@ -24,29 +24,25 @@
                     <div class="row ">
             
                         <div class="col-12 col-md-3">
-                            <span>Fecha inicial</span>
+                            <span>{{ __('Initial date') }}</span>
                             <div class="form-group">
-                                <input class="form-control" type="date" 
-                                value="{{old('fecha_ini')}}" 
-                                name="fecha_ini" id="fecha_ini">
+                                <input class="form-control" type="date" value="{{old('fecha_ini')}}" name="fecha_ini" id="fecha_ini">
                             </div>
                         </div>
                         <div class="col-12 col-md-3">
-                            <span>Fecha final</span>
+                            <span>{{ __('Final date') }}</span>
                             <div class="form-group">
-                                <input class="form-control" type="date" 
-                                value="{{old('fecha_fin')}}" 
-                                name="fecha_fin" id="fecha_fin">
+                                <input class="form-control" type="date" value="{{old('fecha_fin')}}" name="fecha_fin" id="fecha_fin">
                             </div>
                         </div>
                         <div class="col-12 col-md-3 text-center mt-4">
                             <div class="form-group">
-                               <button type="submit" class="btn btn-primary btn-sm">Consultar</button>
+                               <button type="submit" class="btn btn-primary btn-sm">{{ __('Consult') }}</button>
                             </div>
                         </div>
                         
                         <div class="col-12 col-md-3 text-center">
-                            <span>Total de ingresos: <b> </b></span>
+                            <span>{{ __('Total revenues') }}: <b> </b></span>
                             <div class="form-group">
                                 <strong>s/ {{$total}}</strong>
                             </div>
@@ -58,11 +54,11 @@
                         <table id="dataTable" class="table">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Fecha</th>
-                                    <th>Total</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
+                                    <th>{{ __('ID') }}</th>
+                                    <th>{{ __('Date') }}</th>
+                                    <th>{{ __('Total') }}</th>
+                                    <th>{{ __('Status') }}</th>
+                                    <th>{{ __('Actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,17 +72,17 @@
                                     <td>{{$sale->status}}</td>
                                     <td>
                                         @can('sales.pdf')
-                                            <a href="{{route('sales.pdf', $sale)}}" title="Pdf">
+                                            <a href="{{route('sales.pdf', $sale)}}" title="{{ __('Pdf') }}">
                                                 <span class="btn btn-outline-primary"><i class="far fa-file-pdf"></i></span>
                                             </a>
                                         @endcan
                                         @can('sales.print')
-                                            <a href="{{route('sales.print', $sale)}}" title="Imprimir">
+                                            <a href="{{route('sales.print', $sale)}}" title="{{ __('Print') }}">
                                                 <span class="btn btn-outline-warning"><i class="fas fa-print"></i></span>
                                             </a>
                                         @endcan
                                         @can('sales.show')
-                                            <a href="{{route('sales.show', $sale)}}" title="Detalles">
+                                            <a href="{{route('sales.show', $sale)}}" title="{{ __('Details') }}">
                                                 <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
                                             </a>
                                         @endcan

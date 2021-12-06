@@ -10,8 +10,8 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
-                <li class="breadcrumb-item"><a href="{{route('roles.index')}}">Roles</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('roles.index')}}">{{ __('Roles') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{$role->name}}</li>
             </ol>
         </nav>
@@ -30,10 +30,10 @@
                             <div class="border-bottom py-4">
                                 <div class="list-group">
                                     <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
-                                        Permisos
+                                        {{ __('Permissions') }}
                                     </a>
                                     <a type="button" class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">
-                                        Usuarios
+                                        {{ __('Users') }}
                                     </a>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
 
                                     <div class="d-flex justify-content-between">
                                         <div>
-                                            <h4>Permisos asignados al rol</h4>
+                                            <h4>{{ __('Permissions assigned to the role') }}</h4>
                                         </div>
                                     </div>
                                     <div class="profile-feed">
@@ -55,9 +55,9 @@
                                                 <table id="order-listing" class="table">
                                                     <thead>
                                                         <tr>
-                                                            <th>Id</th>
-                                                            <th>Nombre</th>
-                                                            <th>description</th>
+                                                            <th>{{ __('ID') }}</th>
+                                                            <th>{{ __('Name') }}</th>
+                                                            <th>{{ __('Description') }}</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -80,7 +80,7 @@
                                 <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                                     <div class="d-flex justify-content-between">
                                         <div>
-                                            <h4>Usuarios con el rol</h4>
+                                            <h4>{{ __('Users with the role') }}</h4>
                                         </div>
                                     </div>
                                     <div class="profile-feed">
@@ -90,10 +90,10 @@
                                                 <table id="order-listing1" class="table">
                                                     <thead>
                                                         <tr>
-                                                            <th>Id</th>
-                                                            <th>Nombre</th>
-                                                            <th>Correo electrónico</th>
-                                                            <th>Acciones</th>
+                                                            <th>{{ __('Id') }}</th>
+                                                            <th>{{ __('Name') }}</th>
+                                                            <th>{{ __('Email') }}</th>
+                                                            <th>{{ __('Actions') }}</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -106,17 +106,17 @@
                                                                 {!! Form::open(['route'=>['users.destroy',$user], 'method'=>'DELETE']) !!}
                         
                                                                 @can('users.show')
-                                                                    <a href="{{route('users.show', $user)}}" title="Detalles">
+                                                                    <a href="{{route('users.show', $user)}}" title="{{ __('Details') }}">
                                                                         <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
                                                                     </a>
                                                                 @endcan
                                                                 @can('users.edit')
-                                                                    <a href="{{route('users.edit', $user)}}" title="Editar">
+                                                                    <a href="{{route('users.edit', $user)}}" title="{{ __('Edit') }}">
                                                                         <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
                                                                     </a>
                                                                 @endcan
                                                                 @can('users.destroy')
-                                                                    <button class="btn btn-outline-danger" type="submit" title="Eliminar">
+                                                                    <button class="btn btn-outline-danger" type="submit" title="{{ __('Delete') }}">
                                                                         <i class="far fa-trash-alt"></i>
                                                                     </button>
                                                                 @endcan
@@ -138,7 +138,7 @@
                     </div>
                 </div>
                 <div class="card-footer text-muted">
-                    <a href="{{route('roles.index')}}" class="btn btn-primary float-right">Regresar</a>
+                    <a href="{{route('roles.index')}}" class="btn btn-primary float-right">{{ __('Return') }}</a>
                 </div>
             </div>
         </div>

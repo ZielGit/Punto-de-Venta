@@ -7,13 +7,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Registro de venta
+            {{ __('Sale Register') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
-                <li class="breadcrumb-item"><a href="{{route('sales.index')}}">Ventas</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Registro de venta</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('sales.index')}}">{{ __('Sales') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Sale Register') }}</li>
             </ol>
         </nav>
     </div>
@@ -26,16 +26,16 @@
                     <div class="card-body">
                         
                         <div class="d-flex justify-content-between">
-                            <h4 class="card-title">Registro de venta</h4>
+                            <h4 class="card-title">{{ __('Sale Register') }}</h4>
                         </div>
                         
                         @include('admin.sale._form')
                         
                     </div>
                     <div class="card-footer text-muted">
-                        <button type="submit" id="guardar" class="btn btn-primary float-right">Registrar</button>
+                        <button type="submit" id="guardar" class="btn btn-primary float-right">{{ __('Register') }}</button>
                         <a href="{{route('sales.index')}}" class="btn btn-light">
-                            Cancelar
+                            {{ __('Cancel') }}
                         </a>
                     </div>
                 </form>

@@ -6,12 +6,12 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Reporte de ventas
+            {{ __('Sales report') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Reporte de ventas</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Sales report') }}</li>
             </ol>
         </nav>
     </div>
@@ -22,19 +22,19 @@
 
                     <div class="row ">
                         <div class="col-12 col-md-4 text-center">
-                            <span>Fecha de consulta: <b> </b></span>
+                            <span>{{ __('Consultation date') }}: <b> </b></span>
                             <div class="form-group">
                                 <strong>{{\Carbon\Carbon::now()->format('d/m/Y')}}</strong>
                             </div>
                         </div>
                         <div class="col-12 col-md-4 text-center">
-                            <span>Cantidad de registros: <b></b></span>
+                            <span>{{ __('Number of records') }}: <b></b></span>
                             <div class="form-group">
                                 <strong>{{$sales->count()}}</strong>
                             </div>
                         </div>
                         <div class="col-12 col-md-4 text-center">
-                            <span>Total de ingresos: <b> </b></span>
+                            <span>{{ __('Total revenues') }}: <b> </b></span>
                             <div class="form-group">
                                 <strong>s/ {{$total}}</strong>
                             </div>
@@ -45,11 +45,11 @@
                         <table id="dataTable" class="table">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Fecha</th>
-                                    <th>Total</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
+                                    <th>{{ __('ID') }}</th>
+                                    <th>{{ __('Date') }}</th>
+                                    <th>{{ __('Total') }}</th>
+                                    <th>{{ __('Status') }}</th>
+                                    <th>{{ __('Actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,17 +63,17 @@
                                     <td>{{$sale->status}}</td>
                                     <td>
                                         @can('sales.pdf')
-                                            <a href="{{route('sales.pdf', $sale)}}" title="Pdf">
+                                            <a href="{{route('sales.pdf', $sale)}}" title="{{ __('Pdf') }}">
                                                 <span class="btn btn-outline-primary"><i class="far fa-file-pdf"></i></span>
                                             </a>
                                         @endcan
                                         @can('sales.print')
-                                            <a href="{{route('sales.print', $sale)}}" title="Imprimir">
+                                            <a href="{{route('sales.print', $sale)}}" title="{{ __('Print') }}">
                                                 <span class="btn btn-outline-warning"><i class="fas fa-print"></i></span>
                                             </a>
                                         @endcan
                                         @can('sales.show')
-                                        <a href="{{route('sales.show', $sale)}}" title="Detalles">
+                                        <a href="{{route('sales.show', $sale)}}" title="{{ __('Details') }}">
                                             <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
                                         </a>
                                         @endcan

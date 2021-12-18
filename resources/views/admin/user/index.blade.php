@@ -6,12 +6,12 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Usuarios del sistema
+            {{ __('System Users') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Usuarios del sistema</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Users') }}</li>
             </ol>
         </nav>
     </div>
@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col mb-2">
                 <a href="{{route('users.create')}}">
-                    <span class="btn btn-primary">+ Nuevo Usuario</span>
+                    <span class="btn btn-primary">+ {{ __('New User') }}</span>
                 </a>
             </div>
         </div>
@@ -35,10 +35,10 @@
                         <table id="dataTable" class="table">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Nombre</th>
-                                    <th>Correo electrónico</th>
-                                    <th>Acciones</th>
+                                    <th>{{ __('ID') }}</th>
+                                    <th>{{ __('Name') }}</th>
+                                    <th>{{ __('Email') }}</th>
+                                    <th>{{ __('Actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -52,17 +52,17 @@
                                             @csrf
                                             @method('delete')
                                             @can('users.show')
-                                                <a href="{{route('users.show', $user)}}" title="Detalles">
+                                                <a href="{{route('users.show', $user)}}" title="{{ __('Details') }}">
                                                     <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
                                                 </a>
                                             @endcan
                                             @can('users.edit')
-                                                <a href="{{route('users.edit', $user)}}" title="Editar">
+                                                <a href="{{route('users.edit', $user)}}" title="{{ __('Edit') }}">
                                                     <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
                                                 </a>
                                             @endcan
                                             @can('users.destroy')
-                                                <button class="btn btn-outline-danger" type="submit" title="Eliminar">
+                                                <button class="btn btn-outline-danger" type="submit" title="{{ __('Delete') }}">
                                                     <i class="far fa-trash-alt"></i>
                                                 </button>
                                             @endcan

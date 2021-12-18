@@ -1,4 +1,4 @@
-<h3>Listado de roles</h3>
+<h3>{{ __('List of roles') }}</h3>
 <div class="form-group">
     <ul class="list-unstyled">
         @foreach ($roles as $role)

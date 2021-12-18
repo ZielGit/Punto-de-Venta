@@ -12,7 +12,7 @@
                 <select class="form-control col changeLang">
                     <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>{{ __('English') }}</option>
                     <option value="es" {{ session()->get('locale') == 'es' ? 'selected' : '' }}>{{ __('Spanish') }}</option>
-                    <option value="pt" {{ session()->get('locale') == 'pt' ? 'selected' : '' }}>{{ __('Portuguese') }}</option>
+                    <option value="pt_BR" {{ session()->get('locale') == 'pt_BR' ? 'selected' : '' }}>{{ __('Portuguese') }}</option>
                 </select>
             </li>
             <li class="nav-item nav-profile dropdown">

@@ -6,13 +6,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Editar Proveedor
+            {{ __('Edit Provider') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
-                <li class="breadcrumb-item"><a href="{{route('providers.index')}}">Proveedores</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Editar Proveedor</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('providers.index')}}">{{ __('Providers') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Edit Provider') }}</li>
             </ol>
         </nav>
     </div>
@@ -22,49 +22,49 @@
                 <div class="card-body">
                     
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Editar Proveedor</h4>
+                        <h4 class="card-title">{{ __('Edit Provider') }}</h4>
                     </div>
                     <form action="{{route('providers.update', $provider)}}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label for="name">Nombre</label>
+                            <label for="name">{{ __('Name') }}</label>
                             <input type="text" class="form-control" name="name" id="name" value="{{old('name',$provider->name)}}">
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="email">Correo electrónico</label>
+                            <label for="email">{{ __('Email') }}</label>
                             <input type="email" class="form-control" name="email" id="email" value="{{old('email',$provider->email)}}" placeholder="ejemplo@gmail.com">
                             @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="ruc_number">Numero de RUC</label>
+                            <label for="ruc_number">{{ __('RUC Number') }}</label>
                             <input type="number" class="form-control" name="ruc_number" id="ruc_number" value="{{old('ruc_number',$provider->ruc_number)}}">
                             @error('ruc_number')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="address">Dirección</label>
+                            <label for="address">{{ __('Address') }}</label>
                             <input type="text" class="form-control" name="address" id="address" value="{{old('address',$provider->address)}}">
                             @error('address')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="phone">Numero de contacto</label>
+                            <label for="phone">{{ __('Telephone / Mobile') }}</label>
                             <input type="number" class="form-control" name="phone" id="phone" value="{{old('phone',$provider->phone)}}">
                             @error('phone')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary mr-2">Actualizar</button>
+                        <button type="submit" class="btn btn-primary mr-2">{{ __('Update') }}</button>
                         <a href="{{route('providers.index')}}" class="btn btn-light">
-                            Cancelar
+                            {{ __('Cancel') }}
                         </a>
                     </form>
 

@@ -6,13 +6,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Registro de usuario
+            {{ __('User register') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
-                <li class="breadcrumb-item"><a href="{{route('users.index')}}">Usuarios</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Registro de usuario</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('users.index')}}">{{ __('Users') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('User register') }}</li>
             </ol>
         </nav>
     </div>
@@ -22,7 +22,7 @@
                 <div class="card-body">
                     
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Registro de usuario</h4>
+                        <h4 class="card-title">{{ __('User register') }}</h4>
                     </div>
                     {{-- {!! Form::open(['route'=>'users.store', 'method'=>'POST']) !!} --}}
                     <form action="{{route('users.store')}}" method="post">
@@ -36,14 +36,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Correo electrónico</label>
+                            <label for="email">{{ __('Email') }}</label>
                             <input type="email" class="form-control" name="email" id="email" value="{{old('email')}}" placeholder="ejemplo@gmail.com">
                             @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="password">Contraseña</label>
+                            <label for="password">{{ __('Password') }}</label>
                             <input type="password" name="password" id="password" class="form-control">
                             @error('password')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -51,9 +51,9 @@
                         </div>
 
                         @include('admin.user._form')
-                        <button type="submit" class="btn btn-primary mr-2">Registrar</button>
+                        <button type="submit" class="btn btn-primary mr-2">{{ __('To Register') }}</button>
                         <a href="{{route('users.index')}}" class="btn btn-light">
-                            Cancelar
+                            {{ __('Cancel') }}
                         </a>
                     </form>
                      {{-- {!! Form::close() !!} --}}

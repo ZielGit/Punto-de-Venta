@@ -6,13 +6,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Registro de rol
+            {{ __('Role Register') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Panel administrador</a></li>
-                <li class="breadcrumb-item"><a href="{{route('roles.index')}}">Roles</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Registro de rol</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('roles.index')}}">{{ __('Roles') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Role Register') }}</li>
             </ol>
         </nav>
     </div>
@@ -22,13 +22,13 @@
                 <div class="card-body">
                     
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Registro de rol</h4>
+                        <h4 class="card-title">{{ __('Role Register') }}</h4>
                     </div>
                     {{-- {!! Form::open(['route'=>'roles.store', 'method'=>'POST']) !!} --}}
                     <form action="{{route('roles.store')}}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label for="name">Nombre</label>
+                            <label for="name">{{ __('Name') }}</label>
                             <input type="text" class="form-control" name="name" id="name" value="{{old('name')}}">
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -36,9 +36,9 @@
                         </div>
 
                         @include('admin.role._form')
-                        <button type="submit" class="btn btn-primary mr-2">Registrar</button>
+                        <button type="submit" class="btn btn-primary mr-2">{{ __('To Register') }}</button>
                         <a href="{{route('roles.index')}}" class="btn btn-light">
-                            Cancelar
+                            {{ __('Cancel') }}
                         </a>
                     </form>
                      {{-- {!! Form::close() !!} --}}

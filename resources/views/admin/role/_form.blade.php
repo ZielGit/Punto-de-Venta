@@ -1,4 +1,4 @@
-<h3>Lista de permisos</h3>
+<h3>{{ __('Permission list') }}</h3>
 <div class="form-group">
  <ul class="list-unstyled">
      @foreach ($permissions as $permission)

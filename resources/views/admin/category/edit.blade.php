@@ -6,13 +6,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            {{ __('Edit Categories') }}
+            {{ __('Edit Category') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{route('categories.index')}}">{{ __('Categories') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Edit Categories') }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Edit Category') }}</li>
             </ol>
         </nav>
     </div>
@@ -22,7 +22,7 @@
                 <div class="card-body">
                     
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">{{ __('Edit Categories') }}</h4>
+                        <h4 class="card-title">{{ __('Edit Category') }}</h4>
                     </div>
                     <form action="{{route('categories.update', $category)}}" method="post">
                         @csrf

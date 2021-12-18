@@ -53,7 +53,7 @@
     <button type="button" id="agregar" class="btn btn-primary float-right">{{ __('Add product') }}</button>
 </div>
 <div class="form-group">
-    <h4 class="card-title">{{ __('Purchase details') }}</h4>
+    <h4 class="card-title">{{ __('Purchase Details') }}</h4>
     <div class="table-responsive col-md-12">
         <table id="detalles" class="table table-striped">
             <thead>
@@ -84,7 +84,7 @@
                 </tr>
                 <tr>
                     <th colspan="4">
-                        <p align="right">{{ __('TOTAL PAy') }}:</p>
+                        <p align="right">{{ __('TOTAL PAY') }}:</p>
                     </th>
                     <th>
                         <p align="right"><span align="right" id="total_pagar_html">PEN 0.00</span> <input type="hidden" name="total" id="total_pagar"></p>

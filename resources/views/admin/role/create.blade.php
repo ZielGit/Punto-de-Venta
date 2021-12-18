@@ -6,13 +6,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            {{ __('Role register') }}
+            {{ __('Role Register') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{route('roles.index')}}">{{ __('Roles') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Role register') }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Role Register') }}</li>
             </ol>
         </nav>
     </div>
@@ -22,7 +22,7 @@
                 <div class="card-body">
                     
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">{{ __('Role register') }}</h4>
+                        <h4 class="card-title">{{ __('Role Register') }}</h4>
                     </div>
                     {{-- {!! Form::open(['route'=>'roles.store', 'method'=>'POST']) !!} --}}
                     <form action="{{route('roles.store')}}" method="post">
@@ -36,7 +36,7 @@
                         </div>
 
                         @include('admin.role._form')
-                        <button type="submit" class="btn btn-primary mr-2">{{ __('Register') }}</button>
+                        <button type="submit" class="btn btn-primary mr-2">{{ __('To Register') }}</button>
                         <a href="{{route('roles.index')}}" class="btn btn-light">
                             {{ __('Cancel') }}
                         </a>

@@ -74,7 +74,7 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary mr-2">{{ __('Editar') }}</button>
+                        <button type="submit" class="btn btn-primary mr-2">{{ __('Edit') }}</button>
                         <a href="{{route('clients.index')}}" class="btn btn-light">
                             {{ __('Cancel') }}
                         </a>

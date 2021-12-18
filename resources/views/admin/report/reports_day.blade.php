@@ -22,7 +22,7 @@
 
                     <div class="row ">
                         <div class="col-12 col-md-4 text-center">
-                            <span>{{ __('Consultaion date') }}: <b> </b></span>
+                            <span>{{ __('Consultation date') }}: <b> </b></span>
                             <div class="form-group">
                                 <strong>{{\Carbon\Carbon::now()->format('d/m/Y')}}</strong>
                             </div>
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-4 text-center">
-                            <span>{{ __('Total ewvenues') }}: <b> </b></span>
+                            <span>{{ __('Total revenues') }}: <b> </b></span>
                             <div class="form-group">
                                 <strong>s/ {{$total}}</strong>
                             </div>

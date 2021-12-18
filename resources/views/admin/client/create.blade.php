@@ -6,13 +6,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            {{ __('Clients Registration') }}
+            {{ __('Client Registration') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{route('clients.index')}}">{{ __('Clients') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Clients Registration') }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Client Registration') }}</li>
             </ol>
         </nav>
     </div>
@@ -22,12 +22,12 @@
                 <div class="card-body">
                     
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">{{ __('Clients Registration') }}</h4>
+                        <h4 class="card-title">{{ __('Client Registration') }}</h4>
                     </div>
                     <form action="{{route('clients.store')}}" method="post">
                         @csrf
                         @include('admin.client._form')
-                        <button type="submit" class="btn btn-primary mr-2">{{ __('Register') }}</button>
+                        <button type="submit" class="btn btn-primary mr-2">{{ __('To Register') }}</button>
                         <a href="{{route('clients.index')}}" class="btn btn-light">
                             {{ __('Cancel') }}
                         </a>

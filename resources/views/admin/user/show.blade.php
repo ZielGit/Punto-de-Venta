@@ -30,7 +30,7 @@
                             <div class="border-bottom py-4">
                                 <div class="list-group">
                                     <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" user="tab" aria-controls="home">
-                                        {{ __('about the user') }}
+                                        {{ __('About the user') }}
                                     </a>
                                     <a type="button" class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" user="tab" aria-controls="profile">
                                         {{ __('Purchases History') }}

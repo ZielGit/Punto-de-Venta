@@ -66,14 +66,14 @@
                         </div>
 
                         <div class="card-body">
-                            <h4 class="card-title d-flex">{{ __('Product picture') }}
+                            <h4 class="card-title d-flex">{{ __('Product Picture') }}
                             <small class="ml-auto align-self-end">
-                                <a href="dropify.html" class="font-weight-light" target="_blank">{{ __('Select File') }}</a>
+                                <a href="dropify.html" class="font-weight-light" target="_blank">{{ __('Select a File') }}</a>
                             </small>
                             </h4>
                             <input type="file"  name="picture" id="picture" class="dropify" />
                         </div>
-                        <button type="submit" class="btn btn-primary mr-2">{{ __('Register') }}</button>
+                        <button type="submit" class="btn btn-primary mr-2">{{ __('To Register') }}</button>
                         <a href="{{route('products.index')}}" class="btn btn-light">
                             {{ __('Cancel') }}
                         </a>

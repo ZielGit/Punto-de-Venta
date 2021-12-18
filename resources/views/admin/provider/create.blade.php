@@ -6,13 +6,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            {{ __('Register Providers') }}
+            {{ __('Register Provider') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{route('providers.index')}}">{{ __('Providers') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Register Providers') }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Register Provider') }}</li>
             </ol>
         </nav>
     </div>
@@ -22,7 +22,7 @@
                 <div class="card-body">
                     
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">{{ __('Register Providers') }}</h4>
+                        <h4 class="card-title">{{ __('Register Provider') }}</h4>
                     </div>
                     <form action="{{route('providers.store')}}" method="post">
                         @csrf
@@ -61,7 +61,7 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary mr-2">{{ __('Register') }}</button>
+                        <button type="submit" class="btn btn-primary mr-2">{{ __('To Register') }}</button>
                         <a href="{{route('providers.index')}}" class="btn btn-light">
                             {{ __('Cancel') }}
                         </a>

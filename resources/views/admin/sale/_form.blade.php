@@ -69,7 +69,7 @@
 </div>
 
 <div class="form-group">
-    <button type="button" id="agregar" class="btn btn-primary float-right">{{ __('Add Product') }}</button>
+    <button type="button" id="agregar" class="btn btn-primary float-right">{{ __('Add product') }}</button>
 </div>
 
 <div class="form-group">

@@ -60,12 +60,12 @@
                                                     {{$client->name}}
                                                 </p>
                                                 <hr>
-                                                <strong><i class="fas fa-address-card mr-1"></i> {{ __('DNI number') }}</strong>
+                                                <strong><i class="fas fa-address-card mr-1"></i> {{ __('DNI Number') }}</strong>
                                                 <p class="text-muted">
                                                     {{$client->dni}}
                                                 </p>
                                                 <hr>
-                                                <strong><i class="fas fa-address-card mr-1"></i> {{ __('RUC number') }}</strong>
+                                                <strong><i class="fas fa-address-card mr-1"></i> {{ __('RUC Number') }}</strong>
                                                 <p class="text-muted">
                                                     {{$client->ruc}}
                                                 </p>
@@ -73,9 +73,7 @@
                                             </div>
         
                                             <div class="form-group col-md-6">
-                                                <strong>
-                                                    <i class="fas fa-mobile mr-1"></i>
-                                                    {{ __('Direction') }}</strong>
+                                                <strong><i class="fas fa-mobile mr-1"></i> {{ __('Address') }}</strong>
                                                 <p class="text-muted">
                                                     {{$client->address}}
                                                 </p>
@@ -158,7 +156,7 @@
                                                     </tbody>
                                                     <tfoot>
                                                         <tr>
-                                                          <td colspan="2"><strong>{{ __('Total amount purchased: ')}}</strong></td>
+                                                          <td colspan="2"><strong>{{ __('Total amount purchased') }}: </strong></td>
                                                           <td colspan="3" align="left"><strong>s/{{$total_purchases}}</strong></td>
                                                         </tr>
                                                     </tfoot>

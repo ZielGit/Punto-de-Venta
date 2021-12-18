@@ -51,7 +51,7 @@
                         </div>
 
                         @include('admin.user._form')
-                        <button type="submit" class="btn btn-primary mr-2">{{ __('Register') }}</button>
+                        <button type="submit" class="btn btn-primary mr-2">{{ __('To Register') }}</button>
                         <a href="{{route('users.index')}}" class="btn btn-light">
                             {{ __('Cancel') }}
                         </a>

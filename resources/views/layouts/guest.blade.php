@@ -13,11 +13,21 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+        <!-- Melody -->
+        <link rel="stylesheet" href="{{ asset('melody/vendors/iconfonts/font-awesome/css/all.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('melody/vendors/css/vendor.bundle.base.css') }}">
+        <link rel="stylesheet" href="{{ asset('melody/vendors/css/vendor.bundle.addons.css') }}">
+        <!-- endinject -->
+        <!-- plugin css for this page -->
+        <!-- End plugin css for this page -->
+        <!-- inject:css -->
+        <link rel="stylesheet" href="{{ asset('melody/css/style.css') }}">
+
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
+        <div class="container-scroller">
             {{ $slot }}
         </div>
     </body>

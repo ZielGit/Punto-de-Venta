@@ -59,7 +59,7 @@
                                     </td>
                                     @else
                                     <td>
-                                        <a class="jsgrid-button btn btn-danger" href="{{route('change.status.sales', $sale)}}" title="{{ __('Edit') }}">
+                                        <a class="jsgrid-button btn btn-danger disabled" href="{{route('change.status.sales', $sale)}}" title="{{ __('Edit') }}">
                                             {{ __('Cancelled') }} <i class="fas fa-times"></i>
                                         </a>
                                     </td>

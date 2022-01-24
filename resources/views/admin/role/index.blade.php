@@ -46,7 +46,7 @@
                                     <th scope="row">{{$role->id}}</th>
                                     <td>{{$role->name}}</td>
                                     <td>
-                                        <form action="{{route('roles.destroy', $role)}}" method="post">
+                                        <form action="{{route('roles.destroy', $role)}}" class="frmEliminar" method="post">
                                             @csrf
                                             @method('delete')
                                             @can('roles.show')
@@ -80,6 +80,16 @@
 @endsection
 @section('scripts')
 <script src="{{asset('melody/js/data-table.js')}}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if (session('eliminar') == 'ok')
+    <script>
+        Swal.fire(
+            'Eliminado',
+            'El rol ha sido eliminado',
+            'success'
+        )
+    </script>
+@endif
 <script>
     $('#dataTable').DataTable( {
         "language": {
@@ -95,5 +105,23 @@
             },
         }
     } );
+
+    $('.frmEliminar').submit(function(e){
+        e.preventDefault();
+        Swal.fire({
+            title:'¿Estas Seguro?',
+            text:'¡No podrás revertir esto!',
+            icon:'warning',
+            showCancelButton:true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '¡Si, bórralo!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) =>{
+            if(result.value){
+                this.submit();
+            }
+        })
+    })
 </script>
 @endsection

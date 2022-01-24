@@ -114,6 +114,6 @@ class UserController extends Controller
     {
         // Agregar para que no se elimine el usuario principal
         $user->delete();
-        return back();
+        return back()->with('eliminar', 'ok');
     }
 }

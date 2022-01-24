@@ -87,6 +87,15 @@
 @section('scripts')
 <script src="{{asset('melody/js/data-table.js')}}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if (session('eliminar') == 'ok')
+    <script>
+        Swal.fire(
+            'Eliminado',
+            'El cliente ha sido eliminado',
+            'success'
+        )
+    </script>
+@endif
 <script>
     $('#dataTable').DataTable( {
         "language": {
@@ -102,21 +111,9 @@
             },
         }
     } );
-</script>
 
-@if (session('eliminar') == 'ok')
-    <script>
-        Swal.fire(
-            'Eliminado',
-            'El cliente ha sido eliminado',
-            'success'
-        )
-    </script>
-@endif
-<script>
     $('.frmEliminar').submit(function(e){
         e.preventDefault();
-
         Swal.fire({
             title:'¿Estas Seguro?',
             text:'¡No podrás revertir esto!',
@@ -124,7 +121,8 @@
             showCancelButton:true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: '¡Si, bórralo!'
+            confirmButtonText: '¡Si, bórralo!',
+            cancelButtonText: 'Cancelar'
         }).then((result) =>{
             if(result.value){
                 this.submit();

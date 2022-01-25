@@ -815,5 +815,13 @@
     "Permissions assigned to the role":"Permisos asignados al rol",
     "Users with the role":"Usuarios con el rol",
     "Welcome back!":"¡Bienvenido de nuevo!",
-    "Happy to see you again!":"¡Feliz de verte de nuevo!"
+    "Happy to see you again!":"¡Feliz de verte de nuevo!",
+    "Current month":"Mes actual",
+    "Daily Sales":"Ventas Diarias",
+    "Select a Product":"Seleccione un Producto",
+    "Purchases - Months":"Compras - Meses",
+    "Sales - Months":"Ventas - Meses",
+    "Most selled products":"Productos más vendidos",
+    "Quantity sold":"Cantidad Vendida",
+    "See details":"Ver detalles"
 }

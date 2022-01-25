@@ -46,9 +46,8 @@
 @section('scripts')
 {{-- {!! Html::script('melody/js/alerts.js') !!} --}}
 {{-- {!! Html::script('melody/js/avgrund.js') !!} --}}
-
-{{-- {!! Html::script('select/dist/js/bootstrap-select.min.js') !!} --}}
-<script src="{{asset('js/sweetalert2.all.min.js')}}"></script>
+<script src="{{ asset('melody/js/select2.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 
 <script>
     $(document).ready(function () {

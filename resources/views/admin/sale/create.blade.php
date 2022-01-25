@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('title','Registro de venta')
 @section('styles')
-{{-- {!! Html::style('select/dist/css/bootstrap-select.min.css') !!} --}}
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -47,10 +46,8 @@
 
 @endsection
 @section('scripts')
-
-{{-- {!! Html::script('select/dist/js/bootstrap-select.min.js') !!} --}}
-
-<script src="{{asset('js/sweetalert2.all.min.js')}}"></script>
+<script src="{{ asset('melody/js/select2.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 <script>
     $(document).ready(function () {
         $("#agregar").click(function () {

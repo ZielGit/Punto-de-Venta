@@ -2,7 +2,7 @@
     <div class="form-group col-md-8">
         <div class="form-group">
             <label for="provider_id">{{ __('Provider') }}</label>
-            <select class="form-control" name="provider_id" id="provider_id">
+            <select class="form-control select2" name="provider_id" id="provider_id">
                 @foreach ($providers as $provider)
                     <option value="{{$provider->id}}">{{$provider->name}}</option>
                 @endforeach
@@ -28,8 +28,8 @@
         <div class="form-group">
             <label for="product_id">{{ __('Product') }}</label>
             {{--  <select class="form-control selectpicker" data-live-search="true" name="product_id" id="product_id">  --}}
-            <select class="form-control" name="product_id" id="product_id">
-                <option value="" disabled selected>{{ __('Select a product') }}</option>
+            <select class="form-control select2" name="product_id" id="product_id">
+                <option value="" disabled selected>{{ __('Select a Product') }}</option>
                 @foreach ($products as $product)
                 <option value="{{$product->id}}">{{$product->name}}</option>
                 @endforeach

@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="client_id">{{ __('Client') }}</label>
-    <select class="form-control" name="client_id" id="client_id">
+    <select class="form-control select2" name="client_id" id="client_id">
         @foreach ($clients as $client)
         <option value="{{$client->id}}">{{$client->name}}</option>
         @endforeach
@@ -15,7 +15,7 @@
         <div class="form-group">
             <label for="product_id">{{ __('Product') }}</label>
             {{--  <select class="form-control selectpicker" data-live-search="true" name="product_id" id="product_id">  --}}
-            <select class="form-control" name="product_id" id="product_id">
+            <select class="form-control select2" name="product_id" id="product_id">
                 <option value="" disabled selected>{{ __('Select a Product') }}</option>
                 @foreach ($products as $product)
                 <option value="{{$product->id}}">{{$product->name}}</option>

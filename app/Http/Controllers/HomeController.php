@@ -34,12 +34,10 @@ class HomeController extends Controller
 
         $comprasmes=DB::select('SELECT month(c.purchase_date) as mes, sum(c.total) as totalmes from purchases c where c.status="VALID" group by month(c.purchase_date) order by month(c.purchase_date) desc limit 12');
         $ventasmes=DB::select('SELECT month(v.sale_date) as mes, sum(v.total) as totalmes from sales v where v.status="VALID" group by month(v.sale_date) order by month(v.sale_date) desc limit 12');
-
         // $comprasmes=DB::select('SELECT monthname(c.purchase_date) as mes, sum(c.total) as totalmes from purchases c where c.status="VALID" group by monthname(c.purchase_date) order by month(c.purchase_date) desc limit 12');
         // $ventasmes=DB::select('SELECT monthname(v.sale_date) as mes, sum(v.total) as totalmes from sales v where v.status="VALID" group by monthname(v.sale_date) order by month(v.sale_date) desc limit 12');
 
         $ventasdia=DB::select('SELECT DATE_FORMAT(v.sale_date,"%d/%m/%Y") as dia, sum(v.total) as totaldia from sales v where v.status="VALID" group by v.sale_date order by day(v.sale_date) desc limit 15');
-        // $totales=DB::select('SELECT (select ifnull(sum(c.total),0) from purchases c where DATE(c.purchase_date)=curdate() and c.status="VALID") as totalcompra, (select ifnull(sum(v.total),0) from sales v where DATE(v.sale_date)=curdate() and v.status="VALID") as totalventa');
         
         $mostSelledProducts = Product::join('sale_details', 'products.id', '=', 'sale_details.product_id')
             
@@ -48,7 +46,8 @@ class HomeController extends Controller
             ->select('code', 'sale_details.quantity','name', 'products.id', 'stock')
             ->groupBy('products.code', 'products.name','products.id','products.stock','sale_details.quantity')
             ;
-
+        
+        // $totales=DB::select('SELECT (select ifnull(sum(c.total),0) from purchases c where DATE(c.purchase_date)=curdate() and c.status="VALID") as totalcompra, (select ifnull(sum(v.total),0) from sales v where DATE(v.sale_date)=curdate() and v.status="VALID") as totalventa');
         $purchasesToday = Purchase::where('purchase_date', '>=', Carbon::now()->subDays(1))->where('status', 'VALID')->sum('total');
         $salesToday = Sale::where('sale_date', '>=', Carbon::now()->subDays(1))->where('status', 'VALID')->sum('total');
 

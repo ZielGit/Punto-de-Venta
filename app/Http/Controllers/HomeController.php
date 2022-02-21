@@ -32,8 +32,8 @@ class HomeController extends Controller
         $client['all'] = Client::count();
         $user['all'] = User::count();
 
-        $comprasmes=DB::select('SELECT month(c.purchase_date) as mes, sum(c.total) as totalmes from purchases c where c.status="VALID" group by month(c.purchase_date) order by month(c.purchase_date) desc limit 12');
-        $ventasmes=DB::select('SELECT month(v.sale_date) as mes, sum(v.total) as totalmes from sales v where v.status="VALID" group by month(v.sale_date) order by month(v.sale_date) desc limit 12');
+        // $comprasmes=DB::select('SELECT month(c.purchase_date) as mes, sum(c.total) as totalmes from purchases c where c.status="VALID" group by month(c.purchase_date) order by month(c.purchase_date) desc limit 12');
+        // $ventasmes=DB::select('SELECT month(v.sale_date) as mes, sum(v.total) as totalmes from sales v where v.status="VALID" group by month(v.sale_date) order by month(v.sale_date) desc limit 12');
         // $comprasmes=DB::select('SELECT monthname(c.purchase_date) as mes, sum(c.total) as totalmes from purchases c where c.status="VALID" group by monthname(c.purchase_date) order by month(c.purchase_date) desc limit 12');
         // $ventasmes=DB::select('SELECT monthname(v.sale_date) as mes, sum(v.total) as totalmes from sales v where v.status="VALID" group by monthname(v.sale_date) order by month(v.sale_date) desc limit 12');
 
@@ -62,6 +62,6 @@ class HomeController extends Controller
 
         // dd($sale);
        
-        return view('home', compact('purchasesToday','salesToday', 'product', 'comprasmes', 'ventasmes', 'ventasdia', 'productosvendidos', 'provider', 'client', 'user'));
+        return view('home', compact('purchasesToday','salesToday', 'product', 'ventasdia', 'productosvendidos', 'provider', 'client', 'user'));
     }
 }

@@ -68,7 +68,7 @@
         </div>
     </div>
 
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
@@ -80,7 +80,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- <div class="row">
         <div class="col-md-6 grid-margin stretch-card">
@@ -167,40 +167,8 @@
         // var varVenta=document.getElementById('ventas').getContext('2d');
         // 
         
-        var varVenta=document.getElementById('ventas_diarias').getContext('2d');
-        var charVenta = new Chart(varVenta, {
-            type: 'bar',
-            data: {
-                labels: [
-                    <?php foreach ($ventasdia as $ventadia) {
-                        $dia = $ventadia->dia;
-                        echo '"'.$dia.'",';} 
-                    ?>
-                ],
-                datasets: [{
-                    label: 'Ventas',
-                    data: [
-                        <?php
-                            foreach ($ventasdia as $reg) {
-                                echo ''.$reg->totaldia.',';
-                            } 
-                        ?>
-                    ],
-                    backgroundColor: 'rgba(57, 44, 112, 0.9)',
-                    borderColor: 'rgba(57, 44, 112, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true
-                        }
-                    }]
-                }
-            }
-        });
+        // var varVenta=document.getElementById('ventas_diarias').getContext('2d');
+        // 
     });
 </script>
 @endsection

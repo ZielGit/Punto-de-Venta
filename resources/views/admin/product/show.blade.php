@@ -6,13 +6,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            {{$product->name}}
+            {{ $product->name }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{route('products.index')}}">{{ __('Products') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{$product->name}}</li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('products.index') }}">{{ __('Products') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
             </ol>
         </nav>
     </div>
@@ -24,10 +24,10 @@
                         <div class="col-lg-4">
                             <div class="border-bottom text-center pb-4">
 
-                                <img src="{{asset('image/'.$product->image)}}" alt="profile" class="img-lg  mb-3" />
+                                <img src="{{ asset('image/'.$product->image) }}" alt="profile" class="img-lg  mb-3" />
                                 {{--  <p>Nombre de proveedor. </p>  --}}
 
-                                <h3>{{$product->name}}</h3>
+                                <h3>{{ $product->name }}</h3>
                                 <div class="d-flex justify-content-between">
                                 </div>
                             </div>
@@ -51,16 +51,16 @@
                                         {{ __('Status') }}
                                     </span>
                                     <span class="float-right text-muted">
-                                        {{$product->status}}
+                                        {{ $product->status }}
                                     </span>
                                 </p>
-                                {{-- categoria sin route, pensar en los permisos, editar despues --}}
+                                {{-- pensar en los permisos, editar despues --}}
                                 <p class="clearfix">
                                     <span class="float-left">
                                         {{ __('Provider') }}
                                     </span>
                                     <span class="float-right text-muted">
-                                        <a href="{{route('providers.show',$product->provider->id)}}">
+                                        <a href="{{ route('providers.show',$product->provider->id) }}">
                                         {{$product->provider->name}}
                                         </a>
                                     </span>
@@ -71,8 +71,8 @@
                                     </span>
                                     <span class="float-right text-muted">
                                         {{--  PRODUCTOS POR CATEGORIA  --}}
-                                        <a href="">
-                                            {{$product->category->name}}
+                                        <a href="{{ route('categories.show', $product->category->id) }}">
+                                            {{ $product->category->name }}
                                         </a>
                                     </span>
                                 </p>
@@ -80,9 +80,9 @@
                             </div>
 
                             @if ($product->status == 'ACTIVE')
-                            <a href="{{route('change.status.products', $product)}}" class="btn btn-success btn-block">{{ __('Active') }}</a>
+                            <a href="{{ route('change.status.products', $product) }}" class="btn btn-success btn-block">{{ __('Active') }}</a>
                             @else
-                            <a href="{{route('change.status.products', $product)}}" class="btn btn-danger btn-block">{{ __('Disabled') }}</a>
+                            <a href="{{ route('change.status.products', $product) }}" class="btn btn-danger btn-block">{{ __('Disabled') }}</a>
                             @endif
                         </div>
                         <div class="col-lg-8 pl-lg-5">
@@ -97,24 +97,24 @@
                                     <div class="form-group col-md-6">
                                         <strong><i class="fab fa-product-hunt mr-1"></i> {{ __('Code') }}</strong>
                                         <p class="text-muted">
-                                            {{$product->code}}
+                                            {{ $product->code }}
                                         </p>
                                         <hr>
                                         <strong><i class="fab fa-product-hunt mr-1"></i> {{ __('Stock') }}</strong>
                                         <p class="text-muted">
-                                            {{$product->stock}}
+                                            {{ $product->stock }}
                                         </p>
                                         <hr>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <strong><i class="fas fa-mobile mr-1"></i> {{ __('Sale price') }}</strong>
                                         <p class="text-muted">
-                                            {{$product->sell_price}}
+                                            {{ $product->sell_price }}
                                         </p>
                                         <hr>
                                         <strong><i class="fas fa-envelope mr-1"></i> {{ __('Barcode') }}</strong>
                                         <p class="text-muted">
-                                            {!!DNS1D::getBarcodeHTML($product->code, 'EAN13'); !!}
+                                            {!! DNS1D::getBarcodeHTML($product->code, 'EAN13'); !!}
                                         </p>
                                         
                                         <hr> 
@@ -125,7 +125,7 @@
                     </div>
                 </div>
                 <div class="card-footer text-muted">
-                    <a href="{{route('products.index')}}" class="btn btn-primary float-right">{{ __('Return') }}</a>
+                    <a href="{{ route('products.index') }}" class="btn btn-primary float-right">{{ __('Return') }}</a>
                 </div>
             </div>
         </div>
@@ -133,6 +133,6 @@
 </div>
 @endsection
 @section('scripts')
-<script src="{{asset('melody/js/profile-demo.js')}}"></script>
-<script src="{{asset('melody/js/data-table.js')}}"></script>
+<script src="{{ asset('melody/js/profile-demo.js') }}"></script>
+<script src="{{ asset('melody/js/data-table.js') }}"></script>
 @endsection

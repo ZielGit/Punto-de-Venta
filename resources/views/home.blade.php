@@ -14,57 +14,70 @@
         </h3>
     </div>
 
-    @foreach ($totales as $total)
-    <div class="row">
-        <div class="col-md-6 grid-margin stretch-card">
-            <div class="card text-white bg-warning">
-
-                <div class="card-body pb-0">
-                    <div class="float-right">
-                        <i class="fas fa-cart-arrow-down fa-4x"></i>
+    <div class="row grid-margin">
+        <div class="col-12">
+            <div class="card card-statistics">
+                <div class="card-body">
+                    <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+                        <div class="statistics-item">
+                            <p><i class="icon-sm fas fa-cart-arrow-down mr-2"></i>  {{ __("Today's Sales") }}</p>
+                            <h2>S/. {{ $purchasesToday }}</h2>
+                            <label class="badge badge-outline-success badge-pill">
+                                <a href="{{ route('purchases.index') }}" class="text-success"> {{ __('More Info') }}</a>
+                            </label>
+                        </div>
+                        <div class="statistics-item">
+                            <p><i class="icon-sm fas fa-shopping-cart mr-2"></i>  {{ __('Shopping Today') }}</p>
+                            <h2>S/. {{ $salesToday }}</h2>
+                            <label class="badge badge-outline-success badge-pill">
+                                <a href="{{ route('sales.index') }}" class="text-success"> {{ __('More Info') }}</a>
+                            </label>
+                        </div>
+                        <div class="statistics-item">
+                            <p><i class="icon-sm fas fa-box  mr-2"></i> {{ __('Products') }}</p>
+                            <h2>{{ $product['active'] }}</h2>
+                            <label class="badge badge-outline-success badge-pill">
+                                <a href="{{ route('products.index') }}" class="text-success"> {{ __('More Info') }}</a>
+                            </label>
+                        </div>
+                        <div class="statistics-item">
+                            <p><i class="icon-sm fas fa-shipping-fast mr-2"></i>  {{ __('Providers') }}</p>
+                            <h2>{{ $provider['all'] }}</h2>
+                            <label class="badge badge-outline-success badge-pill">
+                                <a href="{{ route('providers.index') }}" class="text-success"> {{ __('More Info') }}</a>
+                            </label>
+                        </div>
+                        
+                        <div class="statistics-item">
+                            <p><i class="icon-sm fas fa-users mr-2"></i>  {{ __('Clients') }}</p>
+                            <h2>{{ $client['all'] }}</h2>
+                            <label class="badge badge-outline-success badge-pill">
+                                <a href="{{ route('clients.index') }}" class="text-success"> {{ __('More Info') }}</a>
+                            </label>
+                        </div>
+                        <div class="statistics-item">
+                            <p><i class="icon-sm fas fa-user-tag mr-2"></i>  {{ __('Users') }}</p>
+                            <h2>{{ $user['all'] }}</h2>
+                            <label class="badge badge-outline-success badge-pill">
+                                <a href="{{ route('users.index') }}" class="text-success"> {{ __('More Info') }}</a>
+                            </label>
+                        </div>
                     </div>
-                    <div class="text-value h4"><strong>PEN {{$total->totalcompra}} ({{ __('Current month') }})</strong>
-                    </div>
-                    <div class="h3">{{ __('Purchases') }}</div>
                 </div>
-                <div class="chart-wrapper mt-3 mx-3" style="height:35px;">
-                    <a href="{{route('purchases.index')}}" class="small-box-footer h4">{{ __('Purchases') }} <i
-                            class="fa fa-arrow-circle-right"></i></a>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-md-6 grid-margin stretch-card">
-            <div class="card  text-white bg-info">
-
-                <div class="card-body pb-0">
-
-                    <div class="float-right">
-                        <i class="fas fa-shopping-cart fa-4x"></i>
-                    </div>
-                    <div class="text-value h4"><strong>PEN {{$total->totalventa}} ({{ __('Current month') }}) </strong>
-                    </div>
-                    <div class="h3">{{ __('Sales') }}</div>
-                </div>
-                <div class="chart-wrapper mt-3 mx-3" style="height:35px;">
-                    <a href="{{route('sales.index')}}" class="small-box-footer h4">{{ __('Sales') }} <i
-                            class="fa fa-arrow-circle-right"></i></a>
-                </div>
-
             </div>
         </div>
     </div>
-    @endforeach
 
-    <div class="col-md-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">
-                    <i class="fas fa-gift"></i>
-                    {{ __('Daily Sales') }}
-                </h4>
-                <canvas id="ventas_diarias" height="100"></canvas>
-                <div id="orders-chart-legend" class="orders-chart-legend"></div>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <i class="fas fa-gift"></i>
+                        {{ __('Daily Sales') }}
+                    </h4>
+                    <canvas id="ventas_diarias" height="100"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -78,7 +91,6 @@
                         {{ __('Purchases - Months') }}
                     </h4>
                     <canvas id="compras"></canvas>
-                    <div id="orders-chart-legend" class="orders-chart-legend"></div>
                 </div>
             </div>
         </div>
@@ -153,17 +165,20 @@
         var charCompra = new Chart(varCompra, {
             type: 'line',
             data: {
-                labels: [<?php foreach ($comprasmes as $reg)
-                    { 
-                
-                setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
-                $mes_traducido=strftime('%B',strtotime($reg->mes));
-        
-                echo '"'. $mes_traducido.'",';} ?>],
+                labels: [
+                    <?php foreach ($comprasmes as $reg) { 
+                        setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+                        $mes_traducido=strftime('%B',strtotime($reg->mes));
+                        echo '"'.$mes_traducido.'",';} 
+                    ?>
+                ],
                 datasets: [{
                     label: 'Compras',
-                    data: [<?php foreach ($comprasmes as $reg)
-                        {echo ''. $reg->totalmes.',';} ?>],
+                    data: [
+                        <?php foreach ($comprasmes as $reg) {
+                            echo ''.$reg->totalmes.',';} 
+                        ?>
+                    ],
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth:3
                 }]
@@ -182,16 +197,20 @@
         var charVenta = new Chart(varVenta, {
             type: 'line',
             data: {
-                labels: [<?php foreach ($ventasmes as $reg)
-            {
-                setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
-                $mes_traducido=strftime('%B',strtotime($reg->mes));
-                
-                echo '"'. $mes_traducido.'",';} ?>],
+                labels: [
+                    <?php foreach ($ventasmes as $reg) {
+                        setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+                        $mes_traducido=strftime('%B',strtotime($reg->mes));
+                        echo '"'. $mes_traducido.'",';} 
+                    ?>
+                ],
                 datasets: [{
                     label: 'Ventas',
-                    data: [<?php foreach ($ventasmes as $reg)
-                    {echo ''. $reg->totalmes.',';} ?>],
+                    data: [
+                        <?php foreach ($ventasmes as $reg) {
+                            echo ''. $reg->totalmes.',';} 
+                        ?>
+                    ],
                     backgroundColor: 'rgba(20, 204, 20, 1)',
                     borderColor: 'rgba(54, 162, 235, 0.2)',
                     borderWidth: 1
@@ -211,17 +230,23 @@
         var charVenta = new Chart(varVenta, {
             type: 'bar',
             data: {
-                labels: [<?php foreach ($ventasdia as $ventadia)
-            {
-                $dia = $ventadia->dia;
-                
-                echo '"'. $dia.'",';} ?>],
+                labels: [
+                    <?php foreach ($ventasdia as $ventadia) {
+                        $dia = $ventadia->dia;
+                        echo '"'.$dia.'",';} 
+                    ?>
+                ],
                 datasets: [{
                     label: 'Ventas',
-                    data: [<?php foreach ($ventasdia as $reg)
-                    {echo ''. $reg->totaldia.',';} ?>],
-                    backgroundColor: 'rgba(20, 204, 20, 1)',
-                    borderColor: 'rgba(54, 162, 235, 0.2)',
+                    data: [
+                        <?php
+                            foreach ($ventasdia as $reg) {
+                                echo ''.$reg->totaldia.',';
+                            } 
+                        ?>
+                    ],
+                    backgroundColor: 'rgba(57, 44, 112, 0.9)',
+                    borderColor: 'rgba(57, 44, 112, 1)',
                     borderWidth: 1
                 }]
             },

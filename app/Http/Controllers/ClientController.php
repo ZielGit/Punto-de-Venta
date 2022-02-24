@@ -6,6 +6,7 @@ use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreClient;
 use App\Http\Requests\UpdateClient;
+use Illuminate\Support\Facades\Session;
 
 class ClientController extends Controller
 {
@@ -26,6 +27,7 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::get();
+        Session::put('clients_url', request()->fullUrl());
         return view('admin.client.index', compact('clients'));
     }
 
@@ -48,6 +50,9 @@ class ClientController extends Controller
     public function store(StoreClient $request)
     {
         Client::create($request->all());
+        if ($request->sent_from == 'sale') {
+            return redirect()->route('sales.create');
+        }
         return redirect()->route('clients.index');
     }
 

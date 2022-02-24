@@ -1,14 +1,25 @@
-<div class="form-group">
-    <label for="client_id">{{ __('Client') }}</label>
-    <select class="form-control select2" name="client_id" id="client_id">
-        @foreach ($clients as $client)
-        <option value="{{$client->id}}">{{$client->name}}</option>
-        @endforeach
-    </select>
-</div>
-<div class="form-group">
-  <label for="code">{{ __('Barcode') }}</label>
-  <input type="text" name="code" id="code" class="form-control" value="{{old('code')}}">
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>{{ __('Client') }}</label>
+            <div class="input-group">
+                <select class="form-control select2" name="client_id" id="client_id">
+                    @foreach ($clients as $client)
+                    <option value="{{$client->id}}">{{$client->name}}</option>
+                    @endforeach
+                </select>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#clientModal">{{ __('New Client') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="code">{{ __('Barcode') }}</label>
+            <input type="text" name="code" id="code" class="form-control" value="{{old('code')}}">
+        </div>
+    </div>
 </div>
 <div class="form-row">
     <div class="form-group col-md-4">

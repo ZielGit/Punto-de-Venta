@@ -32,6 +32,10 @@ class HomeController extends Controller
         $client['all'] = Client::count();
         $user['all'] = User::count();
 
+        // $totales=DB::select('SELECT (select ifnull(sum(c.total),0) from purchases c where DATE(c.purchase_date)=curdate() and c.status="VALID") as totalcompra, (select ifnull(sum(v.total),0) from sales v where DATE(v.sale_date)=curdate() and v.status="VALID") as totalventa');
+        $purchasesToday = Purchase::where('purchase_date', '>=', Carbon::now()->subDays(1))->where('status', 'VALID')->sum('total');
+        $salesToday = Sale::where('sale_date', '>=', Carbon::now()->subDays(1))->where('status', 'VALID')->sum('total');
+
         $comprasmes=DB::select('SELECT month(c.purchase_date) as mes, sum(c.total) as totalmes from purchases c where c.status="VALID" group by month(c.purchase_date) order by month(c.purchase_date) desc limit 12');
         $ventasmes=DB::select('SELECT month(v.sale_date) as mes, sum(v.total) as totalmes from sales v where v.status="VALID" group by month(v.sale_date) order by month(v.sale_date) desc limit 12');
         // $comprasmes=DB::select('SELECT monthname(c.purchase_date) as mes, sum(c.total) as totalmes from purchases c where c.status="VALID" group by monthname(c.purchase_date) order by month(c.purchase_date) desc limit 12');
@@ -46,10 +50,6 @@ class HomeController extends Controller
             ->select('code', 'sale_details.quantity','name', 'products.id', 'stock')
             ->groupBy('products.code', 'products.name','products.id','products.stock','sale_details.quantity')
             ;
-        
-        // $totales=DB::select('SELECT (select ifnull(sum(c.total),0) from purchases c where DATE(c.purchase_date)=curdate() and c.status="VALID") as totalcompra, (select ifnull(sum(v.total),0) from sales v where DATE(v.sale_date)=curdate() and v.status="VALID") as totalventa');
-        $purchasesToday = Purchase::where('purchase_date', '>=', Carbon::now()->subDays(1))->where('status', 'VALID')->sum('total');
-        $salesToday = Sale::where('sale_date', '>=', Carbon::now()->subDays(1))->where('status', 'VALID')->sum('total');
 
         $productosvendidos=DB::select(
             'SELECT p.code as code, sum(dv.quantity) as quantity, p.name as name , p.id as id , p.stock as stock from products p 

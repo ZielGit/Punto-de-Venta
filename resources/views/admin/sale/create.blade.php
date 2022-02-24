@@ -44,6 +44,39 @@
     </div>
 </div>
 
+<!-- Modal starts -->
+<div class="modal fade" id="clientModal" tabindex="-1" role="dialog" aria-labelledby="clientModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="clientModalLabel">{{ __('Quick Customer Registration') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('clients.store') }}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">{{ __('Name') }}</label>
+                        <input type="text" class="form-control" name="name" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dni">{{ __('DNI') }}</label>
+                        <input type="number" class="form-control" name="dni" id="dni" required>
+                    </div>
+                    <input type="hidden" name="sent_from" value="sale">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">{{ __('To Register') }}</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal">{{ __('Cancel') }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal Ends -->
+
 @endsection
 @section('scripts')
 <script src="{{ asset('melody/js/select2.js') }}"></script>

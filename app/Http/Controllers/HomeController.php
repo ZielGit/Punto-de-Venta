@@ -38,9 +38,9 @@ class HomeController extends Controller
         // $ventasmes=DB::select('SELECT monthname(v.sale_date) as mes, sum(v.total) as totalmes from sales v where v.status="VALID" group by monthname(v.sale_date) order by month(v.sale_date) desc limit 12');
         
         // $ventasdia=DB::select('SELECT DATE_FORMAT(v.sale_date,"%d/%m/%Y") as dia, sum(v.total) as totaldia from sales v where v.status="VALID" group by v.sale_date order by day(v.sale_date) desc limit 15');
-        // DATE_FORMAT cambiando por to_chart para Postgresql
+        // DATE_FORMAT cambiando por to_char para Postgresql
         $ventasdia = Sale::where('status', 'VALID')
-            ->selectRaw("to_chart(sale_date, 'Mon-dd-YYYY') as date")
+            ->selectRaw("to_char(sale_date, 'dd.mm.YYYY') as date")
             ->selectRaw('sum(total) as total')->groupBy('date')->take(30)->get();
 
         $mostSelledProducts = Product::join('sale_details', 'products.id', '=', 'sale_details.product_id')

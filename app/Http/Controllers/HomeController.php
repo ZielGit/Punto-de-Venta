@@ -64,7 +64,7 @@ class HomeController extends Controller
         // );
         // $products = Product::with('provider')->get();
 
-        dd($ventasdia);
+        // dd($ventasdia);
        
         return view('home', compact('purchasesToday','salesToday', 'product', 'provider', 'client', 'user', 'ventasdia'));
     }

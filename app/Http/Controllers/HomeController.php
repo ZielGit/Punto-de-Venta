@@ -39,7 +39,6 @@ class HomeController extends Controller
         
         // $ventasdia=DB::select('SELECT DATE_FORMAT(v.sale_date,"%d/%m/%Y") as dia, sum(v.total) as totaldia from sales v where v.status="VALID" group by v.sale_date order by day(v.sale_date) desc limit 15');
         $ventasdia = Sale::where('status', 'VALID')->select(
-            DB::raw("count(*) as count"),
             DB::raw("sum(total) as total"),
             DB::raw("DATE_FORMAT(sale_date, '%d/%m/%Y') as date")
         )->groupBy('date')->take(30)->get();
@@ -65,7 +64,7 @@ class HomeController extends Controller
         // );
         // $products = Product::with('provider')->get();
 
-        // dd($sale);
+        // dd($ventasdia);
        
         return view('home', compact('purchasesToday','salesToday', 'product', 'provider', 'client', 'user', 'ventasdia'));
     }

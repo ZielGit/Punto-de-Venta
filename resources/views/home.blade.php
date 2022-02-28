@@ -160,8 +160,42 @@
 <script src="{{asset('melody/js/chart.js')}}"></script>
 <script>
     $(function () {
+        var varVenta = document.getElementById('ventas_diarias').getContext('2d');
+        var charVenta = new Chart(varVenta, {
+            type: 'bar',
+            data: {
+                labels: [
+                    <?php foreach ($ventasdia as $ventadia) {
+                        $dia = $ventadia->date;
+                        echo '"'.$dia.'",';} 
+                    ?>
+                ],
+                datasets: [{
+                    label: 'Ventas',
+                    data: [
+                        <?php
+                            foreach ($ventasdia as $reg) {
+                                echo ''.$reg->total.',';
+                            } 
+                        ?>
+                    ],
+                    backgroundColor: 'rgba(57, 44, 112, 0.9)',
+                    borderColor: 'rgba(57, 44, 112, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+
         var varCompra=document.getElementById('compras').getContext('2d');
-    
         var charCompra = new Chart(varCompra, {
             type: 'line',
             data: {
@@ -193,6 +227,7 @@
                 }
             }
         });
+
         var varVenta=document.getElementById('ventas').getContext('2d');
         var charVenta = new Chart(varVenta, {
             type: 'line',
@@ -213,40 +248,6 @@
                     ],
                     backgroundColor: 'rgba(20, 204, 20, 1)',
                     borderColor: 'rgba(54, 162, 235, 0.2)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true
-                        }
-                    }]
-                }
-            }
-        });
-        var varVenta=document.getElementById('ventas_diarias').getContext('2d');
-        var charVenta = new Chart(varVenta, {
-            type: 'bar',
-            data: {
-                labels: [
-                    <?php foreach ($ventasdia as $ventadia) {
-                        $dia = $ventadia->dia;
-                        echo '"'.$dia.'",';} 
-                    ?>
-                ],
-                datasets: [{
-                    label: 'Ventas',
-                    data: [
-                        <?php
-                            foreach ($ventasdia as $reg) {
-                                echo ''.$reg->totaldia.',';
-                            } 
-                        ?>
-                    ],
-                    backgroundColor: 'rgba(57, 44, 112, 0.9)',
-                    borderColor: 'rgba(57, 44, 112, 1)',
                     borderWidth: 1
                 }]
             },

@@ -38,10 +38,8 @@ class HomeController extends Controller
         // $ventasmes=DB::select('SELECT monthname(v.sale_date) as mes, sum(v.total) as totalmes from sales v where v.status="VALID" group by monthname(v.sale_date) order by month(v.sale_date) desc limit 12');
         
         // $ventasdia=DB::select('SELECT DATE_FORMAT(v.sale_date,"%d/%m/%Y") as dia, sum(v.total) as totaldia from sales v where v.status="VALID" group by v.sale_date order by day(v.sale_date) desc limit 15');
-        $ventasdia = Sale::where('status', 'VALID')->select(
-            DB::raw("sum(total) as total"),
-            DB::raw("DATE_FORMAT(sale_date, '%d/%m/%Y') as date")
-        )->groupBy('date')->take(30)->get();
+        $ventasdia = Sale::where('status', 'VALID')->select( DB::raw("DATE_FORMAT(sale_date, '%d/%m/%Y') as date") )
+            ->selectRaw('sum(total) as total')->groupBy('date')->take(30)->get();
 
         $mostSelledProducts = Product::join('sale_details', 'products.id', '=', 'sale_details.product_id')
             
@@ -64,7 +62,7 @@ class HomeController extends Controller
         // );
         // $products = Product::with('provider')->get();
 
-        // dd($ventasdia);
+        dd($ventasdia);
        
         return view('home', compact('purchasesToday','salesToday', 'product', 'provider', 'client', 'user', 'ventasdia'));
     }

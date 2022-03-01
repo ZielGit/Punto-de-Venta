@@ -54,17 +54,17 @@ class HomeController extends Controller
         $purchasesToday = Purchase::where('purchase_date', '>=', Carbon::now()->subDays(1))->where('status', 'VALID')->sum('total');
         $salesToday = Sale::where('sale_date', '>=', Carbon::now()->subDays(1))->where('status', 'VALID')->sum('total');
 
-        // $productosvendidos=DB::select(
-        //     'SELECT p.code as code, sum(dv.quantity) as quantity, p.name as name , p.id as id , p.stock as stock from products p 
-        //     inner join sale_details dv on p.id=dv.product_id 
-        //     inner join sales v on dv.sale_id=v.id where v.status="VALID" 
-        //     and year(v.sale_date)=year(curdate()) 
-        //     group by p.code ,p.name, p.id , p.stock order by sum(dv.quantity) desc limit 10'
-        // );
-        // $products = Product::with('provider')->get();
+        $productosvendidos=DB::select(
+            'SELECT p.code as code, sum(dv.quantity) as quantity, p.name as name , p.id as id , p.stock as stock from products p 
+            inner join sale_details dv on p.id=dv.product_id 
+            inner join sales v on dv.sale_id=v.id where v.status="VALID" 
+            and year(v.sale_date)=year(curdate()) 
+            group by p.code ,p.name, p.id , p.stock order by sum(dv.quantity) desc limit 10'
+        );
+        $products = Product::with('provider')->get();
 
-        dd($ventasdia);
+        // dd($ventasdia);
        
-        return view('home', compact('purchasesToday','salesToday', 'product', 'provider', 'client', 'user', 'ventasdia'));
+        return view('home', compact('purchasesToday','salesToday', 'product', 'provider', 'client', 'user', 'ventasdia', 'productosvendidos'));
     }
 }

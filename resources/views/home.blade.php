@@ -107,7 +107,7 @@
         </div>
     </div> --}}
 
-    {{-- <div class="row">
+    <div class="row">
         <div class="col-12 grid-margin">
             <div class="card">
                 <div class="card-body">
@@ -150,8 +150,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
-
+    </div>
     
 </div>
 @endsection
@@ -192,9 +191,53 @@
         });
 
         // var varCompra=document.getElementById('compras').getContext('2d');
+        // var charVenta = new Chart(varVenta, {
+        //     type: 'line',
+        //     data: {
+        //         labels: [],
+        //         datasets: [{
+        //             label: 'Ventas',
+        //             data: [],
+        //             backgroundColor: 'rgba(20, 204, 20, 1)',
+        //             borderColor: 'rgba(54, 162, 235, 0.2)',
+        //             borderWidth: 1
+        //         }]
+        //     },
+        //     options: {
+        //         scales: {
+        //             yAxes: [{
+        //                 ticks: {
+        //                     beginAtZero:true
+        //                 }
+        //             }]
+        //         }
+        //     }
+        // });
         
 
-    //     var varVenta=document.getElementById('ventas').getContext('2d');
-    
+        // var varVenta = document.getElementById('ventas').getContext('2d');
+        // var charVenta = new Chart(varVenta, {
+        //     type: 'bar',
+        //     data: {
+        //         labels: [],
+        //         datasets: [{
+        //             label: 'Ventas',
+        //             data: [],
+        //             backgroundColor: 'rgba(57, 44, 112, 0.9)',
+        //             borderColor: 'rgba(57, 44, 112, 1)',
+        //             borderWidth: 1
+        //         }]
+        //     },
+        //     options: {
+        //         scales: {
+        //             yAxes: [{
+        //                 ticks: {
+        //                     beginAtZero:true
+        //                 }
+        //             }]
+        //         }
+        //     }
+        // });
+    });
 </script>
 @endsection

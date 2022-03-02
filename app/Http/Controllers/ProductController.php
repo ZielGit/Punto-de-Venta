@@ -65,7 +65,7 @@ class ProductController extends Controller
             $numeroConCeros = str_pad($numero, 8, "0", STR_PAD_LEFT);
             $product->update(['code'=>$numeroConCeros]);
         }
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('success', 'ok');
     }
 
     /**

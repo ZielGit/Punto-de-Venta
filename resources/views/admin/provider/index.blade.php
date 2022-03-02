@@ -85,6 +85,16 @@
 @section('scripts')
 <script src="{{ asset('melody/js/data-table.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+@if (session('success') == 'ok')
+    <script>
+        Swal.fire({
+            icon: "success",
+            title: "El proveedor ha sido creado correctamente",
+            showConfirmButton: false,
+            timer: 2000
+        })
+    </script>
+@endif
 @if (session('eliminar') == 'ok')
     <script>
         Swal.fire(

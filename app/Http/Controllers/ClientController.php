@@ -51,9 +51,9 @@ class ClientController extends Controller
     {
         Client::create($request->all());
         if ($request->sent_from == 'sale') {
-            return redirect()->route('sales.create');
+            return redirect()->route('sales.create')->with('success', 'ok');
         }
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('success', 'ok');
     }
 
     /**

@@ -47,7 +47,6 @@ class HomeController extends Controller
         //     group by v.sale_date order by day(v.sale_date) desc limit 15');
         // Ultimo 30 dias
         $ventasdia = Sale::where('status', 'VALID')->select(
-            DB::raw("count(*) as count"),
             DB::raw("sum(total) as total"),
             DB::raw("DATE_FORMAT(sale_date, '%d/%m/%Y') as date")
         )->groupBy('date')->take(30)->get();

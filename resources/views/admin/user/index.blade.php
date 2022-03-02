@@ -108,7 +108,7 @@
         }
     } );
 
-    $('.frmEliminar').submit(function(e){
+    $(".table").on("submit", ".frmEliminar", function(e){
         e.preventDefault();
         Swal.fire({
             title:'¿Estas Seguro?',

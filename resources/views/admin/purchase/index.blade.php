@@ -53,13 +53,13 @@
 
                                     @if ($purchase->status == 'VALID')
                                     <td>
-                                        <a class="jsgrid-button btn btn-success" href="{{route('change.status.purchases', $purchase)}}" title="{{ __('Edit') }}">
+                                        <a class="jsgrid-button btn btn-success change" href="{{route('change.status.purchases', $purchase)}}" title="{{ __('Edit') }}">
                                             {{ __('Active') }} <i class="fas fa-check"></i>
                                         </a>
                                     </td>
                                     @else
                                     <td>
-                                        <a class="jsgrid-button btn btn-danger" href="{{route('change.status.purchases', $purchase)}}" title="{{ __('Edit') }}">
+                                        <a class="jsgrid-button btn btn-danger disabled" href="{{route('change.status.purchases', $purchase)}}" title="{{ __('Edit') }}">
                                             {{ __('Cancelled') }} <i class="fas fa-times"></i>
                                         </a>
                                     </td>
@@ -91,6 +91,7 @@
 @endsection
 @section('scripts')
 <script src="{{asset('melody/js/data-table.js')}}"></script>
+<script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 <script>
     $('#dataTable').DataTable( {
         "language": {
@@ -106,5 +107,23 @@
             },
         }
     } );
+
+    $(".change").click( function(e){
+        e.preventDefault();
+        Swal.fire({
+            title:'¿Quiere descartar la compra?',
+            text:'¡No podrás revertir esto!',
+            icon:'warning',
+            showCancelButton:true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '¡Si, descártalo!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) =>{
+            if(result.value){
+                this.submit();
+            }
+        })
+    })
 </script>
 @endsection

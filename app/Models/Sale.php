@@ -10,15 +10,15 @@ class Sale extends Model
     use HasFactory;
 
     protected $fillable = [
-        'client_id', 'user_id', 'sale_date', 'tax', 'total', 'status'
+        'customer_id', 'user_id', 'sale_date', 'tax', 'total', 'status'
     ];
 
     public function user(){
         return $this->belongsTo(User::class);
     }
 
-    public function client(){
-        return $this->belongsTo(Client::class);
+    public function customer(){
+        return $this->belongsTo(Customer::class);
     }
 
     public function saleDetails(){

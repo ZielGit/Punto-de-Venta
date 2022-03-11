@@ -1,15 +1,15 @@
 <div class="row">
     <div class="col-md-6">
         <div class="form-group">
-            <label>{{ __('Client') }}</label>
+            <label>{{ __('Customer') }}</label>
             <div class="input-group">
-                <select class="form-control select2" name="client_id" id="client_id">
-                    @foreach ($clients as $client)
-                    <option value="{{$client->id}}">{{$client->name}}</option>
+                <select class="form-control select2" name="customer_id" id="customer_id">
+                    @foreach ($customers as $customer)
+                    <option value="{{ $customer->id }}">{{ $customer->name }}</option>
                     @endforeach
                 </select>
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#clientModal">{{ __('New Client') }}</button>
+                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#clientModal">{{ __('New Customer') }}</button>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
             <select class="form-control select2" name="product_id" id="product_id">
                 <option value="" disabled selected>{{ __('Select a Product') }}</option>
                 @foreach ($products as $product)
-                <option value="{{$product->id}}">{{$product->name}}</option>
+                <option value="{{ $product->id }}">{{ $product->name }}</option>
                 @endforeach
                 {{-- <option value="" disabled selected>Selecccione un producto</option>
                 @foreach ($products as $product)

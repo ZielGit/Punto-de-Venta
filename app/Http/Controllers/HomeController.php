@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Client;
+use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Provider;
 use App\Models\Purchase;
@@ -29,7 +29,7 @@ class HomeController extends Controller
     {
         $product['active'] = Product::where('status','ACTIVE')->count();
         $provider['all'] = Provider::count();
-        $client['all'] = Client::count();
+        $customer['all'] = Customer::count();
         $user['all'] = User::count();
 
         // $totales=DB::select('SELECT (select ifnull(sum(c.total),0) from purchases c where DATE(c.purchase_date)=curdate() and c.status="VALID") as totalcompra, (select ifnull(sum(v.total),0) from sales v where DATE(v.sale_date)=curdate() and v.status="VALID") as totalventa');
@@ -75,6 +75,6 @@ class HomeController extends Controller
 
         // dd($ventasmes);
        
-        return view('home', compact('purchasesToday','salesToday', 'product', 'comprasmes', 'ventasmes', 'ventasdia', 'productosvendidos', 'provider', 'client', 'user'));
+        return view('home', compact('purchasesToday','salesToday', 'product', 'comprasmes', 'ventasmes', 'ventasdia', 'productosvendidos', 'provider', 'customer', 'user'));
     }
 }

@@ -1,18 +1,16 @@
 @extends('layouts.admin')
 @section('title','información del cliente')
-@section('styles')
-@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            {{$client->name}}
+            {{ $customer->name }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{route('clients.index')}}">{{ __('Clients') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{$client->name}}</li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('customers.index') }}">{{ __('Customers') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $customer->name }}</li>
             </ol>
         </nav>
     </div>
@@ -23,7 +21,7 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="border-bottom text-center pb-4">
-                                <h3>{{$client->name}}</h3>
+                                <h3>{{ $customer->name }}</h3>
                                 <div class="d-flex justify-content-between">
                                 </div>
                             </div>
@@ -57,17 +55,17 @@
                                             <div class="form-group col-md-6">
                                                 <strong><i class="fab fa-product-hunt mr-1"></i> {{ __('Name') }}</strong>
                                                 <p class="text-muted">
-                                                    {{$client->name}}
+                                                    {{ $customer->name }}
                                                 </p>
                                                 <hr>
                                                 <strong><i class="fas fa-address-card mr-1"></i> {{ __('DNI Number') }}</strong>
                                                 <p class="text-muted">
-                                                    {{$client->dni}}
+                                                    {{ $customer->dni }}
                                                 </p>
                                                 <hr>
                                                 <strong><i class="fas fa-address-card mr-1"></i> {{ __('RUC Number') }}</strong>
                                                 <p class="text-muted">
-                                                    {{$client->ruc}}
+                                                    {{ $customer->ruc }}
                                                 </p>
                                                 <hr>
                                             </div>
@@ -75,17 +73,17 @@
                                             <div class="form-group col-md-6">
                                                 <strong><i class="fas fa-mobile mr-1"></i> {{ __('Address') }}</strong>
                                                 <p class="text-muted">
-                                                    {{$client->address}}
+                                                    {{ $customer->address }}
                                                 </p>
                                                 <hr>
                                                 <strong><i class="fas fa-envelope mr-1"></i> {{ __('Telephone / Mobile') }}</strong>
                                                 <p class="text-muted">
-                                                    {{$client->phone}}
+                                                    {{ $customer->phone }}
                                                 </p>
                                                 <hr>
                                                 <strong><i class="fas fa-map-marked-alt mr-1"></i> {{ __('Email') }}</strong>
                                                 <p class="text-muted">
-                                                    {{$client->email}}
+                                                    {{ $customer->email }}
                                                 </p>
                                                 <hr>
                                             </div>
@@ -115,38 +113,38 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($client->sales as $sale)
+                                                        @foreach ($customer->sales as $sale)
                                                         <tr>
-                                                            <th scope="row">{{$sale->id}}</th>
-                                                            <td>{{$sale->purchase_date}}</td>
-                                                            <td>{{$sale->total}}</td>
+                                                            <th scope="row">{{ $sale->id }}</th>
+                                                            <td>{{ $sale->sale_date }}</td>
+                                                            <td>{{ $sale->total }}</td>
                         
                                                             @if ($sale->status == 'VALID')
                                                             <td>
-                                                                <a class="jsgrid-button btn btn-success" href="{{route('change.status.sales', $sale)}}" title="{{ __('Edit') }}">
+                                                                <a class="jsgrid-button btn btn-success" href="{{ route('change.status.sales', $sale) }}" title="{{ __('Edit') }}">
                                                                     {{ __('Active') }} <i class="fas fa-check"></i>
                                                                 </a>
                                                             </td>
                                                             @else
                                                             <td>
-                                                                <a class="jsgrid-button btn btn-danger" href="{{route('change.status.sales', $sale)}}" title="{{ __('Edit') }}">
+                                                                <a class="jsgrid-button btn btn-danger" href="{{ route('change.status.sales', $sale) }}" title="{{ __('Edit') }}">
                                                                     {{ __('Cancelled') }} <i class="fas fa-times"></i>
                                                                 </a>
                                                             </td>
                                                             @endif
                                                             <td>
                                                                 @can('sales.pdf')
-                                                                    <a href="{{route('sales.pdf', $sale)}}" title="{{ __('Pdf') }}">
+                                                                    <a href="{{ route('sales.pdf', $sale) }}" title="{{ __('Pdf') }}">
                                                                         <span class="btn btn-outline-primary"><i class="far fa-file-pdf"></i></span>
                                                                     </a>
                                                                 @endcan
                                                                 @can('sales.print')
-                                                                    <a href="{{route('sales.print', $sale)}}" title="{{ __('To print') }}">
+                                                                    <a href="{{ route('sales.print', $sale) }}" title="{{ __('To print') }}">
                                                                         <span class="btn btn-outline-warning"><i class="fas fa-print"></i></span>
                                                                     </a>
                                                                 @endcan
                                                                 @can('sales.show')
-                                                                    <a href="{{route('sales.show', $sale)}}" title="{{ __('Details')}}">
+                                                                    <a href="{{ route('sales.show', $sale) }}" title="{{ __('Details')}}">
                                                                         <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
                                                                     </a>
                                                                 @endcan
@@ -173,7 +171,7 @@
                     </div>
                 </div>
                 <div class="card-footer text-muted">
-                    <a href="{{route('clients.index')}}" class="btn btn-primary float-right">{{ __('Return') }}</a>
+                    <a href="{{ route('customers.index') }}" class="btn btn-primary float-right">{{ __('Return') }}</a>
                 </div>
             </div>
         </div>

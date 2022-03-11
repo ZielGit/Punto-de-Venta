@@ -20,14 +20,14 @@
                 <div class="card-body">
                     <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
                         <div class="statistics-item">
-                            <p><i class="icon-sm fas fa-cart-arrow-down mr-2"></i>  {{ __("Today's Sales") }}</p>
+                            <p><i class="icon-sm fas fa-cart-arrow-down mr-2"></i> {{ __('Shopping Today') }}</p>
                             <h2>S/. {{ $purchasesToday }}</h2>
                             <label class="badge badge-outline-success badge-pill">
                                 <a href="{{ route('purchases.index') }}" class="text-success"> {{ __('More Info') }}</a>
                             </label>
                         </div>
                         <div class="statistics-item">
-                            <p><i class="icon-sm fas fa-shopping-cart mr-2"></i>  {{ __('Shopping Today') }}</p>
+                            <p><i class="icon-sm fas fa-shopping-cart mr-2"></i> {{ __("Today's Sales") }}</p>
                             <h2>S/. {{ $salesToday }}</h2>
                             <label class="badge badge-outline-success badge-pill">
                                 <a href="{{ route('sales.index') }}" class="text-success"> {{ __('More Info') }}</a>
@@ -49,10 +49,10 @@
                         </div>
                         
                         <div class="statistics-item">
-                            <p><i class="icon-sm fas fa-users mr-2"></i>  {{ __('Clients') }}</p>
-                            <h2>{{ $client['all'] }}</h2>
+                            <p><i class="icon-sm fas fa-users mr-2"></i>  {{ __('Customers') }}</p>
+                            <h2>{{ $customer['all'] }}</h2>
                             <label class="badge badge-outline-success badge-pill">
-                                <a href="{{ route('clients.index') }}" class="text-success"> {{ __('More Info') }}</a>
+                                <a href="{{ route('customers.index') }}" class="text-success"> {{ __('More Info') }}</a>
                             </label>
                         </div>
                         <div class="statistics-item">
@@ -130,14 +130,14 @@
                             <tbody>
                                 @foreach ($productosvendidos as $productosvendido)
                                 <tr>
-                                    <td>{{$productosvendido->id}}</td>
-                                    <td>{{$productosvendido->name}}</td>
-                                    <td>{{$productosvendido->code}}</td>
-                                    <td><strong>{{$productosvendido->stock}}</strong> {{ __('Units') }}</td>
-                                    <td><strong>{{$productosvendido->quantity}}</strong> {{ __('Units') }}</td>
+                                    <td>{{ $productosvendido->id }}</td>
+                                    <td>{{ $productosvendido->name }}</td>
+                                    <td>{{ $productosvendido->code }}</td>
+                                    <td><strong>{{ $productosvendido->stock }}</strong> {{ __('Units') }}</td>
+                                    <td><strong>{{ $productosvendido->quantity }}</strong> {{ __('Units') }}</td>
                                     <td>
                                         <a class="btn btn-primary"
-                                            href="{{route('products.show', $productosvendido->id)}}">
+                                            href="{{ route('products.show', $productosvendido->id) }}">
                                             <i class="far fa-eye"></i>
                                             {{ __('See details') }}
                                         </a>

@@ -6,7 +6,7 @@ use App\Models\Sale;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSale;
 use App\Http\Requests\UpdateSale;
-use App\Models\Client;
+use App\Models\Customer;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -48,9 +48,9 @@ class SaleController extends Controller
      */
     public function create()
     {
-        $clients = Client::get();
+        $customers = Customer::get();
         $products = Product::get();
-        return view('admin.sale.create', compact('clients','products'));
+        return view('admin.sale.create', compact('customers','products'));
     }
 
     /**

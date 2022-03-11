@@ -2,11 +2,16 @@
     <div class="form-group col-md-8">
         <div class="form-group">
             <label for="provider_id">{{ __('Provider') }}</label>
-            <select class="form-control select2" name="provider_id" id="provider_id">
-                @foreach ($providers as $provider)
-                    <option value="{{$provider->id}}">{{$provider->name}}</option>
-                @endforeach
-            </select>
+            <div class="input-group">
+                <select class="form-control select2" name="provider_id" id="provider_id">
+                    @foreach ($providers as $provider)
+                        <option value="{{$provider->id}}">{{$provider->name}}</option>
+                    @endforeach
+                </select>
+                <div class="input-group-append">
+                    <button class="btn btn-sm btn-primary" type="button" data-toggle="modal" data-target="#providerModal">{{ __('New Provider') }}</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="form-group col-md-4">

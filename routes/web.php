@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProductController;
@@ -32,12 +32,11 @@ Route::get('/', function () {
 Route::get('lang/change', [LanguageController::class, 'change'])->name('changeLang');
 
 Route::get('sales/reports_day', [ReportController::class, 'reports_day'])->name('reports.day');
-
 Route::get('sales/reports_date', [ReportController::class, 'reports_date'])->name('reports.date');
 Route::post('sales/report_results', [ReportController::class, 'report_results'])->name('report.results');
 
 Route::resource('categories', CategoryController::class)->names('categories');
-Route::resource('clients', ClientController::class)->names('clients');
+Route::resource('customers', CustomerController::class)->names('customers');
 Route::resource('products', ProductController::class)->names('products');
 Route::resource('providers', ProviderController::class)->names('providers');
 Route::resource('purchases', PurchaseController::class)->names('purchases')->except(['edit','update','destroy']);
@@ -64,6 +63,8 @@ Route::get('get_products_by_id', [ProductController::class,'get_products_by_id']
 
 Route::get('home', [HomeController::class, 'index'])->name('home');
 
+Route::get('search', [CustomerController::class, 'search'])->name('search');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');
+})->name('dashboard1');

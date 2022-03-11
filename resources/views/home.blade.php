@@ -20,14 +20,14 @@
                 <div class="card-body">
                     <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
                         <div class="statistics-item">
-                            <p><i class="icon-sm fas fa-cart-arrow-down mr-2"></i>  {{ __("Today's Sales") }}</p>
+                            <p><i class="icon-sm fas fa-cart-arrow-down mr-2"></i> {{ __('Shopping Today') }}</p>
                             <h2>S/. {{ $purchasesToday }}</h2>
                             <label class="badge badge-outline-success badge-pill">
                                 <a href="{{ route('purchases.index') }}" class="text-success"> {{ __('More Info') }}</a>
                             </label>
                         </div>
                         <div class="statistics-item">
-                            <p><i class="icon-sm fas fa-shopping-cart mr-2"></i>  {{ __('Shopping Today') }}</p>
+                            <p><i class="icon-sm fas fa-shopping-cart mr-2"></i> {{ __("Today's Sales") }}</p>
                             <h2>S/. {{ $salesToday }}</h2>
                             <label class="badge badge-outline-success badge-pill">
                                 <a href="{{ route('sales.index') }}" class="text-success"> {{ __('More Info') }}</a>
@@ -49,10 +49,10 @@
                         </div>
                         
                         <div class="statistics-item">
-                            <p><i class="icon-sm fas fa-users mr-2"></i>  {{ __('Clients') }}</p>
-                            <h2>{{ $client['all'] }}</h2>
+                            <p><i class="icon-sm fas fa-users mr-2"></i>  {{ __('Customers') }}</p>
+                            <h2>{{ $customer['all'] }}</h2>
                             <label class="badge badge-outline-success badge-pill">
-                                <a href="{{ route('clients.index') }}" class="text-success"> {{ __('More Info') }}</a>
+                                <a href="{{ route('customers.index') }}" class="text-success"> {{ __('More Info') }}</a>
                             </label>
                         </div>
                         <div class="statistics-item">
@@ -82,7 +82,7 @@
         </div>
     </div>
 
-    {{-- <div class="row">
+    <div class="row">
         <div class="col-md-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
@@ -105,7 +105,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
     <div class="row">
         <div class="col-12 grid-margin">
@@ -130,14 +130,14 @@
                             <tbody>
                                 @foreach ($productosvendidos as $productosvendido)
                                 <tr>
-                                    <td>{{$productosvendido->id}}</td>
-                                    <td>{{$productosvendido->name}}</td>
-                                    <td>{{$productosvendido->code}}</td>
-                                    <td><strong>{{$productosvendido->stock}}</strong> {{ __('Units') }}</td>
-                                    <td><strong>{{$productosvendido->quantity}}</strong> {{ __('Units') }}</td>
+                                    <td>{{ $productosvendido->id }}</td>
+                                    <td>{{ $productosvendido->name }}</td>
+                                    <td>{{ $productosvendido->code }}</td>
+                                    <td><strong>{{ $productosvendido->stock }}</strong> {{ __('Units') }}</td>
+                                    <td><strong>{{ $productosvendido->quantity }}</strong> {{ __('Units') }}</td>
                                     <td>
                                         <a class="btn btn-primary"
-                                            href="{{route('products.show', $productosvendido->id)}}">
+                                            href="{{ route('products.show', $productosvendido->id) }}">
                                             <i class="far fa-eye"></i>
                                             {{ __('See details') }}
                                         </a>
@@ -172,7 +172,11 @@
                 datasets: [{
                     label: 'Ventas',
                     data: [
-                        <?php foreach ($ventasdia as $reg) { echo ''.$reg->total.','; } ?>
+                        <?php
+                            foreach ($ventasdia as $reg) {
+                                echo ''.$reg->total.',';
+                            } 
+                        ?>
                     ],
                     backgroundColor: 'rgba(57, 44, 112, 0.9)',
                     borderColor: 'rgba(57, 44, 112, 1)',
@@ -190,54 +194,72 @@
             }
         });
 
-        // var varCompra=document.getElementById('compras').getContext('2d');
-        // var charVenta = new Chart(varVenta, {
-        //     type: 'line',
-        //     data: {
-        //         labels: [],
-        //         datasets: [{
-        //             label: 'Ventas',
-        //             data: [],
-        //             backgroundColor: 'rgba(20, 204, 20, 1)',
-        //             borderColor: 'rgba(54, 162, 235, 0.2)',
-        //             borderWidth: 1
-        //         }]
-        //     },
-        //     options: {
-        //         scales: {
-        //             yAxes: [{
-        //                 ticks: {
-        //                     beginAtZero:true
-        //                 }
-        //             }]
-        //         }
-        //     }
-        // });
-        
+        var varCompra=document.getElementById('compras').getContext('2d');
+        var charCompra = new Chart(varCompra, {
+            type: 'line',
+            data: {
+                labels: [
+                    <?php foreach ($comprasmes as $reg) { 
+                        setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+                        $mes_traducido=strftime('%B',strtotime($reg->mes));
+                        echo '"'.$mes_traducido.'",';} 
+                    ?>
+                ],
+                datasets: [{
+                    label: 'Compras',
+                    data: [
+                        <?php foreach ($comprasmes as $reg) {
+                            echo ''.$reg->totalmes.',';} 
+                        ?>
+                    ],
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth:3
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
 
-        // var varVenta = document.getElementById('ventas').getContext('2d');
-        // var charVenta = new Chart(varVenta, {
-        //     type: 'bar',
-        //     data: {
-        //         labels: [],
-        //         datasets: [{
-        //             label: 'Ventas',
-        //             data: [],
-        //             backgroundColor: 'rgba(57, 44, 112, 0.9)',
-        //             borderColor: 'rgba(57, 44, 112, 1)',
-        //             borderWidth: 1
-        //         }]
-        //     },
-        //     options: {
-        //         scales: {
-        //             yAxes: [{
-        //                 ticks: {
-        //                     beginAtZero:true
-        //                 }
-        //             }]
-        //         }
-        //     }
-        // });
+        var varVenta=document.getElementById('ventas').getContext('2d');
+        var charVenta = new Chart(varVenta, {
+            type: 'line',
+            data: {
+                labels: [
+                    <?php foreach ($ventasmes as $reg) {
+                        setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+                        $mes_traducido=strftime('%B',strtotime($reg->mes));
+                        echo '"'. $mes_traducido.'",';} 
+                    ?>
+                ],
+                datasets: [{
+                    label: 'Ventas',
+                    data: [
+                        <?php foreach ($ventasmes as $reg) {
+                            echo ''. $reg->totalmes.',';} 
+                        ?>
+                    ],
+                    backgroundColor: 'rgba(20, 204, 20, 1)',
+                    borderColor: 'rgba(54, 162, 235, 0.2)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
     });
 </script>
 @endsection

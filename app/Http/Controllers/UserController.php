@@ -54,7 +54,7 @@ class UserController extends Controller
         $user = User::create($request->all());
         $user->update(['password'=> Hash::make($request->password)]);
         $user->roles()->sync($request->get('roles'));
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'ok');
     }
 
     /**

@@ -83,6 +83,16 @@
 @section('scripts')
 <script src="{{ asset('melody/js/data-table.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+@if (session('success') == 'ok')
+    <script>
+        Swal.fire({
+            icon: "success",
+            title: "El usuario ha sido creado correctamente",
+            showConfirmButton: false,
+            timer: 2000
+        })
+    </script>
+@endif
 @if (session('eliminar') == 'ok')
     <script>
         Swal.fire(
@@ -108,7 +118,7 @@
         }
     } );
 
-    $('.frmEliminar').submit(function(e){
+    $(".table").on("submit", ".frmEliminar", function(e){
         e.preventDefault();
         Swal.fire({
             title:'¿Estas Seguro?',

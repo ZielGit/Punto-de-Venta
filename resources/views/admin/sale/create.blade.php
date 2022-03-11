@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 @section('title','Registro de venta')
-@section('styles')
-@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -10,8 +8,8 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{route('sales.index')}}">{{ __('Sales') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('sales.index') }}">{{ __('Sales') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Sale Register') }}</li>
             </ol>
         </nav>
@@ -20,7 +18,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 {{-- {!! Form::open(['route'=>'sales.store', 'method'=>'POST']) !!} --}}
-                <form action="{{route('sales.store')}}" method="post">
+                <form action="{{ route('sales.store') }}" method="post">
                     @csrf
                     <div class="card-body">
                         
@@ -33,7 +31,7 @@
                     </div>
                     <div class="card-footer text-muted">
                         <button type="submit" id="guardar" class="btn btn-primary float-right">{{ __('To Register') }}</button>
-                        <a href="{{route('sales.index')}}" class="btn btn-light">
+                        <a href="{{ route('sales.index') }}" class="btn btn-light">
                             {{ __('Cancel') }}
                         </a>
                     </div>
@@ -44,10 +42,58 @@
     </div>
 </div>
 
+<!-- Modal starts -->
+<div class="modal fade" id="clientModal" tabindex="-1" role="dialog" aria-labelledby="clientModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="clientModalLabel">{{ __('Quick Customer Registration') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('customers.store') }}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="dni">{{ __('DNI') }}</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="dni" id="dni" required>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" id="Search">{{ __('Search') }}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">{{ __('Name') }}</label>
+                        <input type="text" class="form-control" name="name" id="name" required>
+                    </div>
+                    <input type="hidden" name="sent_from" value="sale">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">{{ __('To Register') }}</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal">{{ __('Cancel') }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal Ends -->
+
 @endsection
 @section('scripts')
 <script src="{{ asset('melody/js/select2.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+@if (session('success') == 'ok')
+    <script>
+        Swal.fire({
+            icon: "success",
+            title: "El cliente ha sido creado correctamente",
+            showConfirmButton: false,
+            timer: 2000
+        })
+    </script>
+@endif
 <script>
     $(document).ready(function () {
         $("#agregar").click(function () {
@@ -70,17 +116,17 @@
 
     var product_id = $('#product_id');
         
-        product_id.change(function(){
-            $.ajax({
-                url: "{{route('get_products_by_id')}}",
-                method: 'GET',
-                data:{
-                    product_id: product_id.val(),
-                },
-                success: function(data){
-                    $("#price").val(data.sell_price);
-                    $("#stock").val(data.stock);
-                    $("#code").val(data.code);
+    product_id.change(function(){
+        $.ajax({
+            url: "{{ route('get_products_by_id') }}",
+            method: 'GET',
+            data:{
+                product_id: product_id.val(),
+            },
+            success: function(data){
+                $("#price").val(data.sell_price);
+                $("#stock").val(data.stock);
+                $("#code").val(data.code);
             }
         });
     });
@@ -88,7 +134,7 @@
     $(obtener_registro());
     function obtener_registro(code){
         $.ajax({
-            url: "{{route('get_products_by_barcode')}}",
+            url: "{{ route('get_products_by_barcode') }}",
             type: 'GET',
             data:{
                 code: code
@@ -178,5 +224,20 @@
         $("#fila" + index).remove();
         evaluar();
     }
+
+    $('#Search').click(function(){
+        var dni = $('#dni');
+        $.ajax({
+            url: "{{ route('search') }}",
+            method: 'GET',
+            data: {
+                dni: dni.val(),
+            },
+            dataType: 'json',
+            success:function(data){
+                $('#name').val(data.nombre);
+            }
+        });
+    });
 </script>
 @endsection

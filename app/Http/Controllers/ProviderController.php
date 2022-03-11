@@ -48,7 +48,10 @@ class ProviderController extends Controller
     public function store(StoreProvider $request)
     {
         Provider::create($request->all());
-        return redirect()->route('providers.index');
+        if ($request->sent_from == 'purchase') {
+            return redirect()->route('purchases.create')->with('success', 'ok');
+        }
+        return redirect()->route('providers.index')->with('success', 'ok');
     }
 
     /**

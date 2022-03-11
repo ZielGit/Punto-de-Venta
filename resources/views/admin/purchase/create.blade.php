@@ -42,13 +42,75 @@
         </div>
     </div>
 </div>
+
+<!-- Modal starts -->
+<div class="modal fade" id="providerModal" tabindex="-1" role="dialog" aria-labelledby="providerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="providerModalLabel">{{ __('Quick Supplier Registration') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('providers.store') }}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">{{ __('Name') }}</label>
+                        <input type="text" class="form-control" name="name" id="name" value="{{old('name')}}">
+                        @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="email">{{ __('Email') }}</label>
+                        <input type="email" class="form-control" name="email" id="email" value="{{old('email')}}" placeholder="ejemplo@gmail.com">
+                        @error('email')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="ruc_number">{{ __('RUC Number') }}</label>
+                        <input type="number" class="form-control" name="ruc_number" id="ruc_number" value="{{old('ruc_number')}}">
+                        @error('ruc_number')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">{{ __('Telephone / Mobile') }}</label>
+                        <input type="number" class="form-control" name="phone" id="phone" value="{{old('phone')}}">
+                        @error('phone')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <input type="hidden" name="sent_from" value="purchase">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">{{ __('To Register') }}</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal">{{ __('Cancel') }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal Ends -->
 @endsection
 @section('scripts')
 {{-- {!! Html::script('melody/js/alerts.js') !!} --}}
 {{-- {!! Html::script('melody/js/avgrund.js') !!} --}}
 <script src="{{ asset('melody/js/select2.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
-
+@if (session('success') == 'ok')
+    <script>
+        Swal.fire({
+            icon: "success",
+            title: "El proveedor ha sido creado correctamente",
+            showConfirmButton: false,
+            timer: 2000
+        })
+    </script>
+@endif
 <script>
     $(document).ready(function () {
         $("#agregar").click(function () {
@@ -159,6 +221,5 @@
         $("#fila" + index).remove();
         evaluar();
     }
-    
 </script>
 @endsection

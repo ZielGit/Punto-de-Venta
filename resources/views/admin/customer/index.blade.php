@@ -6,12 +6,12 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            {{ __('Clients') }}
+            {{ __('Customers') }}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Clients') }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Customers') }}</li>
             </ol>
         </nav>
     </div>
@@ -19,8 +19,8 @@
     @can('clients.create')
         <div class="row">
             <div class="col mb-2">
-                <a href="{{route('clients.create')}}">
-                    <span class="btn btn-primary">+ {{ __('New Client') }}</span>
+                <a href="{{route('customers.create')}}">
+                    <span class="btn btn-primary">+ {{ __('New Customer') }}</span>
                 </a>
             </div>
         </div>
@@ -44,24 +44,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($clients as $client)
+                                @foreach ($customers as $customer)
                                 <tr>
-                                    <th scope="row">{{$client->id}}</th>
-                                    <td>{{$client->name}}</td>
-                                    <td>{{$client->dni}}</td>
-                                    <td>{{$client->phone}}</td>
-                                    <td>{{$client->email}}</td>
+                                    <th scope="row">{{ $customer->id }}</th>
+                                    <td>{{ $customer->name }}</td>
+                                    <td>{{ $customer->dni }}</td>
+                                    <td>{{ $customer->phone }}</td>
+                                    <td>{{ $customer->email }}</td>
                                     <td>     
-                                        <form action="{{route('clients.destroy', $client)}}" class="frmEliminar" method="post">
+                                        <form action="{{ route('customers.destroy', $customer) }}" class="frmEliminar" method="post">
                                             @csrf
                                             @method('delete')
                                             @can('clients.show')
-                                                <a href="{{route('clients.show', $client)}}" title="{{ __('Details') }}">
+                                                <a href="{{ route('customers.show', $customer) }}" title="{{ __('Details') }}">
                                                     <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
                                                 </a>
                                             @endcan
                                             @can('clients.edit')
-                                                <a href="{{route('clients.edit', $client)}}" title="{{ __('Edit') }}">
+                                                <a href="{{route('customers.edit', $customer)}}" title="{{ __('Edit') }}">
                                                     <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
                                                 </a>
                                             @endcan
@@ -87,6 +87,16 @@
 @section('scripts')
 <script src="{{ asset('melody/js/data-table.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+@if (session('success') == 'ok')
+    <script>
+        Swal.fire({
+            icon: "success",
+            title: "El cliente ha sido creado correctamente",
+            showConfirmButton: false,
+            timer: 2000
+        })
+    </script>
+@endif
 @if (session('eliminar') == 'ok')
     <script>
         Swal.fire(
@@ -112,7 +122,7 @@
         }
     } );
 
-    $('.frmEliminar').submit(function(e){
+    $(".table").on("submit", ".frmEliminar", function(e){
         e.preventDefault();
         Swal.fire({
             title:'¿Estas Seguro?',

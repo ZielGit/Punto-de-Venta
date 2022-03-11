@@ -4,9 +4,9 @@
       <div class="nav-link">
         <div class="profile-image">
           @if (Auth::user()->profile_photo_path)
-            <img src="/storage/{{Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->name }}" />
+            <img src="/storage/{{ Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->name }}" />
           @else
-            <img src="{{Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /> 
+            <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /> 
           @endif
         </div>
         <div class="profile-name">
@@ -81,9 +81,9 @@
     @endcan
     @can('clients.index')
       <li class="nav-item">
-        <a class="nav-link" href="{{route('clients.index')}}">
+        <a class="nav-link" href="{{ route('customers.index') }}">
             <i class="fas fa-users menu-icon"></i>
-            <span class="menu-title">{{__('Clients')}}</span>
+            <span class="menu-title">{{ __('Customers') }}</span>
         </a>
       </li>
     @endcan

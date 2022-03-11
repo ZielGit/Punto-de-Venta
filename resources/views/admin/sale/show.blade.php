@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 @section('title','Detalles de venta')
-@section('styles')
-@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -10,8 +8,8 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{route('sales.index')}}">{{ __('Sales') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('sales.index') }}">{{ __('Sales') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Sale Details') }}</li>
             </ol>
         </nav>
@@ -22,16 +20,16 @@
                 <div class="card-body">
                     <div class="form-group row">
                         <div class="col-md-4 text-center">
-                            <label class="form-control-label"><strong>{{ __('Client') }}</strong></label>
-                            <p><a href="{{route('clients.show', $sale->client)}}">{{$sale->client->name}}</a></p>
+                            <label class="form-control-label"><strong>{{ __('Customer') }}</strong></label>
+                            <p><a href="{{ route('customers.show', $sale->customer) }}">{{ $sale->customer->name }}</a></p>
                         </div>
                         <div class="col-md-4 text-center">
                             <label class="form-control-label"><strong>{{ __('Seller') }}</strong></label>
-                            <p>{{$sale->user->name}}</p>
+                            <p>{{ $sale->user->name }}</p>
                         </div>
                         <div class="col-md-4 text-center">
                             <label class="form-control-label"><strong>{{ __('Sales Number') }}</strong></label>
-                            <p>{{$sale->id}}</p>
+                            <p>{{ $sale->id }}</p>
                         </div>
                     </div>
                     <br /><br />
@@ -54,16 +52,16 @@
                                             <p align="right">{{ __('SUBTOTAL') }}:</p>
                                         </th>
                                         <th>
-                                            <p align="right">s/{{number_format($subtotal,2)}}</p>
+                                            <p align="right">s/{{ number_format($subtotal,2) }}</p>
                                         </th>
                                     </tr>
 
                                     <tr>
                                         <th colspan="4">
-                                            <p align="right">{{ __('TOTAL TAX') }} ({{$sale->tax}}%):</p>
+                                            <p align="right">{{ __('TOTAL TAX') }} ({{ $sale->tax }}%):</p>
                                         </th>
                                         <th>
-                                            <p align="right">s/{{number_format($subtotal*$sale->tax/100,2)}}</p>
+                                            <p align="right">s/{{ number_format($subtotal*$sale->tax/100,2) }}</p>
                                         </th>
                                     </tr>
                                     <tr>
@@ -71,18 +69,18 @@
                                             <p align="right">{{ __('TOTAL') }}:</p>
                                         </th>
                                         <th>
-                                            <p align="right">s/{{number_format($sale->total,2)}}</p>
+                                            <p align="right">s/{{ number_format($sale->total,2) }}</p>
                                         </th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
                                     @foreach($saleDetails as $saleDetail)
                                     <tr>
-                                        <td>{{$saleDetail->product->name}}</td>
-                                        <td>s/ {{$saleDetail->price}}</td>
-                                        <td>{{$saleDetail->discount}} %</td>
-                                        <td>{{$saleDetail->quantity}}</td>
-                                        <td>s/{{number_format($saleDetail->quantity*$saleDetail->price - $saleDetail->quantity*$saleDetail->price*$saleDetail->discount/100,2)}}
+                                        <td>{{ $saleDetail->product->name }}</td>
+                                        <td>s/ {{ $saleDetail->price }}</td>
+                                        <td>{{ $saleDetail->discount }} %</td>
+                                        <td>{{ $saleDetail->quantity }}</td>
+                                        <td>s/{{ number_format($saleDetail->quantity*$saleDetail->price - $saleDetail->quantity*$saleDetail->price*$saleDetail->discount/100,2) }}
                                         </td>
                                     </tr>
                                     @endforeach
@@ -92,7 +90,7 @@
                     </div>
                 </div>
                 <div class="card-footer text-muted">
-                    <a href="{{route('sales.index')}}" class="btn btn-primary float-right">{{ __('Return') }}</a>
+                    <a href="{{ route('sales.index') }}" class="btn btn-primary float-right">{{ __('Return') }}</a>
                 </div>
             </div>
         </div>

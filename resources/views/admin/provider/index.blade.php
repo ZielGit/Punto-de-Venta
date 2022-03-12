@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 @section('title','Gestión de Proveedores')
-@section('styles')
-@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -10,7 +8,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Dashboard') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Providers') }}</li>
             </ol>
         </nav>
@@ -19,7 +17,7 @@
     @can('providers.create')
         <div class="row">
             <div class="col mb-2">
-                <a href="{{route('providers.create')}}">
+                <a href="{{ route('providers.create') }}">
                     <span class="btn btn-primary">+ {{ __('New Provider') }}</span>
                 </a>
             </div>
@@ -45,21 +43,21 @@
                             <tbody>
                                 @foreach ($providers as $provider)
                                 <tr>
-                                    <th scope="row">{{$provider->id}}</th>
-                                    <td>{{$provider->name}}</td>
-                                    <td>{{$provider->email}}</td>
-                                    <td>{{$provider->phone}}</td>
+                                    <th scope="row">{{ $provider->id }}</th>
+                                    <td>{{ $provider->name }}</td>
+                                    <td>{{ $provider->email }}</td>
+                                    <td>{{ $provider->phone }}</td>
                                     <td>
                                         <form action="{{ route('providers.destroy', $provider) }}" class="frmEliminar" method="post">
                                             @csrf
                                             @method('delete')
                                             @can('providers.show')
-                                                <a href="{{route('providers.show', $provider)}}" title="{{ __('Details') }}">
+                                                <a href="{{ route('providers.show', $provider) }}" title="{{ __('Details') }}">
                                                     <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
                                                 </a>
                                             @endcan
                                             @can('providers.edit')
-                                                <a href="{{route('providers.edit', $provider)}}" title="{{ __('Edit') }}">
+                                                <a href="{{ route('providers.edit', $provider) }}" title="{{ __('Edit') }}">
                                                     <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
                                                 </a>
                                             @endcan
@@ -90,6 +88,17 @@
         Swal.fire({
             icon: "success",
             title: "El proveedor ha sido creado correctamente",
+            showConfirmButton: false,
+            timer: 2000
+        })
+    </script>
+@endif
+@if (session('update') == 'ok')
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: "success",
+            title: "El proveedor ha sido actualizado correctamente",
             showConfirmButton: false,
             timer: 2000
         })

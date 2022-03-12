@@ -13,11 +13,11 @@ class CustomerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:clients.index')->only('index');
-        $this->middleware('can:clients.create')->only('create', 'store');
-        $this->middleware('can:clients.edit')->only('edit', 'update');
-        $this->middleware('can:clients.show')->only('show');
-        $this->middleware('can:clients.destroy')->only('destroy');
+        $this->middleware('can:customers.index')->only('index');
+        $this->middleware('can:customers.create')->only('create', 'store');
+        $this->middleware('can:customers.edit')->only('edit', 'update');
+        $this->middleware('can:customers.show')->only('show');
+        $this->middleware('can:customers.destroy')->only('destroy');
     }
     
     /**
@@ -92,7 +92,7 @@ class CustomerController extends Controller
     public function update(UpdateCustomer $request, Customer $customer)
     {
         $customer->update($request->all());
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('update', 'ok');
     }
 
     /**

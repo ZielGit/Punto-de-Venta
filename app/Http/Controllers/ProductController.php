@@ -109,7 +109,7 @@ class ProductController extends Controller
         $product->update($request->all()+[
             'image'=>$image_name,
         ]);
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('update', 'ok');
     }
 
     /**

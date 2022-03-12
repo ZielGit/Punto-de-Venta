@@ -49,7 +49,7 @@ class SaleController extends Controller
     public function create()
     {
         $customers = Customer::get();
-        $products = Product::get();
+        $products = Product::where('status','ACTIVE')->get();
         return view('admin.sale.create', compact('customers','products'));
     }
 

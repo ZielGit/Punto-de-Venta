@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 @section('title','Gestión de productos')
-@section('styles')
-@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -10,7 +8,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Dashboard') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Products') }}</li>
             </ol>
         </nav>
@@ -19,7 +17,7 @@
     @can('products.create')
         <div class="row">
             <div class="col mb-2">
-                <a href="{{route('products.create')}}">
+                <a href="{{ route('products.create') }}">
                     <span class="btn btn-primary">+ {{ __('New Product') }}</span>
                 </a>
             </div>
@@ -46,36 +44,36 @@
                             <tbody>
                                 @foreach ($products as $product)
                                 <tr>
-                                    <th scope="row">{{$product->id}}</th>
-                                    <td>{{$product->name}}</td>
-                                    <td>{{$product->stock}}</td>
+                                    <th scope="row">{{ $product->id }}</th>
+                                    <td>{{ $product->name }}</td>
+                                    <td>{{ $product->stock }}</td>
 
                                     @if ($product->status == 'ACTIVE')
                                     <td>
-                                        <a class="jsgrid-button btn btn-success" href="{{route('change.status.products', $product)}}" title="{{ __('Edit') }}">
+                                        <a class="jsgrid-button btn btn-success" href="{{ route('change.status.products', $product) }}" title="{{ __('Edit') }}">
                                             {{ __('Active') }} <i class="fas fa-check"></i>
                                         </a>
                                     </td>
                                     @else
                                     <td>
-                                        <a class="jsgrid-button btn btn-danger" href="{{route('change.status.products', $product)}}" title="{{ __('Edit') }}">
+                                        <a class="jsgrid-button btn btn-danger" href="{{ route('change.status.products', $product) }}" title="{{ __('Edit') }}">
                                             {{ __('Disable') }} <i class="fas fa-times"></i>
                                         </a>
                                     </td>
                                     @endif
 
-                                    <td>{{$product->category->name}}</td>
+                                    <td>{{ $product->category->name }}</td>
                                     <td>
-                                        <form action="{{route('products.destroy', $product)}}" class="frmEliminar" method="post">
+                                        <form action="{{ route('products.destroy', $product) }}" class="frmEliminar" method="post">
                                             @csrf
                                             @method('delete')
                                             @can('products.show')
-                                                <a href="{{route('products.show', $product)}}" title="{{ __('Details') }}">
+                                                <a href="{{ route('products.show', $product) }}" title="{{ __('Details') }}">
                                                     <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
                                                 </a>
                                             @endcan
                                             @can('products.edit')
-                                                <a href="{{route('products.edit', $product)}}" title="{{ __('Edit') }}">
+                                                <a href="{{ route('products.edit', $product) }}" title="{{ __('Edit') }}">
                                                     <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
                                                 </a>
                                             @endcan
@@ -106,6 +104,17 @@
         Swal.fire({
             icon: "success",
             title: "El producto ha sido creado correctamente",
+            showConfirmButton: false,
+            timer: 2000
+        })
+    </script>
+@endif
+@if (session('update') == 'ok')
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: "success",
+            title: "El producto ha sido actualizado correctamente",
             showConfirmButton: false,
             timer: 2000
         })

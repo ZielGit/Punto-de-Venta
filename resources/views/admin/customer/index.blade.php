@@ -10,16 +10,16 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Dashboard') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Customers') }}</li>
             </ol>
         </nav>
     </div>
 
-    @can('clients.create')
+    @can('customers.create')
         <div class="row">
             <div class="col mb-2">
-                <a href="{{route('customers.create')}}">
+                <a href="{{ route('customers.create') }}">
                     <span class="btn btn-primary">+ {{ __('New Customer') }}</span>
                 </a>
             </div>
@@ -55,17 +55,17 @@
                                         <form action="{{ route('customers.destroy', $customer) }}" class="frmEliminar" method="post">
                                             @csrf
                                             @method('delete')
-                                            @can('clients.show')
+                                            @can('customers.show')
                                                 <a href="{{ route('customers.show', $customer) }}" title="{{ __('Details') }}">
                                                     <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
                                                 </a>
                                             @endcan
-                                            @can('clients.edit')
-                                                <a href="{{route('customers.edit', $customer)}}" title="{{ __('Edit') }}">
+                                            @can('customers.edit')
+                                                <a href="{{ route('customers.edit', $customer) }}" title="{{ __('Edit') }}">
                                                     <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
                                                 </a>
                                             @endcan
-                                            @can('clients.destroy')
+                                            @can('customers.destroy')
                                                 <button class="btn btn-outline-danger" type="submit" title="{{ __('Delete') }}">
                                                     <i class="far fa-trash-alt"></i>
                                                 </button>

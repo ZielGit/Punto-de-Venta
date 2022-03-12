@@ -21,9 +21,9 @@
     </li>
     @can('home.index')
       <li class="nav-item">
-        <a class="nav-link" href="{{route('home')}}">
+        <a class="nav-link" href="{{ route('home') }}">
           <i class="fa fa-home menu-icon"></i>
-          <span class="menu-title">{{__('Dashboard')}}</span>
+          <span class="menu-title">{{ __('Dashboard') }}</span>
         </a>
       </li>
     @endcan
@@ -32,16 +32,16 @@
         <a class="nav-link" data-toggle="collapse" href="#page-layouts1" aria-expanded="false"
             aria-controls="page-layouts">
             <i class="fas fa-chart-line menu-icon"></i>
-            <span class="menu-title">{{__('Reports')}}</span>
+            <span class="menu-title">{{ __('Reports') }}</span>
             <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="page-layouts1">
             <ul class="nav flex-column sub-menu">
                 <li class="nav-item d-none d-lg-block">
-                  <a class="nav-link" href="{{route('reports.day')}}">{{__('Reports for day')}}</a>
+                  <a class="nav-link" href="{{ route('reports.day') }}">{{ __('Reports for day') }}</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{route('reports.date')}}">{{__('Reports for date')}}</a>
+                  <a class="nav-link" href="{{ route('reports.date') }}">{{ __('Reports for date') }}</a>
                 </li>
             </ul>
         </div>
@@ -49,37 +49,37 @@
     @endcan
     @can('purchases.index')
       <li class="nav-item">
-        <a class="nav-link" href="{{route('purchases.index')}}">
+        <a class="nav-link" href="{{ route('purchases.index') }}">
           <i class="fas fa-cart-plus menu-icon"></i>
-          <span class="menu-title">{{__('Purchases')}}</span>
+          <span class="menu-title">{{ __('Purchases') }}</span>
         </a>
       </li>
     @endcan
     @can('sales.index')
       <li class="nav-item">
-        <a class="nav-link" href="{{route('sales.index')}}">
+        <a class="nav-link" href="{{ route('sales.index') }}">
           <i class="fas fa-shopping-cart menu-icon"></i>
-          <span class="menu-title">{{__('Sales')}}</span>
+          <span class="menu-title">{{ __('Sales') }}</span>
         </a>
       </li>
     @endcan
     @can('categories.index',)
       <li class="nav-item">
-        <a class="nav-link" href="{{route('categories.index')}}">
+        <a class="nav-link" href="{{ route('categories.index') }}">
           <i class="fas fa-tags menu-icon"></i>
-          <span class="menu-title">{{__('Categories')}}</span>
+          <span class="menu-title">{{ __('Categories') }}</span>
         </a>
       </li>
     @endcan
     @can('products.index')
       <li class="nav-item">
-        <a class="nav-link" href="{{route('products.index')}}">
+        <a class="nav-link" href="{{ route('products.index') }}">
             <i class="fas fa-boxes menu-icon"></i>
-            <span class="menu-title">{{__('Products')}}</span>
+            <span class="menu-title">{{ __('Products') }}</span>
         </a>
       </li>
     @endcan
-    @can('clients.index')
+    @can('customers.index')
       <li class="nav-item">
         <a class="nav-link" href="{{ route('customers.index') }}">
             <i class="fas fa-users menu-icon"></i>
@@ -89,25 +89,25 @@
     @endcan
     @can('providers.index')
       <li class="nav-item">
-        <a class="nav-link" href="{{route('providers.index')}}">
+        <a class="nav-link" href="{{ route('providers.index') }}">
           <i class="fas fa-shipping-fast menu-icon"></i>
-          <span class="menu-title">{{__('Providers')}}</span>
+          <span class="menu-title">{{ __('Providers') }}</span>
         </a>
       </li>
     @endcan
     @can('users.index')
       <li class="nav-item">
-        <a class="nav-link" href="{{route('users.index')}}">
+        <a class="nav-link" href="{{ route('users.index') }}">
             <i class="fas fa-user-tag menu-icon"></i>
-            <span class="menu-title">{{__('Users')}}</span>
+            <span class="menu-title">{{ __('Users') }}</span>
         </a>
       </li>
     @endcan
     @can('roles.index')
       <li class="nav-item">
-        <a class="nav-link" href="{{route('roles.index')}}">
+        <a class="nav-link" href="{{ route('roles.index') }}">
           <i class="fas fa-user-cog menu-icon"></i>
-          <span class="menu-title">{{__('Roles')}}</span>
+          <span class="menu-title">{{ __('Roles') }}</span>
         </a>
       </li>
     @endcan

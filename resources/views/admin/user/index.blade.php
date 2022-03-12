@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 @section('title','Gestión de usuarios del sistema')
-@section('styles')
-@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -10,7 +8,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Dashboard') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Users') }}</li>
             </ol>
         </nav>
@@ -19,7 +17,7 @@
     @can('users.create')
         <div class="row">
             <div class="col mb-2">
-                <a href="{{route('users.create')}}">
+                <a href="{{ route('users.create') }}">
                     <span class="btn btn-primary">+ {{ __('New User') }}</span>
                 </a>
             </div>
@@ -44,20 +42,20 @@
                             <tbody>
                                 @foreach ($users as $user)
                                 <tr>
-                                    <th scope="row">{{$user->id}}</th>
-                                    <td>{{$user->name}}</td>
-                                    <td>{{$user->email}}</td>
+                                    <th scope="row">{{ $user->id }}</th>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
                                     <td>
-                                        <form action="{{route('users.destroy', $user)}}" class="frmEliminar" method="post">
+                                        <form action="{{ route('users.destroy', $user) }}" class="frmEliminar" method="post">
                                             @csrf
                                             @method('delete')
                                             @can('users.show')
-                                                <a href="{{route('users.show', $user)}}" title="{{ __('Details') }}">
+                                                <a href="{{ route('users.show', $user) }}" title="{{ __('Details') }}">
                                                     <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
                                                 </a>
                                             @endcan
                                             @can('users.edit')
-                                                <a href="{{route('users.edit', $user)}}" title="{{ __('Edit') }}">
+                                                <a href="{{ route('users.edit', $user) }}" title="{{ __('Edit') }}">
                                                     <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
                                                 </a>
                                             @endcan
@@ -88,6 +86,17 @@
         Swal.fire({
             icon: "success",
             title: "El usuario ha sido creado correctamente",
+            showConfirmButton: false,
+            timer: 2000
+        })
+    </script>
+@endif
+@if (session('update') == 'ok')
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: "success",
+            title: "El usuario ha sido actualizado correctamente",
             showConfirmButton: false,
             timer: 2000
         })

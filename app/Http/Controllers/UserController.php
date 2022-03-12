@@ -101,7 +101,7 @@ class UserController extends Controller
         // Agregar para que no se edite el usuario principal
         $user->update($request->all());
         $user->roles()->sync($request->roles);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('update', 'ok');
     }
 
     /**

@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 @section('title','Gestión de clientes')
-@section('styles')
-@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -92,6 +90,17 @@
         Swal.fire({
             icon: "success",
             title: "El cliente ha sido creado correctamente",
+            showConfirmButton: false,
+            timer: 2000
+        })
+    </script>
+@endif
+@if (session('update') == 'ok')
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: "success",
+            title: "La cliente ha sido actualizado correctamente",
             showConfirmButton: false,
             timer: 2000
         })

@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 @section('title','Gestión de roles del sistema')
-@section('styles')
-@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -10,7 +8,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Dashboard') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Roles') }}</li>
             </ol>
         </nav>
@@ -19,7 +17,7 @@
     @can('roles.create')
         <div class="row">
             <div class="col mb-2">
-                <a href="{{route('roles.create')}}">
+                <a href="{{ route('roles.create') }}">
                     <span class="btn btn-primary">+ {{ __('New Role') }}</span>
                 </a>
             </div>
@@ -43,19 +41,19 @@
                             <tbody>
                                 @foreach ($roles as $role)
                                 <tr>
-                                    <th scope="row">{{$role->id}}</th>
-                                    <td>{{$role->name}}</td>
+                                    <th scope="row">{{ $role->id }}</th>
+                                    <td>{{ $role->name }}</td>
                                     <td>
-                                        <form action="{{route('roles.destroy', $role)}}" class="frmEliminar" method="post">
+                                        <form action="{{ route('roles.destroy', $role) }}" class="frmEliminar" method="post">
                                             @csrf
                                             @method('delete')
                                             @can('roles.show')
-                                                <a href="{{route('roles.show', $role)}}" title="{{ __('Details') }}">
+                                                <a href="{{ route('roles.show', $role) }}" title="{{ __('Details') }}">
                                                     <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
                                                 </a>
                                             @endcan
                                             @can('roles.edit')
-                                                <a href="{{route('roles.edit', $role)}}" title="{{ __('Edit') }}">
+                                                <a href="{{ route('roles.edit', $role) }}" title="{{ __('Edit') }}">
                                                     <span class="btn btn-outline-info"><i class="fas fa-edit"></i></span>
                                                 </a>
                                             @endcan
@@ -86,6 +84,17 @@
         Swal.fire({
             icon: "success",
             title: "El rol ha sido creado correctamente",
+            showConfirmButton: false,
+            timer: 2000
+        })
+    </script>
+@endif
+@if (session('update') == 'ok')
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: "success",
+            title: "El rol ha sido actualizado correctamente",
             showConfirmButton: false,
             timer: 2000
         })

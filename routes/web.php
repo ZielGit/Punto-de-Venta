@@ -67,4 +67,4 @@ Route::get('search', [CustomerController::class, 'search'])->name('search');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard1');
+})->name('dashboard');

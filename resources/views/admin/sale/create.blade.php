@@ -58,15 +58,21 @@
                     <div class="form-group">
                         <label for="dni">{{ __('DNI') }}</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" name="dni" id="dni" required>
+                            <input type="number" class="form-control" name="dni" id="dni">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button" id="Search">{{ __('Search') }}</button>
                             </div>
                         </div>
+                        @error('dni')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="name">{{ __('Name') }}</label>
-                        <input type="text" class="form-control" name="name" id="name" required>
+                        <input type="text" class="form-control" name="name" id="name">
+                        @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <input type="hidden" name="sent_from" value="sale">
                 </div>
@@ -84,6 +90,11 @@
 @section('scripts')
 <script src="{{ asset('melody/js/select2.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+@if ($errors->has('dni') || $errors->has('name'))
+    <script type="text/javascript">
+        $('#clientModal').modal('show');
+    </script>
+@endif
 @if (session('success') == 'ok')
     <script>
         Swal.fire({

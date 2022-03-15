@@ -101,6 +101,11 @@
 {{-- {!! Html::script('melody/js/avgrund.js') !!} --}}
 <script src="{{ asset('melody/js/select2.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+@if ($errors->has('name') || $errors->has('email') || $errors->has('ruc_number') || $errors->has('phone'))
+    <script type="text/javascript">
+        $('#providerModal').modal('show');
+    </script>
+@endif
 @if (session('success') == 'ok')
     <script>
         Swal.fire({

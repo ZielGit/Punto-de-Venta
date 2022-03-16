@@ -48,68 +48,68 @@
       </li>
     @endcan
     @can('purchases.index')
-      <li class="nav-item">
+      <x-jet-nav-link :active="request()->routeIs('purchases.*')">
         <a class="nav-link" href="{{ route('purchases.index') }}">
           <i class="fas fa-cart-plus menu-icon"></i>
           <span class="menu-title">{{ __('Purchases') }}</span>
         </a>
-      </li>
+      </x-jet-nav-link>
     @endcan
     @can('sales.index')
-      <li class="nav-item">
+      <x-jet-nav-link :active="request()->routeIs('sales.*')">
         <a class="nav-link" href="{{ route('sales.index') }}">
           <i class="fas fa-shopping-cart menu-icon"></i>
           <span class="menu-title">{{ __('Sales') }}</span>
         </a>
-      </li>
+      </x-jet-nav-link>
     @endcan
     @can('categories.index',)
-      <li class="nav-item">
+      <x-jet-nav-link :active="request()->routeIs('categories.*')">
         <a class="nav-link" href="{{ route('categories.index') }}">
           <i class="fas fa-tags menu-icon"></i>
           <span class="menu-title">{{ __('Categories') }}</span>
         </a>
-      </li>
+      </x-jet-nav-link>
     @endcan
     @can('products.index')
-      <li class="nav-item">
+      <x-jet-nav-link :active="request()->routeIs('products.*')">
         <a class="nav-link" href="{{ route('products.index') }}">
             <i class="fas fa-boxes menu-icon"></i>
             <span class="menu-title">{{ __('Products') }}</span>
         </a>
-      </li>
+      </x-jet-nav-link>
     @endcan
     @can('customers.index')
-      <li class="nav-item">
+      <x-jet-nav-link :active="request()->routeIs('customers.*')">
         <a class="nav-link" href="{{ route('customers.index') }}">
             <i class="fas fa-users menu-icon"></i>
             <span class="menu-title">{{ __('Customers') }}</span>
         </a>
-      </li>
+      </x-jet-nav-link>
     @endcan
     @can('providers.index')
-      <li class="nav-item">
+      <x-jet-nav-link :active="request()->routeIs('providers.*')">
         <a class="nav-link" href="{{ route('providers.index') }}">
           <i class="fas fa-shipping-fast menu-icon"></i>
           <span class="menu-title">{{ __('Providers') }}</span>
         </a>
-      </li>
+      </x-jet-nav-link>
     @endcan
     @can('users.index')
-      <li class="nav-item">
+      <x-jet-nav-link :active="request()->routeIs('users.*')">
         <a class="nav-link" href="{{ route('users.index') }}">
-            <i class="fas fa-user-tag menu-icon"></i>
-            <span class="menu-title">{{ __('Users') }}</span>
+          <i class="fas fa-user-tag menu-icon"></i>
+          <span class="menu-title">{{ __('Users') }}</span>
         </a>
-      </li>
+      </x-jet-nav-link>
     @endcan
     @can('roles.index')
-      <li class="nav-item">
+      <x-jet-nav-link :active="request()->routeIs('roles.*')">
         <a class="nav-link" href="{{ route('roles.index') }}">
           <i class="fas fa-user-cog menu-icon"></i>
           <span class="menu-title">{{ __('Roles') }}</span>
         </a>
-      </li>
+      </x-jet-nav-link>
     @endcan
   </ul>
 </nav>

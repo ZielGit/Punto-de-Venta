@@ -155,10 +155,10 @@
             },
             dataType: 'json',
             success:function(data){
-                console.log(data);
+                console.log(data.id);
                 $("#price").val(data.sell_price);
                 $("#stock").val(data.stock);
-                $("#product_id").val(data.id);
+                $("#product_id").val(data.id).trigger('change.select2');
             }
         });
     }

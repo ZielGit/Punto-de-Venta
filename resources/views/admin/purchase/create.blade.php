@@ -147,6 +147,7 @@
     $(obtener_registro());
 
     function obtener_registro(code){
+        // var code = $('#code');
         $.ajax({
             url: "{{route('get_products_by_barcode')}}",
             type: 'GET',
@@ -156,7 +157,7 @@
             dataType: 'json',
             success:function(data){
                 console.log(data);
-                $("#product_id").val(data.id);
+                $("#product_id").val(data.id).trigger('change.select2');
             }
         });
     }

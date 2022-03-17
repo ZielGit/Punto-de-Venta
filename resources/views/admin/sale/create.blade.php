@@ -107,7 +107,9 @@
 @endif
 <script>
     $(document).ready(function () {
+        $(".select2n").select2();
         $("#agregar").click(function () {
+            $(".select2n").select2();
             agregar();
         });
     });
@@ -128,6 +130,7 @@
     var product_id = $('#product_id');
         
     product_id.change(function(){
+        var product_id = $('#product_id');
         $.ajax({
             url: "{{ route('get_products_by_id') }}",
             method: 'GET',

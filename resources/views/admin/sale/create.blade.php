@@ -107,9 +107,7 @@
 @endif
 <script>
     $(document).ready(function () {
-        $(".select2n").select2();
         $("#agregar").click(function () {
-            $(".select2n").select2();
             agregar();
         });
     });
@@ -155,7 +153,6 @@
             },
             dataType: 'json',
             success:function(data){
-                console.log(data.id);
                 $("#price").val(data.sell_price);
                 $("#stock").val(data.stock);
                 $("#product_id").val(data.id).trigger('change.select2');

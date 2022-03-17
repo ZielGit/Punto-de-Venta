@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 @section('title','Registro de compra')
-@section('styles')
-@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -10,8 +8,8 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{route('purchases.index')}}">{{ __('Purchases') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('purchases.index') }}">{{ __('Purchases') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Register Purchase') }}</li>
             </ol>
         </nav>
@@ -20,7 +18,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 {{-- {!! Form::open(['route'=>'purchases.store', 'method'=>'POST']) !!} --}}
-                <form action="{{route('purchases.store')}}" method="post">
+                <form action="{{ route('purchases.store') }}" method="post">
                     @csrf
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
@@ -32,7 +30,7 @@
                     </div>
                     <div class="card-footer text-muted">
                         <button type="submit" id="guardar" class="btn btn-primary float-right">{{ __('Register') }}</button>
-                        <a href="{{route('purchases.index')}}" class="btn btn-light">
+                        <a href="{{ route('purchases.index') }}" class="btn btn-light">
                             {{ __('Cancel') }}
                         </a>
                     </div>
@@ -58,28 +56,28 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">{{ __('Name') }}</label>
-                        <input type="text" class="form-control" name="name" id="name" value="{{old('name')}}">
+                        <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
                         @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="email">{{ __('Email') }}</label>
-                        <input type="email" class="form-control" name="email" id="email" value="{{old('email')}}" placeholder="ejemplo@gmail.com">
+                        <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" placeholder="ejemplo@gmail.com">
                         @error('email')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="ruc_number">{{ __('RUC Number') }}</label>
-                        <input type="number" class="form-control" name="ruc_number" id="ruc_number" value="{{old('ruc_number')}}">
+                        <input type="number" class="form-control" name="ruc_number" id="ruc_number" value="{{ old('ruc_number') }}">
                         @error('ruc_number')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="phone">{{ __('Telephone / Mobile') }}</label>
-                        <input type="number" class="form-control" name="phone" id="phone" value="{{old('phone')}}">
+                        <input type="number" class="form-control" name="phone" id="phone" value="{{ old('phone') }}">
                         @error('phone')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -147,7 +145,6 @@
     $(obtener_registro());
 
     function obtener_registro(code){
-        // var code = $('#code');
         $.ajax({
             url: "{{route('get_products_by_barcode')}}",
             type: 'GET',
@@ -156,7 +153,6 @@
             },
             dataType: 'json',
             success:function(data){
-                console.log(data);
                 $("#product_id").val(data.id).trigger('change.select2');
             }
         });

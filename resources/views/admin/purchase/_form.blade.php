@@ -5,7 +5,7 @@
             <div class="input-group">
                 <select class="form-control select2" name="provider_id" id="provider_id">
                     @foreach ($providers as $provider)
-                        <option value="{{$provider->id}}">{{$provider->name}}</option>
+                        <option value="{{ $provider->id }}">{{ $provider->name }}</option>
                     @endforeach
                 </select>
                 <div class="input-group-append">
@@ -26,7 +26,7 @@
 </div>
 <div class="form-group">
     <label for="code">{{ __('Barcode') }}</label>
-    <input type="text" name="code" id="code" class="form-control" value="{{old('code')}}">
+    <input type="text" name="code" id="code" class="form-control" value="{{ old('code') }}">
 </div>
 <div class="form-row">
     <div class="form-group col-md-6">
@@ -36,7 +36,7 @@
             <select class="form-control select2" name="product_id" id="product_id">
                 <option value="" disabled selected>{{ __('Select a Product') }}</option>
                 @foreach ($products as $product)
-                <option value="{{$product->id}}">{{$product->name}}</option>
+                <option value="{{ $product->id }}">{{ $product->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -44,13 +44,13 @@
     <div class="form-group col-md-4">
         <div class="form-group">
             <label for="quantity">{{ __('Amount') }}</label>
-            <input type="number" class="form-control" name="quantity" id="quantity" value="{{old('quantity')}}">
+            <input type="number" class="form-control" name="quantity" id="quantity" value="{{ old('quantity') }}">
         </div>
     </div>
     <div class="form-group col-md-2">
         <div class="form-group">
             <label for="price">{{ __('Purchase price') }}</label>
-            <input type="number" class="form-control" name="price" id="price" value="{{old('price')}}">
+            <input type="number" class="form-control" name="price" id="price" min="0" step="any" value="{{ old('price') }}">
         </div>
     </div>
 </div>

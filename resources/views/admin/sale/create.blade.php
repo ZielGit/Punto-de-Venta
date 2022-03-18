@@ -128,6 +128,7 @@
     var product_id = $('#product_id');
         
     product_id.change(function(){
+        var product_id = $('#product_id');
         $.ajax({
             url: "{{ route('get_products_by_id') }}",
             method: 'GET',
@@ -152,10 +153,9 @@
             },
             dataType: 'json',
             success:function(data){
-                console.log(data);
                 $("#price").val(data.sell_price);
                 $("#stock").val(data.stock);
-                $("#product_id").val(data.id);
+                $("#product_id").val(data.id).trigger('change.select2');
             }
         });
     }

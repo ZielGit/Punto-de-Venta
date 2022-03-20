@@ -13,7 +13,6 @@
             </ol>
         </nav>
     </div>
-
     @can('products.create')
         <div class="row">
             <div class="col mb-2">
@@ -23,12 +22,10 @@
             </div>
         </div>
     @endcan
-
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-
                     <div class="table-responsive">
                         <table id="dataTable" class="table">
                             <thead>
@@ -89,7 +86,6 @@
                             </tbody>
                         </table>
                     </div>
-                    
                 </div>
             </div>
         </div>
@@ -97,7 +93,6 @@
 </div>
 @endsection
 @section('scripts')
-<script src="{{ asset('melody/js/data-table.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 @if (session('success') == 'ok')
     <script>
@@ -130,21 +125,6 @@
     </script>
 @endif
 <script>
-    $('#dataTable').DataTable( {
-        "language": {
-            "lengthMenu": "Mostrar _MENU_ registros por página",
-            "zeroRecords": "Nada encontrado - disculpa",
-            "info": "Mostrando la página _PAGE_ de _PAGES_",
-            "infoEmpty": "No hay registros disponibles",
-            "infoFiltered": "(filtrado de _MAX_ registros totales)",
-            "search": "Buscar:",
-            "paginate": {
-                "next": "Siguiente",
-                "previous": "Anterior"
-            },
-        }
-    } );
-
     $(".table").on("submit", ".frmEliminar", function(e){
         e.preventDefault();
         Swal.fire({

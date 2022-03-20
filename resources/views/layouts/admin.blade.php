@@ -61,10 +61,27 @@
     <script src="{{ asset('melody/js/settings.js') }}"></script>
     <script src="{{ asset('melody/js/todolist.js') }}"></script>
     <!-- endinject -->
-    <!-- Custom js for this page-->
-    <script src="{{ asset('melody/js/dashboard.js') }}"></script>
+    <!-- DataTable -->
+    <script src="{{ asset('melody/js/data-table.js') }}"></script>
     <!-- Cambio de idioma-->
     <script type="text/javascript">
+        "use strict";
+        
+        $('#dataTable').DataTable({
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "zeroRecords": "Nada encontrado - disculpa",
+                "info": "Mostrando la página _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros disponibles",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                "search": "Buscar:",
+                "paginate": {
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
+            }
+        });
+        
         var url = "{{ route('changeLang') }}";
 
         $(".changeLang").change(function(){

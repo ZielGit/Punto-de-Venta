@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 @section('title','información de producto')
-@section('styles')
-@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -23,10 +21,7 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="border-bottom text-center pb-4">
-
                                 <img src="{{ asset('image/'.$product->image) }}" alt="profile" class="img-lg  mb-3" />
-                                {{--  <p>Nombre de proveedor. </p>  --}}
-
                                 <h3>{{ $product->name }}</h3>
                                 <div class="d-flex justify-content-between">
                                 </div>
@@ -60,8 +55,8 @@
                                         {{ __('Provider') }}
                                     </span>
                                     <span class="float-right text-muted">
-                                        <a href="{{ route('providers.show',$product->provider->id) }}">
-                                        {{$product->provider->name}}
+                                        <a href="{{ route('providers.show', $product->provider->id) }}">
+                                        {{ $product->provider->name }}
                                         </a>
                                     </span>
                                 </p>
@@ -80,9 +75,9 @@
                             </div>
 
                             @if ($product->status == 'ACTIVE')
-                            <a href="{{ route('change.status.products', $product) }}" class="btn btn-success btn-block">{{ __('Active') }}</a>
+                                <a href="{{ route('change.status.products', $product) }}" class="btn btn-success btn-block">{{ __('Active') }}</a>
                             @else
-                            <a href="{{ route('change.status.products', $product) }}" class="btn btn-danger btn-block">{{ __('Disabled') }}</a>
+                                <a href="{{ route('change.status.products', $product) }}" class="btn btn-danger btn-block">{{ __('Disabled') }}</a>
                             @endif
                         </div>
                         <div class="col-lg-8 pl-lg-5">
@@ -134,5 +129,4 @@
 @endsection
 @section('scripts')
 <script src="{{ asset('melody/js/profile-demo.js') }}"></script>
-<script src="{{ asset('melody/js/data-table.js') }}"></script>
 @endsection

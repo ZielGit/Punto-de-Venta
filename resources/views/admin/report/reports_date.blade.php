@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 @section('title','Reporte por rango de fecha')
-@section('styles')
-@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -10,7 +8,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Dashboard') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Report by date range') }}</li>
             </ol>
         </nav>
@@ -19,20 +17,18 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-
                     {!! Form::open(['route'=>'report.results', 'method'=>'POST']) !!}
                     <div class="row ">
-            
                         <div class="col-12 col-md-3">
                             <span>{{ __('Initial date') }}</span>
                             <div class="form-group">
-                                <input class="form-control" type="date" value="{{old('fecha_ini')}}" name="fecha_ini" id="fecha_ini">
+                                <input class="form-control" type="date" value="{{ old('fecha_ini') }}" name="fecha_ini" id="fecha_ini">
                             </div>
                         </div>
                         <div class="col-12 col-md-3">
                             <span>{{ __('Final date') }}</span>
                             <div class="form-group">
-                                <input class="form-control" type="date" value="{{old('fecha_fin')}}" name="fecha_fin" id="fecha_fin">
+                                <input class="form-control" type="date" value="{{ old('fecha_fin') }}" name="fecha_fin" id="fecha_fin">
                             </div>
                         </div>
                         <div class="col-12 col-md-3 text-center mt-4">
@@ -44,7 +40,7 @@
                         <div class="col-12 col-md-3 text-center">
                             <span>{{ __('Total revenues') }}: <b> </b></span>
                             <div class="form-group">
-                                <strong>s/ {{$total}}</strong>
+                                <strong>s/ {{ $total }}</strong>
                             </div>
                         </div>
                     </div>
@@ -64,25 +60,25 @@
                             <tbody>
                                 @foreach ($sales as $sale)
                                 <tr>
-                                    <th scope="row">{{$sale->id}}</th>
+                                    <th scope="row">{{ $sale->id }}</th>
                                     <td>
-                                        {{\Carbon\Carbon::parse($sale->sale_date)->format('d M y h:i a')}}
+                                        {{ \Carbon\Carbon::parse($sale->sale_date)->format('d M y h:i a') }}
                                     </td>
-                                    <td>{{$sale->total}}</td>
-                                    <td>{{$sale->status}}</td>
+                                    <td>{{ $sale->total }}</td>
+                                    <td>{{ $sale->status }}</td>
                                     <td>
                                         @can('sales.pdf')
-                                            <a href="{{route('sales.pdf', $sale)}}" title="{{ __('Pdf') }}">
+                                            <a href="{{ route('sales.pdf', $sale) }}" title="{{ __('Pdf') }}">
                                                 <span class="btn btn-outline-primary"><i class="far fa-file-pdf"></i></span>
                                             </a>
                                         @endcan
                                         @can('sales.print')
-                                            <a href="{{route('sales.print', $sale)}}" title="{{ __('Print') }}">
+                                            <a href="{{ route('sales.print', $sale) }}" title="{{ __('Print') }}">
                                                 <span class="btn btn-outline-warning"><i class="fas fa-print"></i></span>
                                             </a>
                                         @endcan
                                         @can('sales.show')
-                                            <a href="{{route('sales.show', $sale)}}" title="{{ __('Details') }}">
+                                            <a href="{{ route('sales.show', $sale) }}" title="{{ __('Details') }}">
                                                 <span class="btn btn-outline-dark"><i class="far fa-eye"></i></span>
                                             </a>
                                         @endcan
@@ -100,7 +96,6 @@
 </div>
 @endsection
 @section('scripts')
-{!! Html::script('melody/js/data-table.js') !!}
 <script>
     window.onload = function(){
         var fecha = new Date(); //Fecha actual
@@ -113,21 +108,5 @@
           mes='0'+mes //agrega cero si el menor de 10
         document.getElementById('fecha_fin').value=ano+"-"+mes+"-"+dia;
       }
-</script>
-<script>
-    $('#dataTable').DataTable( {
-        "language": {
-            "lengthMenu": "Mostrar _MENU_ registros por página",
-            "zeroRecords": "Nada encontrado - disculpa",
-            "info": "Mostrando la página _PAGE_ de _PAGES_",
-            "infoEmpty": "No hay registros disponibles",
-            "infoFiltered": "(filtrado de _MAX_ registros totales)",
-            "search": "Buscar:",
-            "paginate": {
-                "next": "Siguiente",
-                "previous": "Anterior"
-            },
-        }
-    } );
 </script>
 @endsection

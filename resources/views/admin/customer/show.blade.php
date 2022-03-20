@@ -102,7 +102,7 @@
                                         <div class="d-flex align-items-start profile-feed-item">
     
                                             <div class="table-responsive">
-                                                <table id="order-listing" class="table">
+                                                <table id="dataTable" class="table">
                                                     <thead>
                                                         <tr>
                                                             <th>{{ __('ID') }}</th>
@@ -181,5 +181,4 @@
 @endsection
 @section('scripts')
 {!! Html::script('melody/js/profile-demo.js') !!}
-{!! Html::script('melody/js/data-table.js') !!}
 @endsection

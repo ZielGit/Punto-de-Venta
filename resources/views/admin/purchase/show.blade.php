@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 @section('title','Detalles de compra')
-@section('styles')
-@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -10,8 +8,8 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{route('purchases.index')}}">{{ __('Purchases') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('purchases.index') }}">{{ __('Purchases') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Purchase Details') }}</li>
             </ol>
         </nav>
@@ -20,19 +18,18 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                   
                     <div class="form-group row">
                         <div class="col-md-4 text-center">
                             <label class="form-control-label" for="nombre"><strong>{{ __('Provider') }}</strong></label>
-                            <p>{{$purchase->provider->name}}</p>
+                            <p>{{ $purchase->provider->name }}</p>
                         </div>
                         <div class="col-md-4 text-center">
                             <label class="form-control-label" for="num_compra"><strong>{{ __('Purchase Number') }}</strong></label>
-                            <p>{{$purchase->id}}</p>
+                            <p>{{ $purchase->id }}</p>
                         </div>
                         <div class="col-md-4 text-center">
                             <label class="form-control-label" for="num_compra"><strong>{{ __('Buyer') }}</strong></label>
-                            <p>{{$purchase->user->name}}</p>
+                            <p>{{ $purchase->user->name }}</p>
                         </div>
                     </div>
                     <br /><br />
@@ -54,15 +51,15 @@
                                             <p align="right">{{ __('SUBTOTAL') }}:</p>
                                         </th>
                                         <th>
-                                            <p align="right">s/{{number_format($subtotal,2)}}</p>
+                                            <p align="right">s/{{ number_format($subtotal,2) }}</p>
                                         </th>
                                     </tr>
                                     <tr>
                                         <th colspan="3">
-                                            <p align="right">{{ __('TOTAL TAX') }} ({{$purchase->tax}}%):</p>
+                                            <p align="right">{{ __('TOTAL TAX') }} ({{ $purchase->tax }}%):</p>
                                         </th>
                                         <th>
-                                            <p align="right">s/{{number_format($subtotal*$purchase->tax/100,2)}}</p>
+                                            <p align="right">s/{{ number_format($subtotal*$purchase->tax/100,2) }}</p>
                                         </th>
                                     </tr>
                                     <tr>
@@ -70,7 +67,7 @@
                                             <p align="right">{{ __('TOTAL') }}:</p>
                                         </th>
                                         <th>
-                                            <p align="right">s/{{number_format($purchase->total,2)}}</p>
+                                            <p align="right">s/{{ number_format($purchase->total,2) }}</p>
                                         </th>
                                     </tr>
                     
@@ -78,20 +75,19 @@
                                 <tbody>
                                     @foreach($purchaseDetails as $purchaseDetail)
                                     <tr>
-                                        <td>{{$purchaseDetail->product->name }}</td>
-                                        <td>s/{{$purchaseDetail->price}}</td>
-                                        <td>{{$purchaseDetail->quantity}}</td>
-                                        <td>s/{{number_format($purchaseDetail->quantity*$purchaseDetail->price,2)}}</td>
+                                        <td>{{ $purchaseDetail->product->name }}</td>
+                                        <td>s/{{ $purchaseDetail->price }}</td>
+                                        <td>{{ $purchaseDetail->quantity }}</td>
+                                        <td>s/{{ number_format($purchaseDetail->quantity*$purchaseDetail->price,2) }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    
                 </div>
                 <div class="card-footer text-muted">
-                    <a href="{{route('purchases.index')}}" class="btn btn-primary float-right">{{ __('Return') }}</a>
+                    <a href="{{ route('purchases.index') }}" class="btn btn-primary float-right">{{ __('Return') }}</a>
                 </div>
             </div>
         </div>

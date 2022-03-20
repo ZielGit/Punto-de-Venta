@@ -10,11 +10,10 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Dashboard') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('categories.index') }}">{{ __('Categories')}}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{$category->name}}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $category->name }}</li>
             </ol>
         </nav>
     </div>
-
     <div class="row">
         <div class="col mb-2">
             @can('products.create')
@@ -24,14 +23,12 @@
             @endcan
         </div>
     </div>
-
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-
                     <div class="table-responsive">
-                        <table id="order-listing" class="table">
+                        <table id="dataTable" class="table">
                             <thead>
                                 <tr>
                                     <th>{{ __('ID') }}</th>
@@ -85,7 +82,6 @@
                             </tbody>
                         </table>
                     </div>
-
                 </div>
                 <div class="card-footer text-muted">
                     <a href="{{ route('categories.index') }}" class="btn btn-primary float-right">{{ __('Return')}}</a>
@@ -98,5 +94,4 @@
 @endsection
 @section('scripts')
 {!! Html::script('melody/js/profile-demo.js') !!}
-<script src="{{ asset('melody/js/data-table.js') }}"></script>
 @endsection

@@ -99,5 +99,4 @@
 @endsection
 @section('scripts')
 {!! Html::script('melody/js/profile-demo.js') !!}
-{!! Html::script('melody/js/data-table.js') !!}
 @endsection

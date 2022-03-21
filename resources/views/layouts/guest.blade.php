@@ -22,7 +22,8 @@
         <!-- End plugin css for this page -->
         <!-- inject:css -->
         <link rel="stylesheet" href="{{ asset('melody/css/style.css') }}">
-
+        
+        <link rel="shortcut icon" href="{{ asset('melody/images/logo-mini.svg') }}" />
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>

@@ -80,7 +80,7 @@
     <script>
         Swal.fire({
             icon: "success",
-            title: "La categoría ha sido creada correctamente",
+            title: "{{ __('Category created successfully') }}",
             showConfirmButton: false,
             timer: 2000
         })
@@ -91,7 +91,7 @@
         Swal.fire({
             position: 'top-end',
             icon: "success",
-            title: "La categoría ha sido actualizada correctamente",
+            title: "{{ __('Category updated successfully') }}",
             showConfirmButton: false,
             timer: 2000
         })
@@ -100,8 +100,8 @@
 @if (session('eliminar') == 'ok')
     <script>
         Swal.fire(
-            'Eliminado',
-            'La categoría ha sido eliminado',
+            "{{ __('Deleted!') }}",
+            "{{ __('Category deleted successfully') }}",
             'success'
         )
     </script>
@@ -110,14 +110,14 @@
     $(".table").on("submit", ".frmEliminar", function(e){
         e.preventDefault();
         Swal.fire({
-            title:'¿Estas Seguro?',
-            text:'¡No podrás revertir esto!',
-            icon:'warning',
+            title: "{{ __('Are you sure?') }}",
+            text: '{{ __("You won't be able to revert this!") }}',
+            icon: 'warning',
             showCancelButton:true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: '¡Si, bórralo!',
-            cancelButtonText: 'Cancelar'
+            confirmButtonText: "{{ __('Yes, delete it!') }}",
+            cancelButtonText: "{{ __('Cancel') }}"
         }).then((result) =>{
             if(result.value){
                 this.submit();

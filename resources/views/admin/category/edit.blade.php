@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-@section('title','Editar categorias')
-@section('styles')
-@endsection
+@section('title') {{ __('Edit Category') }} @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -20,10 +18,6 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title">{{ __('Edit Category') }}</h4>
-                    </div>
                     <form action="{{route('categories.update', $category)}}" method="post">
                         @csrf
                         @method('PUT')
@@ -46,12 +40,9 @@
                             {{ __('Cancel') }}
                         </a>
                     </form>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
-@section('scripts')
 @endsection

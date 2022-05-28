@@ -1,11 +1,5 @@
 @extends('layouts.admin')
-@section('title','Panel administrador')
-@section('styles')
-@endsection
-@section('options')
-@endsection
-@section('preference')
-@endsection
+@section('title') {{ __('Dashboard') }} @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Gestión de usuarios del sistema')
+@section('title') {{ __('User Management') }} @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">

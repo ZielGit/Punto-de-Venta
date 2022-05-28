@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Registro de compra')
+@section('title') {{ __('Purchase Register') }} @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -17,16 +17,10 @@
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
-                {{-- {!! Form::open(['route'=>'purchases.store', 'method'=>'POST']) !!} --}}
                 <form action="{{ route('purchases.store') }}" method="post">
                     @csrf
                     <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <h4 class="card-title">{{ __('Register Purchase') }}</h4>
-                        </div>
-                        
                         @include('admin.purchase._form')
-                        
                     </div>
                     <div class="card-footer text-muted">
                         <button type="submit" id="guardar" class="btn btn-primary float-right">{{ __('Register') }}</button>
@@ -35,7 +29,6 @@
                         </a>
                     </div>
                 </form>
-                {{-- {!! Form::close() !!} --}}
             </div>
         </div>
     </div>

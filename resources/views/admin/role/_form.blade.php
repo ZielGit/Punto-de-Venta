@@ -1,17 +1,17 @@
 <h3>{{ __('Permission list') }}</h3>
 <div class="form-group">
- <ul class="list-unstyled">
-     @foreach ($permissions as $permission)
-        <li>
-            <div class="form-check form-check-success">
-                <label class="form-check-label">
-                    {!! Form::checkbox('permissions[]', $permission->id, null) !!}
-                    {{$permission->description}}
-                </label>
-            </div>
-        </li>
-     @endforeach
- </ul>
+    <ul class="list-unstyled">
+        @foreach ($permissions as $permission)
+            <li>
+                <div class="form-check form-check-success">
+                    <label class="form-check-label">
+                        {!! Form::checkbox('permissions[]', $permission->id, null) !!}
+                        {{ $permission->description }}
+                    </label>
+                </div>
+            </li>
+        @endforeach
+    </ul>
 </div>
 
 {{-- <h3>Permisos especiales</h3>

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Gestión de compras')
+@section('title') {{ __('Purchasing Management') }} @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">

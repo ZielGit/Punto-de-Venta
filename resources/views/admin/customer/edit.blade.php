@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Editar cliente')
+@section('title') {{ __('Edit Customer') }} @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -18,10 +18,6 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title">{{ __('Customer Edition') }}</h4>
-                    </div>
                     <form action="{{ route('customers.update', $customer) }}" method="post">
                         @csrf
                         @method('PUT')
@@ -95,9 +91,7 @@
                             {{ __('Cancel') }}
                         </a>
                     </form>
-
                 </div>
-                
             </div>
         </div>
     </div>

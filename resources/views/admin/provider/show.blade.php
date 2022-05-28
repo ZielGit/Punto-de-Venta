@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','información del proveedor')
+@section('title') {{ __('Provider Information') }} @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">

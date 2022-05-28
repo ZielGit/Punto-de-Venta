@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-@section('title','Registro de usuario')
-@section('styles')
-@endsection
+@section('title') {{ __('User Register') }} @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -10,8 +8,8 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{route('users.index')}}">{{ __('Users') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Dashboard') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('users.index') }}">{{ __('Users') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('User register') }}</li>
             </ol>
         </nav>
@@ -20,16 +18,11 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title">{{ __('User register') }}</h4>
-                    </div>
-                    {{-- {!! Form::open(['route'=>'users.store', 'method'=>'POST']) !!} --}}
-                    <form action="{{route('users.store')}}" method="post">
+                    <form action="{{ route('users.store') }}" method="post">
                         @csrf
                         <div class="form-group">
-                            {!! Form::label('Nombre') !!}
-                            {!! Form::text('name','', ['class' => 'form-control']) !!}
+                            <label for="name">{{ __('Name') }}</label>
+                            <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -37,7 +30,7 @@
 
                         <div class="form-group">
                             <label for="email">{{ __('Email') }}</label>
-                            <input type="email" class="form-control" name="email" id="email" value="{{old('email')}}" placeholder="ejemplo@gmail.com">
+                            <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" placeholder="ejemplo@gmail.com">
                             @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -52,17 +45,13 @@
 
                         @include('admin.user._form')
                         <button type="submit" class="btn btn-primary mr-2">{{ __('To Register') }}</button>
-                        <a href="{{route('users.index')}}" class="btn btn-light">
+                        <a href="{{ route('users.index') }}" class="btn btn-light">
                             {{ __('Cancel') }}
                         </a>
                     </form>
-                     {{-- {!! Form::close() !!} --}}
                 </div>
-                
             </div>
         </div>
     </div>
 </div>
-@endsection
-@section('scripts')
 @endsection

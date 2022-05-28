@@ -17,7 +17,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="code">{{ __('Barcode') }}</label>
-            <input type="text" name="code" id="code" class="form-control" value="{{old('code')}}">
+            <input type="text" name="code" id="code" class="form-control" value="{{ old('code') }}">
         </div>
     </div>
 </div>
@@ -56,7 +56,7 @@
     <div class="form-group col-md-6">
         <div class="form-group">
             <label for="quantity">{{ __('Amount') }}</label>
-            <input type="number" class="form-control" name="quantity" id="quantity" value="{{old('quantity')}}">
+            <input type="number" class="form-control" name="quantity" id="quantity" value="{{ old('quantity') }}">
         </div>
     </div>
     <div class="form-group col-md-3">

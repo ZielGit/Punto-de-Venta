@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-@section('title','Registrar de Proveedores')
-@section('styles')
-@endsection
+@section('title') {{ __('Providers Registration') }} @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -20,10 +18,6 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title">{{ __('Register Provider') }}</h4>
-                    </div>
                     <form action="{{route('providers.store')}}" method="post">
                         @csrf
                         <div class="form-group">
@@ -66,12 +60,9 @@
                             {{ __('Cancel') }}
                         </a>
                     </form>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
-@section('scripts')
 @endsection

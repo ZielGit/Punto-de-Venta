@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Registrar producto')
+@section('title') {{ __('Register Product') }} @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -18,10 +18,6 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title">{{ __('Product Registration') }}</h4>
-                    </div>
                     <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
@@ -76,7 +72,6 @@
                             {{ __('Cancel') }}
                         </a>
                     </form>
-                     
                 </div>
             </div>
         </div>

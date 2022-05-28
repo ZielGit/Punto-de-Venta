@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>@yield('title')</title>
+    <title>@yield('title') - {{ config('app.name') }}</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ secure_asset('melody/vendors/iconfonts/font-awesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ secure_asset('melody/vendors/css/vendor.bundle.base.css') }}">

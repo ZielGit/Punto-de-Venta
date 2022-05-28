@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Registro de venta')
+@section('title') {{ __('Sale Register') }} @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -17,17 +17,10 @@
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
-                {{-- {!! Form::open(['route'=>'sales.store', 'method'=>'POST']) !!} --}}
                 <form action="{{ route('sales.store') }}" method="post">
                     @csrf
                     <div class="card-body">
-                        
-                        <div class="d-flex justify-content-between">
-                            <h4 class="card-title">{{ __('Sale Register') }}</h4>
-                        </div>
-                        
                         @include('admin.sale._form')
-                        
                     </div>
                     <div class="card-footer text-muted">
                         <button type="submit" id="guardar" class="btn btn-primary float-right">{{ __('To Register') }}</button>
@@ -36,7 +29,6 @@
                         </a>
                     </div>
                 </form>
-                {{-- {!! Form::close() !!} --}}
             </div>
         </div>
     </div>

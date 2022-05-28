@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-@section('title','Registrar categoría')
-@section('styles')
-@endsection
+@section('title') {{ __('Register Category') }} @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -20,10 +18,6 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title">{{ __('Category Registration') }}</h4>
-                    </div>
                     <form action="{{route('categories.store')}}" method="post">
                         @csrf
                         @include('admin.category._form')
@@ -38,6 +32,4 @@
         </div>
     </div>
 </div>
-@endsection
-@section('scripts')
 @endsection

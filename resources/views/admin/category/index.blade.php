@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Gestión de Categorias')
+@section('title') {{ __('Category Management') }} @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">

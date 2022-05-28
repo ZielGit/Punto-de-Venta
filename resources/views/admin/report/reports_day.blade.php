@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Reporte de ventas')
+@section('title') {{ __('Reports per Day') }} @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">

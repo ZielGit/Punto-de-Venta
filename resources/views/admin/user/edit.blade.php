@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Editar usuario')
+@section('title') {{ __('Edit User') }} @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -18,12 +18,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title">{{ __('Edit User') }}</h4>
-                    </div>
                     {!! Form::model($user,['route'=>['users.update',$user], 'method'=>'PUT']) !!}
-                    
                         <div class="form-group">
                             <label for="name">{{ __('Name') }}</label>
                             <input type="text" name="name" id="name" value="{{ old('name',$user->name) }}" class="form-control">
@@ -54,11 +49,8 @@
                         </a>
                     {!! Form::close() !!}
                 </div>
-                
             </div>
         </div>
     </div>
 </div>
-@endsection
-@section('scripts')
 @endsection

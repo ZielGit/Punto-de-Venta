@@ -6,7 +6,7 @@
                 <div class="form-check form-check-success">
                     <label class="form-check-label">
                         {!! Form::checkbox('roles[]', $role->id, null) !!}
-                        {{$role->name}}
+                        {{ $role->name }}
                     </label>
                 </div>
             </li>

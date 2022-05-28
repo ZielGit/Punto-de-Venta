@@ -1,3 +1,4 @@
+@section('title') {{ __('Login') }} @endsection
 <x-guest-layout>
     <div class="container-fluid page-body-wrapper full-page-wrapper">
         <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">

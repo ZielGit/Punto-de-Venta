@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Productos de categoría')
+@section('title') {{ __('Category Details') }} @endsection
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -93,5 +93,5 @@
 </div>
 @endsection
 @section('scripts')
-{!! Html::script('melody/js/profile-demo.js') !!}
+<script src="{{ asset('melody/js/profile-demo.js') }}"></script>
 @endsection

@@ -67,9 +67,12 @@ class SaleController extends Controller
         ]);
 
         foreach ($request->product_id as $key => $product) {
-            $result[] = array ("product_id"=>$request->product_id[$key],
-            "quantity"=>$request->quantity[$key], "price"=>$request->price[$key],
-            "discount"=>$request->discount[$key]);
+            $result[] = array(
+                "product_id"=>$request->product_id[$key],
+                "quantity"=>$request->quantity[$key],
+                "price"=>$request->price[$key],
+                "discount"=>$request->discount[$key]
+            );
         }
 
         $sale->saleDetails()->createMany($result);

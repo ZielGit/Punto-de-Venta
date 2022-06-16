@@ -49,6 +49,9 @@
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
+                            @error('category_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="provider_id">{{ __('Provider') }}</label>
@@ -57,6 +60,9 @@
                                     <option value="{{ $provider->id }}">{{ $provider->name }}</option>
                                 @endforeach
                             </select>
+                            @error('provider_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="card-body">

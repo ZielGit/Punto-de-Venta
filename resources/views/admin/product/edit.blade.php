@@ -32,6 +32,9 @@
                             <label for="code">{{ __('Barcode') }}</label>
                             <input type="text" name="code" id="code" class="form-control" aria-describedby="helpId" value="{{ old('code',$product->code) }}">
                             <small id="helpId" class="form-text text-muted">{{ __('Optional field') }}</small>
+                            @error('code')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="sell_price">{{ __('Sale price') }}</label>

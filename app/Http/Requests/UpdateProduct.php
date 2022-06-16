@@ -24,11 +24,13 @@ class UpdateProduct extends FormRequest
     public function rules()
     {
         return [
+            'code' => 'nullable|string|unique:products,code,'.$this->route('product')->id,
             'name' => 'required|string|unique:products,name,'.$this->route('product')->id.'|max:255', 
-            // 'image' => 'required|dimensions:min_width=100,min_height=200', 
-            'sell_price' => 'required', 
-            'category_id'=>'integer|required|exists:App\Models\Category,id', 
-            'provider_id'=>'integer|required|exists:App\Models\Provider,id',
+            'image' => 'nullable|string', 
+            'sell_price' => 'required',
+            'status' => 'required|in:ACTIVE,DEACTIVATED',
+            'category_id'=>'integer|required|exists:categories,id', 
+            'provider_id'=>'integer|required|exists:providers,id',
         ];
     }
 
@@ -36,11 +38,9 @@ class UpdateProduct extends FormRequest
     {
         return[
             'sell_price.required'=>'El campo es requerido.',
-
             'category_id.required' => 'Este campo es requerido.',
             'category_id.string' => 'El valor no es correcto.',
             'category_id.exists' => 'La categoria no existe.',
-
             'provider_id.required' => 'Este campo es requerido.',
             'provider_id.string' => 'El valor no es correcto.',
             'provider_id.exists' => 'El proveedor no existe.',

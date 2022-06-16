@@ -29,7 +29,6 @@
                                     @error('name')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
-                                    {{-- {!! $errors->first('name', '<small>:message</small>') !!} --}}
                                 </div>
                             </div>
                             <div class="col-md-6">

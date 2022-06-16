@@ -24,12 +24,13 @@ class StoreProduct extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|unique:products|max:255', 
-            // 'image' => 'required|dimensions:min_width=100,min_height=200',
-            'sell_price' => 'required', 
-            // 'category_id' => 'integer|required|exists:App\Category,id', 
-            // 'provider_id' => 'integer|required|exists:App\Provider,id'
-            'code'=>'nullable|string|max:8|min:8',
+            'code' => 'nullable|string|unique:products,code',
+            'name' => 'required|string|unique:products,name|max:255', 
+            'image' => 'nullable|string',
+            'sell_price' => 'required',
+            'status' => 'required|in:ACTIVE,DEACTIVATED',
+            'category_id' => 'required|exists:categories,id', 
+            'provider_id' => 'required|exists:providers,id'
         ];
     }
 
@@ -37,7 +38,6 @@ class StoreProduct extends FormRequest
     {
         return[
             'sell_price.required'=>'El campo precio de venta es requerido.',
-
             'code.string'=>'El valor no es correcto.',
             'code.max'=>'Solo se permite 8 dígitos.',
             'code.min'=>'Se requiere de 8 dígitos.',

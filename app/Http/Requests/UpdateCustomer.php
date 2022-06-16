@@ -28,8 +28,8 @@ class UpdateCustomer extends FormRequest
             'dni' => 'required|string|unique:customers,dni,'. $this->route('customer')->id.'|min:8|max:8', 
             'ruc' => 'nullable|string|unique:customers,ruc,'. $this->route('customer')->id.'|min:11|max:11', 
             'address' => 'nullable|string|max:255', 
-            'phone' => 'string|nullable|unique:customers,phone,'. $this->route('customer')->id.'|max:9', 
-            'email' => 'string|nullable|unique:customers,email,'. $this->route('customer')->id.'|max:255|email:filter'
+            'phone' => 'nullable|string|unique:customers,phone,'. $this->route('customer')->id.'|max:9', 
+            'email' => 'nullable|string|unique:customers,email,'. $this->route('customer')->id.'|max:255|email:filter'
         ];
     }
 }

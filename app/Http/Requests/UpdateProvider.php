@@ -24,12 +24,11 @@ class UpdateProvider extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255', 
-            // agregar unique a email si lanza error
-            'email' => 'required|email|string|max:200', 
-            'ruc_number' => 'required|string|min:11|unique:providers,ruc_number,'. $this->route('provider')->id.'|max:11', 
-            'address' => 'nullable|string|max:255', 
-            'phone' => 'required|string|min:9|unique:providers,phone,'. $this->route('provider')->id.'|max:9',
+            'name' => 'required|string|max:255|unique:providers,name,'.$this->route('provider')->id,
+            'ruc_number' => 'required|string|min:11|unique:providers,ruc_number,'.$this->route('provider')->id.'|max:11',
+            'email' => 'nullable|email|string|unique:providers,email,'.$this->route('provider')->id.'|max:255', 
+            'address' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|min:9|unique:providers,phone,'.$this->route('provider')->id.'|max:9',
         ];
     }
 

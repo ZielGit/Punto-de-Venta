@@ -8,8 +8,8 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard')}}</a></li>
-                <li class="breadcrumb-item"><a href="{{route('categories.index')}}">{{ __('Category') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Dashboard')}}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('categories.index') }}">{{ __('Category') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Category Registration') }}</li>
             </ol>
         </nav>
@@ -18,11 +18,11 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{route('categories.store')}}" method="post">
+                    <form action="{{ route('categories.store') }}" method="post">
                         @csrf
                         @include('admin.category._form')
                         <button type="submit" class="btn btn-primary mr-2">{{ __('To Register')}}</button>
-                        <a href="{{route('categories.index')}}" class="btn btn-light">
+                        <a href="{{ route('categories.index') }}" class="btn btn-light">
                             {{ __('Cancel') }}
                         </a>
                     </form>

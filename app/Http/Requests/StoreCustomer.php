@@ -28,8 +28,8 @@ class StoreCustomer extends FormRequest
             'dni' => 'required|string|unique:customers|min:8|max:8', 
             'ruc' => 'nullable|string|unique:customers|min:11|max:11', 
             'address' => 'nullable|string|max:255', 
-            'phone' => 'string|nullable|unique:customers|max:9', 
-            'email' => 'string|nullable|unique:customers|max:255|email:rfc,dns'
+            'phone' => 'nullable|string|unique:customers|max:9', 
+            'email' => 'nullable|string|unique:customers|max:255|email:rfc,dns'
         ];
     }
 }

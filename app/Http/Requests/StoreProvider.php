@@ -24,11 +24,11 @@ class StoreProvider extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|string|max:255',
-            'email'=>'required|email|string|max:255|unique:providers',
-            'ruc_number'=>'required|string|max:11|min:11|unique:providers',
-            'address'=>'nullable|string|max:255',
-            'phone'=>'required|string|max:9|min:9|unique:providers',
+            'name' => 'required|string|max:255|unique:providers,name',
+            'ruc_number' => 'required|string|max:11|min:11|unique:providers,ruc_number',
+            'email' => 'nullable|email|string|max:255|unique:providers,email',
+            'address' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:9|min:9|unique:providers,phone',
         ];
     }
 

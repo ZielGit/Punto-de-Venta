@@ -23,8 +23,8 @@ class CustomerFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'dni' => $this->faker->unique()->randomNumber(8),
-            'ruc' => $this->faker->unique()->randomNumber(9),
+            'document_type' => $this->faker->randomElement(['DNI', 'RUC']),
+            'document_number' => $this->faker->unique()->randomNumber(9),
             'address' => $this->faker->streetAddress,
             'phone' => $this->faker->phoneNumber,
             'email' => $this->faker->unique()->safeEmail

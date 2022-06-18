@@ -48,14 +48,24 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="dni">{{ __('DNI') }}</label>
+                        <label for="document_type">{{ __('Document Type') }}</label>
+                        <select class="form-control" name="document_type" id="document_type">
+                            <option value="DNI">{{ __('DNI') }}</option>
+                            <option value="RUC">{{ __('RUC') }}</option>
+                        </select>
+                        @error('document_type')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="document_number">{{ __('Document Number') }}</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" name="dni" id="dni">
+                            <input type="number" class="form-control" name="document_number" id="document_number" value="{{ old('document_number') }}">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button" id="Search">{{ __('Search') }}</button>
+                                <button class="btn btn-primary" type="button" id="buttonSearch">{{ __('Search') }}</button>
                             </div>
                         </div>
-                        @error('dni')
+                        @error('document_number')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -82,7 +92,7 @@
 @section('scripts')
 <script src="{{ asset('melody/js/select2.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
-@if ($errors->has('dni') || $errors->has('name'))
+@if ($errors->has('document_type') || $errors->has('document_number') || $errors->has('name'))
     <script type="text/javascript">
         $('#clientModal').modal('show');
     </script>
@@ -235,13 +245,15 @@
         evaluar();
     }
 
-    $('#Search').click(function(){
-        var dni = $('#dni');
+    $('#buttonSearch').click(function(){
+        var document_type = $('#document_type');
+        var document_number = $('#document_number');
         $.ajax({
             url: "{{ route('search') }}",
             method: 'GET',
             data: {
-                dni: dni.val(),
+                document_type: document_type.val(),
+                document_number: document_number.val(),
             },
             dataType: 'json',
             success:function(data){

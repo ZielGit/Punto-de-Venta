@@ -109,23 +109,43 @@ class CustomerController extends Controller
 
     public function search(Request $request)
     {
+        $token = config('services.apisunat.token');
+        $baseurl = config('services.apisunat.baseurl');
+        $urldni = config('services.apisunat.urldni');
+        $urlruc = config('services.apisunat.urlruc');
+
         if ($request->ajax()) {
-            $token = 'apis-token-1711.UYQZMRIHkH9qasi-db8zW7U3SehQvcmq';
-            $numero = $request->dni;
+            $numero = $request->document_number;
+            $client = new Client(['base_uri' => $baseurl, 'verify' => false]);
+
+            if ($request->document_type == 'DNI') {
+                $parameters = [
+                    'http_errors' => false,
+                    'connect_timeout' => 5,
+                    'headers' => [
+                        'Authorization' => 'Bearer '.$token,
+                        'Referer' => $urldni,
+                        'User-Agent' => 'laravel/guzzle',
+                        'Accept' => 'application/json',
+                    ],
+                    'query' => ['numero' => $numero]
+                ];
+                $res = $client->request('GET', '/v1/dni', $parameters);
+            } else if ($request->document_type == 'RUC') {
+                $parameters = [
+                    'http_errors' => false,
+                    'connect_timeout' => 5,
+                    'headers' => [
+                        'Authorization' => 'Bearer '.$token,
+                        'Referer' => $urlruc,
+                        'User-Agent' => 'laravel/guzzle',
+                        'Accept' => 'application/json',
+                    ],
+                    'query' => ['numero' => $numero]
+                ];
+                $res = $client->request('GET', '/v1/ruc', $parameters);
+            }
             
-            $client = new Client(['base_uri' => 'https://api.apis.net.pe', 'verify' => false]);
-            $parameters = [
-                'http_errors' => false,
-                'connect_timeout' => 5,
-                'headers' => [
-                    'Authorization' => 'Bearer '.$token,
-                    'Referer' => 'https://apis.net.pe/api-consulta-dni',
-                    'User-Agent' => 'laravel/guzzle',
-                    'Accept' => 'application/json',
-                ],
-                'query' => ['numero' => $numero]
-            ];
-            $res = $client->request('GET', '/v1/dni', $parameters);
             $datos = json_decode($res->getBody()->getContents(), true);
             return response()->json($datos);
         }

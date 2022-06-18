@@ -6,6 +6,7 @@ use App\Models\Provider;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProvider;
 use App\Http\Requests\UpdateProvider;
+use GuzzleHttp\Client;
 
 class ProviderController extends Controller
 {
@@ -99,5 +100,32 @@ class ProviderController extends Controller
     {
         $provider->delete();
         return redirect()->route('providers.index')->with('eliminar', 'ok');
+    }
+
+    public function search_ruc(Request $request)
+    {
+        $token = config('services.apisunat.token');
+        $baseurl = config('services.apisunat.baseurl');
+        $urlruc = config('services.apisunat.urlruc');
+
+        if ($request->ajax()) {
+            $numero = $request->ruc;
+            
+            $client = new Client(['base_uri' => $baseurl, 'verify' => false]);
+            $parameters = [
+                'http_errors' => false,
+                'connect_timeout' => 5,
+                'headers' => [
+                    'Authorization' => 'Bearer '.$token,
+                    'Referer' => $urlruc,
+                    'User-Agent' => 'laravel/guzzle',
+                    'Accept' => 'application/json',
+                ],
+                'query' => ['numero' => $numero]
+            ];
+            $res = $client->request('GET', '/v1/ruc', $parameters);
+            $datos = json_decode($res->getBody()->getContents(), true);
+            return response()->json($datos);
+        }
     }
 }

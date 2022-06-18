@@ -24,7 +24,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="ruc_number">{{ __('RUC Number') }}</label>
-                                    <input type="number" class="form-control" name="ruc_number" id="ruc_number" value="{{ old('ruc_number') }}">
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" name="ruc_number" id="ruc_number" value="{{ old('ruc_number') }}">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button" id="Search">{{ __('Search') }}</button>
+                                        </div>
+                                    </div>
                                     @error('ruc_number')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -80,4 +85,22 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+    $('#Search').click(function(){
+        var ruc = $('#ruc_number');
+        $.ajax({
+            url: "{{ route('search.ruc') }}",
+            method: 'GET',
+            data: {
+                ruc: ruc.val(),
+            },
+            dataType: 'json',
+            success:function(data){
+                $('#name').val(data.nombre);
+            }
+        });
+    });
+</script>
 @endsection

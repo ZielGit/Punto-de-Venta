@@ -1,24 +1,26 @@
 <div class="row">
     <div class="col-md-6">
         <div class="form-group">
-            <label for="dni">{{ __('DNI') }}</label>
-            <div class="input-group">
-                <input type="number" class="form-control" name="dni" id="dni" value="{{ old('dni') }}">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button" id="Search">{{ __('Search') }}</button>
-                </div>
-            </div>
-            @error('dni')
+            <label for="document_type">{{ __('Document Type') }}</label>
+            <select class="form-control" name="document_type" id="document_type">
+                <option value="DNI">{{ __('DNI') }}</option>
+                <option value="RUC">{{ __('RUC') }}</option>
+            </select>
+            @error('document_type')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
-            <label for="email">{{ __('Email') }}</label>
-            <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" value="{{ old('email') }}">
-            <small id="helpId" class="form-text text-muted">{{ __('This is an optional field.') }}</small>
-            @error('email')
+            <label for="document_number">{{ __('Document Number') }}</label>
+            <div class="input-group">
+                <input type="number" class="form-control" name="document_number" id="document_number" value="{{ old('document_number') }}">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" id="buttonSearch">{{ __('Search') }}</button>
+                </div>
+            </div>
+            @error('document_number')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
@@ -36,15 +38,14 @@
     </div>
     <div class="col-md-6">
         <div class="form-group">
-            <label for="ruc">{{ __('RUC') }}</label>
-            <input type="number" class="form-control" name="ruc" id="ruc" aria-describedby="helpId" value="{{ old('ruc') }}">
+            <label for="email">{{ __('Email') }}</label>
+            <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" value="{{ old('email') }}">
             <small id="helpId" class="form-text text-muted">{{ __('This is an optional field.') }}</small>
-            @error('ruc')
+            @error('email')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
     </div>
-    
 </div>
 <div class="row">
     <div class="col-md-6">

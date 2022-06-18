@@ -34,13 +34,15 @@
 @endsection
 @section('scripts')
 <script>
-    $('#Search').click(function(){
-        var dni = $('#dni');
+    $('#buttonSearch').click(function(){
+        var document_type = $('#document_type');
+        var document_number = $('#document_number');
         $.ajax({
             url: "{{ route('search') }}",
             method: 'GET',
             data: {
-                dni: dni.val(),
+                document_type: document_type.val(),
+                document_number: document_number.val(),
             },
             dataType: 'json',
             success:function(data){

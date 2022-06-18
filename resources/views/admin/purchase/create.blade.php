@@ -48,30 +48,21 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="name">{{ __('Name') }}</label>
-                        <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
-                        @error('name')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="email">{{ __('Email') }}</label>
-                        <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" placeholder="ejemplo@gmail.com">
-                        @error('email')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
                         <label for="ruc_number">{{ __('RUC Number') }}</label>
-                        <input type="number" class="form-control" name="ruc_number" id="ruc_number" value="{{ old('ruc_number') }}">
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="ruc_number" id="ruc_number" value="{{ old('ruc_number') }}">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" id="Search">{{ __('Search') }}</button>
+                            </div>
+                        </div>
                         @error('ruc_number')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="phone">{{ __('Telephone / Mobile') }}</label>
-                        <input type="number" class="form-control" name="phone" id="phone" value="{{ old('phone') }}">
-                        @error('phone')
+                        <label for="name">{{ __('Name') }}</label>
+                        <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
+                        @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -92,7 +83,7 @@
 {{-- {!! Html::script('melody/js/avgrund.js') !!} --}}
 <script src="{{ asset('melody/js/select2.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
-@if ($errors->has('name') || $errors->has('email') || $errors->has('ruc_number') || $errors->has('phone'))
+@if ($errors->has('ruc_number') || $errors->has('name'))
     <script type="text/javascript">
         $('#providerModal').modal('show');
     </script>
@@ -223,5 +214,20 @@
         $("#fila" + index).remove();
         evaluar();
     }
+
+    $('#Search').click(function(){
+        var ruc = $('#ruc_number');
+        $.ajax({
+            url: "{{ route('search.ruc') }}",
+            method: 'GET',
+            data: {
+                ruc: ruc.val(),
+            },
+            dataType: 'json',
+            success:function(data){
+                $('#name').val(data.nombre);
+            }
+        });
+    });
 </script>
 @endsection

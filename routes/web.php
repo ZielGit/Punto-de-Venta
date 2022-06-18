@@ -64,6 +64,7 @@ Route::get('get_products_by_id', [ProductController::class,'get_products_by_id']
 Route::get('home', [HomeController::class, 'index'])->name('home');
 
 Route::get('search', [CustomerController::class, 'search'])->name('search');
+Route::get('search-ruc', [ProviderController::class, 'search_ruc'])->name('search.ruc');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

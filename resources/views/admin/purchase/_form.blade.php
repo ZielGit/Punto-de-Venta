@@ -32,11 +32,10 @@
     <div class="form-group col-md-6">
         <div class="form-group">
             <label for="product_id">{{ __('Product') }}</label>
-            {{--  <select class="form-control selectpicker" data-live-search="true" name="product_id" id="product_id">  --}}
             <select class="form-control select2" name="product_id" id="product_id">
                 <option value="" disabled selected>{{ __('Select a Product') }}</option>
                 @foreach ($products as $product)
-                <option value="{{ $product->id }}">{{ $product->name }}</option>
+                    <option value="{{ $product->id }}">{{ $product->name }}</option>
                 @endforeach
             </select>
         </div>

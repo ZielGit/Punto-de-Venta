@@ -30,4 +30,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'apisunat' => [
+        'token' => env('API_SUNAT_TOKEN'),
+        'baseurl' => env('API_SUNAT_BASE_URL'),
+        'urldni' => env('API_SUNAT_URL_DNI'),
+        'urlruc' => env('API_SUNAT_URL_RUC'),
+    ],
+
 ];

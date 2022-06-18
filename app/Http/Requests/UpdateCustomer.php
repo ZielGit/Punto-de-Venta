@@ -25,8 +25,8 @@ class UpdateCustomer extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'dni' => 'required|string|unique:customers,dni,'. $this->route('customer')->id.'|min:8|max:8', 
-            'ruc' => 'nullable|string|unique:customers,ruc,'. $this->route('customer')->id.'|min:11|max:11', 
+            'document_type' => 'required|in:DNI,RUC',
+            'document_number' => 'required|unique:customers,document_number,'.$this->route('customer')->id,
             'address' => 'nullable|string|max:255', 
             'phone' => 'nullable|string|unique:customers,phone,'. $this->route('customer')->id.'|max:9', 
             'email' => 'nullable|string|unique:customers,email,'. $this->route('customer')->id.'|max:255|email:filter'

@@ -550,5 +550,7 @@
     "Are you sure?":"¿Estas seguro?",
     "You won't be able to revert this!":"¡No podrás revertir esto!",
     "Yes, delete it!":"¡Sí, bórralo!",
-    "Consult":"Consultar"
+    "Consult":"Consultar",
+    "Document Type":"Tipo de Documento",
+    "Document Number":"Número de Documento"
 }

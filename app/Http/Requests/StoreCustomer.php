@@ -25,8 +25,8 @@ class StoreCustomer extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'dni' => 'required|string|unique:customers|min:8|max:8', 
-            'ruc' => 'nullable|string|unique:customers|min:11|max:11', 
+            'document_type' => 'required|in:DNI,RUC',
+            'document_number' => 'required|unique:customers,document_number',
             'address' => 'nullable|string|max:255', 
             'phone' => 'nullable|string|unique:customers|max:9', 
             'email' => 'nullable|string|unique:customers|max:255|email:rfc,dns'

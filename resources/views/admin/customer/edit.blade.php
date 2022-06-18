@@ -33,9 +33,12 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="dni">{{ __('DNI') }}</label>
-                                    <input type="number" class="form-control" name="dni" id="dni" value="{{ old('dni',$customer->dni) }}">
-                                    @error('dni')
+                                    <label for="document_type">{{ __('Document Type') }}</label>
+                                    <select class="form-control" name="document_type" id="document_type">
+                                        <option value="DNI" {{ (($customer->document_type == 'DNI')? 'selected' : '') }}>{{ __('DNI') }}</option>
+                                        <option value="RUC" {{ (($customer->document_type == 'RUC')? 'selected' : '') }}>{{ __('RUC') }}</option>
+                                    </select>
+                                    @error('document_type')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -44,11 +47,10 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="ruc">{{ __('RUC') }}</label>
-                                    <input type="number" class="form-control" name="ruc" id="ruc" value="{{ old('ruc',$customer->ruc) }}" aria-describedby="helpId">
-                                    <small id="helpId" class="form-text text-muted">{{ __('This is an optional field.') }}</small>
-                                    @error('ruc')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    <label for="document_number">{{ __('Document Number') }}</label>
+                                    <input type="number" class="form-control" name="document_number" id="document_number" min="0" value="{{ old('document_number', $customer->document_number) }}">
+                                    @error('document_number')
+                                        <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>

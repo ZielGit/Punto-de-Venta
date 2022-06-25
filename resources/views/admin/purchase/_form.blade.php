@@ -4,6 +4,7 @@
             <label for="provider_id">{{ __('Provider') }}</label>
             <div class="input-group">
                 <select class="form-control select2" name="provider_id" id="provider_id">
+                    <option value="" disabled selected>{{ __('Select a provider') }}</option>
                     @foreach ($providers as $provider)
                         <option value="{{ $provider->id }}">{{ $provider->name }}</option>
                     @endforeach
@@ -12,6 +13,9 @@
                     <button class="btn btn-sm btn-primary" type="button" data-toggle="modal" data-target="#providerModal">{{ __('New Provider') }}</button>
                 </div>
             </div>
+            @error('provider_id')
+                <div class="alert alert-danger mt-1">{{ $message }}</div>
+            @enderror
         </div>
     </div>
     <div class="form-group col-md-4">

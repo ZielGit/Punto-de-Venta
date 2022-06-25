@@ -4,14 +4,18 @@
             <label>{{ __('Customer') }}</label>
             <div class="input-group">
                 <select class="form-control select2" name="customer_id" id="customer_id">
+                    <option value="" disabled selected>{{ __('Select a customer') }}</option>
                     @foreach ($customers as $customer)
-                    <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                        <option value="{{ $customer->id }}">{{ $customer->name }}</option>
                     @endforeach
                 </select>
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#clientModal">{{ __('New Customer') }}</button>
                 </div>
             </div>
+            @error('customer_id')
+                <div class="alert alert-danger mt-1">{{ $message }}</div>
+            @enderror
         </div>
     </div>
     <div class="col-md-6">
@@ -36,7 +40,7 @@
     <div class="form-group col-md-4">
         <div class="form-group">
             <label>{{ __('Current Stock') }}</label>
-            <input type="text" id="stock" class="form-control" value="" disabled>
+            <input type="text" class="form-control" id="stock" value="" disabled>
           </div>
     </div>
     <div class="form-group col-md-4">
@@ -50,7 +54,7 @@
     <div class="form-group col-md-6">
         <div class="form-group">
             <label for="quantity">{{ __('Amount') }}</label>
-            <input type="number" class="form-control" name="quantity" id="quantity" value="{{ old('quantity') }}">
+            <input type="number" class="form-control" name="quantity" id="quantity" value="{{ old('quantity.0', '') }}">
         </div>
     </div>
     <div class="form-group col-md-3">

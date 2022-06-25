@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSale;
-use App\Http\Requests\UpdateSale;
 use App\Models\Customer;
 use App\Models\Product;
 use Carbon\Carbon;
@@ -62,19 +61,19 @@ class SaleController extends Controller
     public function store(StoreSale $request)
     {
         $sale = Sale::create($request->all()+[
-            'user_id'=>Auth::user()->id,
-            'sale_date'=>Carbon::now('America/Lima'),
+            'user_id' => Auth::user()->id,
+            'sale_date' => Carbon::now('America/Lima'),
         ]);
-
+        
         foreach ($request->product_id as $key => $product) {
             $result[] = array(
-                "product_id"=>$request->product_id[$key],
-                "quantity"=>$request->quantity[$key],
-                "price"=>$request->price[$key],
-                "discount"=>$request->discount[$key]
+                "product_id" => $request->product_id[$key],
+                "quantity" => $request->quantity[$key],
+                "price" => $request->price[$key],
+                "discount" => $request->discount[$key]
             );
         }
-
+        
         $sale->saleDetails()->createMany($result);
         return redirect()->route('sales.index');
     }

@@ -47,13 +47,13 @@
     <div class="form-group col-md-4">
         <div class="form-group">
             <label for="quantity">{{ __('Amount') }}</label>
-            <input type="number" class="form-control" name="quantity" id="quantity" value="{{ old('quantity') }}">
+            <input type="number" class="form-control" name="quantity" id="quantity" value="{{ old('quantity.0', '') }}">
         </div>
     </div>
     <div class="form-group col-md-2">
         <div class="form-group">
             <label for="price">{{ __('Purchase price') }}</label>
-            <input type="number" class="form-control" name="price" id="price" min="0" step="any" value="{{ old('price') }}">
+            <input type="number" class="form-control" name="price" id="price" min="0" step="any" value="{{ old('price.0', '') }}">
         </div>
     </div>
 </div>

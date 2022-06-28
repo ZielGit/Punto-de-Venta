@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Purchase;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePurchase;
-use App\Http\Requests\UpdatePurchase;
 use App\Models\Product;
 use App\Models\Provider;
 use Carbon\Carbon;
@@ -56,15 +55,15 @@ class PurchaseController extends Controller
     public function store(StorePurchase $request)
     {
         $purchase = Purchase::create($request->all()+[
-            'user_id'=>Auth::user()->id,
-            'purchase_date'=>Carbon::now('America/Lima'),
+            'user_id' => Auth::user()->id,
+            'purchase_date' => Carbon::now('America/Lima'),
         ]);
 
         foreach ($request->product_id as $key => $product) {
             $result[] = array(
-                "product_id"=>$request->product_id[$key],
-                "quantity"=>$request->quantity[$key],
-                "price"=>$request->price[$key]
+                "product_id" => $request->product_id[$key],
+                "quantity" => $request->quantity[$key],
+                "price" => $request->price[$key]
             );
         }
 

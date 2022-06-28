@@ -552,5 +552,7 @@
     "Yes, delete it!":"¡Sí, bórralo!",
     "Consult":"Consultar",
     "Document Type":"Tipo de Documento",
-    "Document Number":"Número de Documento"
+    "Document Number":"Número de Documento",
+    "Select a customer":"Seleccione un cliente",
+    "Select a provider":"Seleccione un proveedor"
 }

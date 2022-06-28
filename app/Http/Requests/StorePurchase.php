@@ -24,7 +24,16 @@ class StorePurchase extends FormRequest
     public function rules()
     {
         return [
-            //
+            'provider_id' => 'required|exists:providers,id',
+            'tax' => 'required|numeric',
+            'total' => 'required|numeric',
+            'picture' => 'nullable|string',
+            'product_id.*' => 'integer',
+            'product_id' => 'required|array',
+            'quantity.*' => 'numeric',
+            'quantity' => 'required|array',
+            'price.*' => 'numeric',
+            'price' => 'required|array'
         ];
     }
 }

@@ -71,7 +71,10 @@
                                 <a href="dropify.html" class="font-weight-light" target="_blank">{{ __('Select a File') }}</a>
                             </small>
                             </h4>
-                            <input type="file"  name="picture" id="picture" class="dropify" />
+                            <input type="file"  name="image" id="image" class="dropify" />
+                            @error('image')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-primary mr-2">{{ __('To Register') }}</button>
                         <a href="{{ route('products.index') }}" class="btn btn-light">

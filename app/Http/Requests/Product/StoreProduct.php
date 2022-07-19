@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -26,9 +26,8 @@ class StoreProduct extends FormRequest
         return [
             'code' => 'nullable|string|unique:products,code',
             'name' => 'required|string|unique:products,name|max:255', 
-            'image' => 'nullable|string',
+            'image' => 'nullable|image',
             'sell_price' => 'required',
-            'status' => 'required|in:ACTIVE,DEACTIVATED',
             'category_id' => 'required|exists:categories,id', 
             'provider_id' => 'required|exists:providers,id'
         ];
@@ -41,6 +40,7 @@ class StoreProduct extends FormRequest
             'code.string'=>'El valor no es correcto.',
             'code.max'=>'Solo se permite 8 dígitos.',
             'code.min'=>'Se requiere de 8 dígitos.',
+            'image.image' => 'Debe de subir una imagen.'
         ];
     }
 }

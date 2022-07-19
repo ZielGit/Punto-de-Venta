@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -26,9 +26,8 @@ class UpdateProduct extends FormRequest
         return [
             'code' => 'nullable|string|unique:products,code,'.$this->route('product')->id,
             'name' => 'required|string|unique:products,name,'.$this->route('product')->id.'|max:255', 
-            'image' => 'nullable|string', 
+            'image' => 'nullable|image',
             'sell_price' => 'required',
-            'status' => 'required|in:ACTIVE,DEACTIVATED',
             'category_id'=>'integer|required|exists:categories,id', 
             'provider_id'=>'integer|required|exists:providers,id',
         ];
@@ -44,6 +43,7 @@ class UpdateProduct extends FormRequest
             'provider_id.required' => 'Este campo es requerido.',
             'provider_id.string' => 'El valor no es correcto.',
             'provider_id.exists' => 'El proveedor no existe.',
+            'image.image' => 'Debe de subir una imagen.'
         ];
     }
 }

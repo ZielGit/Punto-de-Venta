@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreProduct;
-use App\Http\Requests\UpdateProduct;
+use App\Http\Requests\Product\StoreProduct;
+use App\Http\Requests\Product\UpdateProduct;
 use App\Models\Category;
 use App\Models\Provider;
 
@@ -52,8 +52,8 @@ class ProductController extends Controller
      */
     public function store(StoreProduct $request)
     {
-        if($request->hasFile('picture')){
-            $file = $request->file('picture');
+        if($request->hasFile('image')){
+            $file = $request->file('image');
             $image_name = time().'_'.$file->getClientOriginalName();
             $file->move(public_path("/image"),$image_name);
         }
@@ -101,14 +101,17 @@ class ProductController extends Controller
      */
     public function update(UpdateProduct $request, Product $product)
     {
-        if($request->hasFile('picture')){
-            $file = $request->file('picture');
+        // Cambiar este codigo para que acepte sin imagen
+        if($request->hasFile('image')){
+            $file = $request->file('image');
             $image_name = time().'_'.$file->getClientOriginalName();
             $file->move(public_path("/image"),$image_name);
         }
+
         $product->update($request->all()+[
             'image'=>$image_name,
         ]);
+
         return redirect()->route('products.index')->with('update', 'ok');
     }
 
